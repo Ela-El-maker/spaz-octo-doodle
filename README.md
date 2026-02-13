@@ -1,6 +1,6 @@
 # Guardian
 
-Guardian is a reliability-first Android alarm system for far-future, exact date-time reminders and meetings.
+Guardian is a reliability-first Android alarm system for far-future, exact date-time plans and reminders.
 
 ## documentation
 
@@ -14,6 +14,7 @@ Guardian is a reliability-first Android alarm system for far-future, exact date-
 - `docs/stage-6-checklist.md`
 - `docs/stage-7-checklist.md`
 - `docs/stage-8-checklist.md`
+- `docs/stage-9-checklist.md`
 - `docs/project-setup.md`
 - `docs/user-flow.md`
 - `docs/user-flow.json`
