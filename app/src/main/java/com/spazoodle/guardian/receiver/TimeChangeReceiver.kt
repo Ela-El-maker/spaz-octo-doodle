@@ -4,10 +4,27 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.spazoodle.guardian.runtime.GuardianRuntime
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class TimeChangeReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        Log.i(TAG, "Time change event received. Reschedule flow will be wired in Stage 5.")
+        val pendingResult = goAsync()
+        val appContext = context.applicationContext
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                Log.i(TAG, "Time change event received (${intent.action}). Rescheduling alarms.")
+                val plans = GuardianRuntime
+                    .rescheduleAllActiveAlarmsUseCase(appContext)
+                    .invoke()
+                GuardianRuntime.alarmScheduler(appContext).rescheduleAll(plans)
+            } finally {
+                pendingResult.finish()
+            }
+        }
     }
 
     companion object {
