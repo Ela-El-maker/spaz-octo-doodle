@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -73,6 +74,28 @@ fun AlarmEditorScreen(
                 label = { Text("Time (HH:mm)") }
             )
 
+            Text("Template", style = MaterialTheme.typography.titleMedium)
+            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                AlarmTemplatePreset.entries.forEach { preset ->
+                    OutlinedButton(onClick = { homeViewModel.applyTemplate(preset) }) {
+                        Text(preset.label)
+                    }
+                }
+            }
+
+            Text("Primary Action", style = MaterialTheme.typography.titleMedium)
+            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                listOf(
+                    "OPEN_URL",
+                    "OPEN_DEEPLINK",
+                    "CALL_NUMBER",
+                    "OPEN_MAP_NAVIGATION"
+                ).forEach { actionType ->
+                    OutlinedButton(onClick = { homeViewModel.setPrimaryActionType(actionType) }) {
+                        Text(actionType.removePrefix("OPEN_").lowercase().replace("_", " "))
+                    }
+                }
+            }
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = draft.primaryActionType,
@@ -132,6 +155,51 @@ fun AlarmEditorScreen(
                 checked = draft.nagEnabled,
                 onChange = { checked -> homeViewModel.updateDraft { it.copy(nagEnabled = checked) } }
             )
+            if (draft.nagEnabled) {
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = draft.nagRepeatMinutesCsv,
+                    onValueChange = { value ->
+                        homeViewModel.updateDraft { current -> current.copy(nagRepeatMinutesCsv = value) }
+                    },
+                    label = { Text("Nag repeat minutes (csv)") }
+                )
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = draft.nagMaxCount,
+                    onValueChange = { value ->
+                        homeViewModel.updateDraft { current -> current.copy(nagMaxCount = value) }
+                    },
+                    label = { Text("Nag max count") }
+                )
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = draft.nagMaxWindowMinutes,
+                    onValueChange = { value ->
+                        homeViewModel.updateDraft { current -> current.copy(nagMaxWindowMinutes = value) }
+                    },
+                    label = { Text("Nag max window (minutes)") }
+                )
+                LabeledCheck(
+                    text = "Escalation",
+                    checked = draft.escalationEnabled,
+                    onChange = { checked ->
+                        homeViewModel.updateDraft { current -> current.copy(escalationEnabled = checked) }
+                    }
+                )
+                if (draft.escalationEnabled) {
+                    OutlinedTextField(
+                        modifier = Modifier.fillMaxWidth(),
+                        value = draft.escalationStepAfterCount,
+                        onValueChange = { value ->
+                            homeViewModel.updateDraft { current ->
+                                current.copy(escalationStepAfterCount = value)
+                            }
+                        },
+                        label = { Text("Escalate after nag count") }
+                    )
+                }
+            }
 
             if (editorState.errorMessage != null) {
                 Text(

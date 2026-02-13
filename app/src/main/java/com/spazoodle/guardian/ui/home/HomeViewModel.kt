@@ -86,6 +86,7 @@ class HomeViewModel(
                 _editorUiState.value = EditorUiState(
                     draft = AlarmDraft(
                         title = alarm.title,
+                        templateId = AlarmTemplatePreset.STANDARD.id,
                         dateText = zoned.toLocalDate().toString(),
                         timeText = zoned.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm")),
                         primaryActionType = alarm.primaryAction?.type?.name.orEmpty(),
@@ -96,7 +97,14 @@ class HomeViewModel(
                         preAlert1Hour = preKeys.contains(DefaultPreAlertOffsets.ONE_HOUR.key),
                         preAlert10Min = preKeys.contains(DefaultPreAlertOffsets.TEN_MINUTES.key),
                         preAlert2Min = preKeys.contains(DefaultPreAlertOffsets.TWO_MINUTES.key),
-                        nagEnabled = alarm.policy.nagSpec?.enabled == true
+                        nagEnabled = alarm.policy.nagSpec?.enabled == true,
+                        nagRepeatMinutesCsv = alarm.policy.nagSpec?.repeatMinutes
+                            ?.joinToString(",")
+                            ?: "2,3,5,10",
+                        nagMaxCount = (alarm.policy.nagSpec?.maxNagCount ?: 20).toString(),
+                        nagMaxWindowMinutes = (alarm.policy.nagSpec?.maxNagWindowMinutes ?: 120).toString(),
+                        escalationEnabled = alarm.policy.escalationSpec?.enabled == true,
+                        escalationStepAfterCount = (alarm.policy.escalationSpec?.stepUpAfterNagCount ?: 3).toString()
                     ),
                     isLoading = false
                 )
@@ -110,6 +118,73 @@ class HomeViewModel(
 
     fun updateDraft(transform: (AlarmDraft) -> AlarmDraft) {
         _editorUiState.update { it.copy(draft = transform(it.draft), errorMessage = null) }
+    }
+
+    fun applyTemplate(template: AlarmTemplatePreset) {
+        updateDraft { current ->
+            when (template) {
+                AlarmTemplatePreset.STANDARD -> current.copy(
+                    templateId = template.id,
+                    preAlert1Day = true,
+                    preAlert1Hour = true,
+                    preAlert10Min = true,
+                    preAlert2Min = true,
+                    nagEnabled = false,
+                    escalationEnabled = false
+                )
+
+                AlarmTemplatePreset.CRITICAL -> current.copy(
+                    templateId = template.id,
+                    preAlert1Day = true,
+                    preAlert1Hour = true,
+                    preAlert10Min = true,
+                    preAlert2Min = true,
+                    nagEnabled = true,
+                    nagRepeatMinutesCsv = "1,2,3,5,10",
+                    nagMaxCount = "30",
+                    nagMaxWindowMinutes = "180",
+                    escalationEnabled = true,
+                    escalationStepAfterCount = "2"
+                )
+
+                AlarmTemplatePreset.TRAVEL -> current.copy(
+                    templateId = template.id,
+                    preAlert1Day = true,
+                    preAlert1Hour = true,
+                    preAlert10Min = true,
+                    preAlert2Min = false,
+                    nagEnabled = true,
+                    nagRepeatMinutesCsv = "3,5,10",
+                    nagMaxCount = "12",
+                    nagMaxWindowMinutes = "120",
+                    escalationEnabled = false
+                )
+
+                AlarmTemplatePreset.QUIET -> current.copy(
+                    templateId = template.id,
+                    preAlert1Day = false,
+                    preAlert1Hour = true,
+                    preAlert10Min = true,
+                    preAlert2Min = false,
+                    nagEnabled = false,
+                    escalationEnabled = false
+                )
+            }
+        }
+    }
+
+    fun setPrimaryActionType(typeName: String) {
+        val label = when (typeName) {
+            PrimaryActionType.OPEN_URL.name -> "Open"
+            PrimaryActionType.OPEN_DEEPLINK.name -> "Open"
+            PrimaryActionType.CALL_NUMBER.name -> "Call"
+            PrimaryActionType.OPEN_MAP_NAVIGATION.name -> "Navigate"
+            PrimaryActionType.OPEN_NOTE.name -> "Open Note"
+            PrimaryActionType.OPEN_CHECKLIST.name -> "Checklist"
+            PrimaryActionType.OPEN_FILE.name -> "Open File"
+            else -> ""
+        }
+        updateDraft { it.copy(primaryActionType = typeName, primaryActionLabel = label) }
     }
 
     fun saveDraft(editingAlarmId: Long?, onDone: () -> Unit) {
@@ -174,12 +249,20 @@ class HomeViewModel(
             if (draft.preAlert2Min) add(DefaultPreAlertOffsets.TWO_MINUTES)
         }
 
+        val nagRepeatMinutes = draft.nagRepeatMinutesCsv
+            .split(",")
+            .mapNotNull { it.trim().toIntOrNull() }
+            .filter { it > 0 }
+            .ifEmpty { listOf(2, 3, 5, 10) }
+        val nagMaxCount = draft.nagMaxCount.toIntOrNull()?.coerceAtLeast(1) ?: 20
+        val nagMaxWindow = draft.nagMaxWindowMinutes.toIntOrNull()?.coerceAtLeast(1) ?: 120
+
         val nagSpec = if (draft.nagEnabled) {
             NagSpec(
                 enabled = true,
-                repeatMinutes = listOf(2, 3, 5, 10),
-                maxNagCount = 20,
-                maxNagWindowMinutes = 120
+                repeatMinutes = nagRepeatMinutes,
+                maxNagCount = nagMaxCount,
+                maxNagWindowMinutes = nagMaxWindow
             )
         } else {
             null
@@ -211,10 +294,10 @@ class HomeViewModel(
             policy = AlarmPolicy(
                 preAlerts = preAlerts,
                 nagSpec = nagSpec,
-                escalationSpec = if (draft.nagEnabled) {
+                escalationSpec = if (draft.nagEnabled && draft.escalationEnabled) {
                     EscalationSpec(
                         enabled = true,
-                        stepUpAfterNagCount = 3,
+                        stepUpAfterNagCount = draft.escalationStepAfterCount.toIntOrNull()?.coerceAtLeast(1) ?: 3,
                         toneSequence = listOf("soft", "standard", "loud")
                     )
                 } else {
