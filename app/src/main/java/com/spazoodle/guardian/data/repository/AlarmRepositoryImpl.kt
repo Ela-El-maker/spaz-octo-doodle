@@ -8,6 +8,8 @@ import com.spazoodle.guardian.domain.model.AlarmType
 import com.spazoodle.guardian.domain.model.EscalationSpec
 import com.spazoodle.guardian.domain.model.NagSpec
 import com.spazoodle.guardian.domain.model.PreAlertOffset
+import com.spazoodle.guardian.domain.model.PrimaryAction
+import com.spazoodle.guardian.domain.model.PrimaryActionType
 import com.spazoodle.guardian.domain.model.SnoozeSpec
 import com.spazoodle.guardian.domain.repository.AlarmRepository
 
@@ -17,6 +19,10 @@ class AlarmRepositoryImpl(
 
     override suspend fun upsert(alarm: Alarm) {
         alarmDao.upsert(alarm.toEntity())
+    }
+
+    override suspend fun getAllAlarms(): List<Alarm> {
+        return alarmDao.getAll().map { it.toDomain() }
     }
 
     override suspend fun getEnabledAlarms(): List<Alarm> {
@@ -53,7 +59,12 @@ private fun Alarm.toEntity(): AlarmEntity {
         triggerAtUtcMillis = triggerAtUtcMillis,
         timezoneIdAtCreation = timezoneIdAtCreation,
         enabled = enabled,
-        meetingUrl = meetingUrl,
+        meetingUrl = primaryAction
+            ?.takeIf { it.type == PrimaryActionType.OPEN_URL }
+            ?.value,
+        primaryActionType = primaryAction?.type?.name,
+        primaryActionValue = primaryAction?.value,
+        primaryActionLabel = primaryAction?.label,
         preAlertKeysCsv = preAlertKeys,
         preAlertOffsetsCsv = preAlertOffsets,
         nagEnabled = nag?.enabled ?: false,
@@ -98,6 +109,23 @@ private fun AlarmEntity.toDomain(): Alarm {
         null
     }
 
+    val resolvedPrimaryAction = if (!primaryActionType.isNullOrBlank() && !primaryActionValue.isNullOrBlank()) {
+        PrimaryAction(
+            type = runCatching { PrimaryActionType.valueOf(primaryActionType) }
+                .getOrDefault(PrimaryActionType.OPEN_URL),
+            value = primaryActionValue,
+            label = primaryActionLabel
+        )
+    } else if (!meetingUrl.isNullOrBlank()) {
+        PrimaryAction(
+            type = PrimaryActionType.OPEN_URL,
+            value = meetingUrl,
+            label = "Open"
+        )
+    } else {
+        null
+    }
+
     return Alarm(
         id = id,
         title = title,
@@ -105,7 +133,7 @@ private fun AlarmEntity.toDomain(): Alarm {
         triggerAtUtcMillis = triggerAtUtcMillis,
         timezoneIdAtCreation = timezoneIdAtCreation,
         enabled = enabled,
-        meetingUrl = meetingUrl,
+        primaryAction = resolvedPrimaryAction,
         policy = AlarmPolicy(
             preAlerts = preAlerts,
             nagSpec = nagSpec,

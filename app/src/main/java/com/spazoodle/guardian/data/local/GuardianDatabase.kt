@@ -28,6 +28,15 @@ abstract class GuardianDatabase : RoomDatabase() {
                     "ALTER TABLE alarms ADD COLUMN preAlertKeysCsv TEXT NOT NULL DEFAULT ''"
                 )
                 database.execSQL(
+                    "ALTER TABLE alarms ADD COLUMN primaryActionType TEXT"
+                )
+                database.execSQL(
+                    "ALTER TABLE alarms ADD COLUMN primaryActionValue TEXT"
+                )
+                database.execSQL(
+                    "ALTER TABLE alarms ADD COLUMN primaryActionLabel TEXT"
+                )
+                database.execSQL(
                     "ALTER TABLE alarms ADD COLUMN preAlertOffsetsCsv TEXT NOT NULL DEFAULT ''"
                 )
                 database.execSQL(

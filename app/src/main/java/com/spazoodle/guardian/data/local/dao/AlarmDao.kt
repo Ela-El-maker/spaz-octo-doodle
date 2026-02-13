@@ -11,6 +11,9 @@ interface AlarmDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(alarmEntity: AlarmEntity)
 
+    @Query("SELECT * FROM alarms ORDER BY triggerAtUtcMillis ASC")
+    suspend fun getAll(): List<AlarmEntity>
+
     @Query("SELECT * FROM alarms WHERE enabled = 1")
     suspend fun getEnabled(): List<AlarmEntity>
 
