@@ -1,9 +1,12 @@
 package com.spazoodle.guardian.ui
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.spazoodle.guardian.ui.home.AlarmEditorScreen
 import com.spazoodle.guardian.ui.home.HomeScreen
 
 @Composable
@@ -14,7 +17,25 @@ fun GuardianRoot() {
         startDestination = "home"
     ) {
         composable("home") {
-            HomeScreen()
+            HomeScreen(
+                onCreateAlarm = { navController.navigate("editor") },
+                onEditAlarm = { alarmId -> navController.navigate("editor?alarmId=$alarmId") }
+            )
+        }
+        composable(
+            route = "editor?alarmId={alarmId}",
+            arguments = listOf(
+                navArgument("alarmId") {
+                    type = NavType.LongType
+                    defaultValue = -1L
+                }
+            )
+        ) { backStackEntry ->
+            val alarmId = backStackEntry.arguments?.getLong("alarmId") ?: -1L
+            AlarmEditorScreen(
+                alarmId = alarmId.takeIf { it > 0L },
+                onBack = { navController.popBackStack() }
+            )
         }
     }
 }
