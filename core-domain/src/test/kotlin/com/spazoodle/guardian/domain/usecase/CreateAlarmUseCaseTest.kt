@@ -70,6 +70,13 @@ class CreateAlarmUseCaseTest {
             return saved.filter { it.enabled }
         }
 
+        override suspend fun getUpcomingAlarms(fromUtcMillis: Long, limit: Int): List<Alarm> {
+            return saved
+                .filter { it.enabled && it.triggerAtUtcMillis >= fromUtcMillis }
+                .sortedBy { it.triggerAtUtcMillis }
+                .take(limit)
+        }
+
         override suspend fun getById(alarmId: Long): Alarm? {
             return saved.firstOrNull { it.id == alarmId }
         }
