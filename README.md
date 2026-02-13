@@ -1,4 +1,4 @@
-# guardian
+# Guardian
 
 Guardian is a reliability-first Android alarm system for far-future, exact date-time reminders and meetings.
 
