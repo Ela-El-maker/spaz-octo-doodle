@@ -51,6 +51,15 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".receiver.PackageReplacedReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
         <service
             android:name=".service.AlarmRingingService"
             android:enabled="true"
