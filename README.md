@@ -16,11 +16,17 @@ Guardian is a reliability-first Android alarm system for far-future, exact date-
 - `docs/stage-8-checklist.md`
 - `docs/stage-9-checklist.md`
 - `docs/stage-10-checklist.md`
+- `docs/stage-11-checklist.md`
 - `docs/project-setup.md`
 - `docs/user-flow.md`
 - `docs/user-flow.json`
 - `docs/invariants.md`
 - `docs/rollout-plan.md`
+- `docs/qa/device-matrix.md`
+- `docs/qa/test-scenarios.md`
+- `docs/qa/overnight-and-long-horizon.md`
+- `docs/qa/release-smoke.md`
+- `docs/qa/defect-triage.md`
 - `docs/decisions/adr-0001-architecture-and-reliability-first.md`
 - `docs/runbooks/reliability-setup-and-verification.md`
 
