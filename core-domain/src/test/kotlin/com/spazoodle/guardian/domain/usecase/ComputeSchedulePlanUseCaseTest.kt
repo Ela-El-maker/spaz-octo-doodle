@@ -63,7 +63,7 @@ class ComputeSchedulePlanUseCaseTest {
             triggerAtUtcMillis = triggerAt,
             timezoneIdAtCreation = "Africa/Nairobi",
             enabled = true,
-            meetingUrl = "https://meet.google.com/abc",
+            primaryAction = null,
             policy = AlarmPolicy(preAlerts = preAlerts),
             snoozeSpec = SnoozeSpec(durationsMinutes = listOf(5, 10, 15), defaultMinutes = 10),
             createdAtUtcMillis = 900_000L,

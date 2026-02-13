@@ -45,7 +45,7 @@ class CreateAlarmUseCaseTest {
             triggerAtUtcMillis = triggerAt,
             timezoneIdAtCreation = "Africa/Nairobi",
             enabled = true,
-            meetingUrl = null,
+            primaryAction = null,
             policy = AlarmPolicy(),
             snoozeSpec = SnoozeSpec(durationsMinutes = listOf(5, 10, 15), defaultMinutes = 10),
             createdAtUtcMillis = 0L,
@@ -64,6 +64,10 @@ class CreateAlarmUseCaseTest {
 
         override suspend fun upsert(alarm: Alarm) {
             saved += alarm
+        }
+
+        override suspend fun getAllAlarms(): List<Alarm> {
+            return saved.sortedBy { it.triggerAtUtcMillis }
         }
 
         override suspend fun getEnabledAlarms(): List<Alarm> {

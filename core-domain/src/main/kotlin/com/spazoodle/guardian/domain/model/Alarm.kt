@@ -7,7 +7,7 @@ data class Alarm(
     val triggerAtUtcMillis: Long,
     val timezoneIdAtCreation: String,
     val enabled: Boolean,
-    val meetingUrl: String?,
+    val primaryAction: PrimaryAction?,
     val policy: AlarmPolicy,
     val snoozeSpec: SnoozeSpec,
     val createdAtUtcMillis: Long,

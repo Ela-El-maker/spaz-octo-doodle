@@ -40,7 +40,7 @@ class RescheduleAllActiveAlarmsUseCaseTest {
             triggerAtUtcMillis = triggerAt,
             timezoneIdAtCreation = "Africa/Nairobi",
             enabled = enabled,
-            meetingUrl = null,
+            primaryAction = null,
             policy = AlarmPolicy(preAlerts = listOf(DefaultPreAlertOffsets.TEN_MINUTES)),
             snoozeSpec = SnoozeSpec(durationsMinutes = listOf(5, 10, 15), defaultMinutes = 10),
             createdAtUtcMillis = 100L,
@@ -56,6 +56,10 @@ class RescheduleAllActiveAlarmsUseCaseTest {
         private val alarms: List<Alarm>
     ) : AlarmRepository {
         override suspend fun upsert(alarm: Alarm) = Unit
+
+        override suspend fun getAllAlarms(): List<Alarm> {
+            return alarms.sortedBy { it.triggerAtUtcMillis }
+        }
 
         override suspend fun getEnabledAlarms(): List<Alarm> {
             return alarms.filter { it.enabled }.sortedBy { it.id }

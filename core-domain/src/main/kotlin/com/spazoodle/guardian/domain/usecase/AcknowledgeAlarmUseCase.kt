@@ -14,7 +14,7 @@ class AcknowledgeAlarmUseCase(
         require(
             outcome == AlarmEventOutcome.DISMISSED ||
                 outcome == AlarmEventOutcome.SNOOZED ||
-                outcome == AlarmEventOutcome.JOINED
+                outcome == AlarmEventOutcome.ACTION_LAUNCHED
         ) {
             "Outcome must be a user acknowledgement outcome."
         }

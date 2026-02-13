@@ -5,7 +5,7 @@ enum class AlarmEventOutcome {
     FIRED,
     DISMISSED,
     SNOOZED,
-    JOINED,
+    ACTION_LAUNCHED,
     MISSED,
     CANCELED,
     RESCHEDULED
