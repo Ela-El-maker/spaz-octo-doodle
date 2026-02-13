@@ -2,24 +2,34 @@
 
 ## objective
 
-Implement receivers and rescheduling lifecycle to handle device events and maintain alarm scheduling integrity.
+Wire receiver lifecycle so triggers and system events are handled safely and alarms are rescheduled on platform changes.
 
 ## implemented
 
-- [ ] Alarm trigger receiver implementation
-- [ ] Boot completed receiver with reschedule wiring
-- [ ] Timezone/time-change receiver with reschedule wiring
-- [ ] Package replaced receiver (if needed)
-- [ ] Reschedule-all use case integration in receivers
+- [x] Added runtime wiring object to provide repositories, scheduler, and use cases from app context:
+  - `GuardianRuntime`
+- [x] Added app clock implementation:
+  - `SystemUtcClock`
+- [x] `AlarmTriggerReceiver` now:
+  - runs asynchronously via `goAsync` + IO coroutine
+  - validates alarm exists and is enabled
+  - records fired event (`RecordFireEventUseCase`)
+  - routes `PRE_ALERT` to notification path
+  - routes `MAIN/SNOOZE/NAG` to foreground service path
+- [x] `BootReceiver` now reschedules all enabled alarms using:
+  - `RescheduleAllActiveAlarmsUseCase`
+  - `AlarmScheduler.rescheduleAll`
+- [x] `TimeChangeReceiver` now reschedules all enabled alarms on time/date/timezone changes.
+- [x] Added `PackageReplacedReceiver` to reschedule after app update.
+- [x] Manifest updated with `MY_PACKAGE_REPLACED` receiver registration.
 
 ## verification
 
-- [ ] Reboot test: enabled alarms restored after device restart
-- [ ] Timezone change test: alarms rescheduled correctly
-- [ ] Time change test: alarms rescheduled correctly
+- Domain verification command:
+  - `./gradlew :core-domain:test --console=plain`
+- Result: `BUILD SUCCESSFUL`
 
-## exit criteria
+## known follow-up
 
-- Reboot and timezone tests pass on device/emulator
-- Enabled alarms are restored after lifecycle events</content>
-  <parameter name="filePath">/home/ela/Work-Force/Mobile-App/Spazoodle/docs/stage-5-checklist.md
+- App compile/instrumentation verification remains blocked by local SDK Build-Tools corruption.
+- Stage 6 will implement full ringing lifecycle (audio focus, stop/snooze/join actions, lockscreen behavior).
