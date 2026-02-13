@@ -32,6 +32,7 @@ fun HomeScreen(
     onCreateAlarm: () -> Unit,
     onEditAlarm: (Long) -> Unit,
     onOpenReliability: () -> Unit,
+    onOpenHistory: () -> Unit,
     homeViewModel: HomeViewModel = viewModel()
 ) {
     val uiState by homeViewModel.homeUiState.collectAsState()
@@ -57,11 +58,13 @@ fun HomeScreen(
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
-            OutlinedButton(
-                modifier = Modifier.padding(bottom = 12.dp),
-                onClick = onOpenReliability
-            ) {
-                Text("Reliability Dashboard")
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(onClick = onOpenReliability) {
+                    Text("Reliability Dashboard")
+                }
+                OutlinedButton(onClick = onOpenHistory) {
+                    Text("History & Proof")
+                }
             }
 
             if (uiState.errorMessage != null) {

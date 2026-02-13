@@ -6,6 +6,7 @@ import androidx.navigation.navArgument
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.spazoodle.guardian.ui.history.HistoryScreen
 import com.spazoodle.guardian.ui.home.AlarmEditorScreen
 import com.spazoodle.guardian.ui.home.HomeScreen
 import com.spazoodle.guardian.ui.reliability.ReliabilityScreen
@@ -21,7 +22,8 @@ fun GuardianRoot() {
             HomeScreen(
                 onCreateAlarm = { navController.navigate("editor") },
                 onEditAlarm = { alarmId -> navController.navigate("editor?alarmId=$alarmId") },
-                onOpenReliability = { navController.navigate("reliability") }
+                onOpenReliability = { navController.navigate("reliability") },
+                onOpenHistory = { navController.navigate("history") }
             )
         }
         composable(
@@ -41,6 +43,11 @@ fun GuardianRoot() {
         }
         composable("reliability") {
             ReliabilityScreen(
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable("history") {
+            HistoryScreen(
                 onBack = { navController.popBackStack() }
             )
         }
