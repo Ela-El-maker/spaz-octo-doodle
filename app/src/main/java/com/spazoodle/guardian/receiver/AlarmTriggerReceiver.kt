@@ -51,6 +51,10 @@ class AlarmTriggerReceiver : BroadcastReceiver() {
                 val serviceIntent = Intent(appContext, AlarmRingingService::class.java).apply {
                     putExtra(EXTRA_ALARM_ID, alarmId)
                     putExtra(EXTRA_TRIGGER_KIND, triggerKind.name)
+                    putExtra(EXTRA_ALARM_TITLE, alarm.title)
+                    putExtra(EXTRA_PRIMARY_ACTION_TYPE, alarm.primaryAction?.type?.name)
+                    putExtra(EXTRA_PRIMARY_ACTION_VALUE, alarm.primaryAction?.value)
+                    putExtra(EXTRA_PRIMARY_ACTION_LABEL, alarm.primaryAction?.label)
                     putExtra(EXTRA_TRIGGER_INDEX, intent.getIntExtra(EXTRA_TRIGGER_INDEX, -1))
                     putExtra(EXTRA_TRIGGER_KEY, intent.getStringExtra(EXTRA_TRIGGER_KEY))
                     putExtra(
@@ -100,5 +104,9 @@ class AlarmTriggerReceiver : BroadcastReceiver() {
         const val EXTRA_TRIGGER_INDEX = "extra_trigger_index"
         const val EXTRA_TRIGGER_KEY = "extra_trigger_key"
         const val EXTRA_SCHEDULED_AT_UTC_MILLIS = "extra_scheduled_at_utc_millis"
+        const val EXTRA_ALARM_TITLE = "extra_alarm_title"
+        const val EXTRA_PRIMARY_ACTION_TYPE = "extra_primary_action_type"
+        const val EXTRA_PRIMARY_ACTION_VALUE = "extra_primary_action_value"
+        const val EXTRA_PRIMARY_ACTION_LABEL = "extra_primary_action_label"
     }
 }
