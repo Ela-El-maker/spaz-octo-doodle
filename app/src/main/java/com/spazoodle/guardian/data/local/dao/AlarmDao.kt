@@ -14,6 +14,13 @@ interface AlarmDao {
     @Query("SELECT * FROM alarms WHERE enabled = 1")
     suspend fun getEnabled(): List<AlarmEntity>
 
+    @Query(
+        "SELECT * FROM alarms " +
+            "WHERE enabled = 1 AND triggerAtUtcMillis >= :fromUtcMillis " +
+            "ORDER BY triggerAtUtcMillis ASC LIMIT :limit"
+    )
+    suspend fun getUpcoming(fromUtcMillis: Long, limit: Int): List<AlarmEntity>
+
     @Query("SELECT * FROM alarms WHERE id = :alarmId LIMIT 1")
     suspend fun getById(alarmId: Long): AlarmEntity?
 
