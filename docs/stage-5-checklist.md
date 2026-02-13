@@ -32,4 +32,4 @@ Wire receiver lifecycle so triggers and system events are handled safely and ala
 ## known follow-up
 
 - App compile/instrumentation verification remains blocked by local SDK Build-Tools corruption.
-- Stage 6 will implement full ringing lifecycle (audio focus, stop/snooze/join actions, lockscreen behavior).
+- Stage 6 will implement full ringing lifecycle (audio focus, stop/snooze/do actions, lockscreen behavior).
