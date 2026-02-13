@@ -13,4 +13,7 @@ interface AlarmHistoryDao {
 
     @Query("SELECT * FROM alarm_history WHERE alarmId = :alarmId ORDER BY eventAtUtcMillis ASC")
     suspend fun getByAlarmId(alarmId: Long): List<AlarmHistoryEntity>
+
+    @Query("SELECT * FROM alarm_history ORDER BY eventAtUtcMillis DESC LIMIT :limit")
+    suspend fun getRecent(limit: Int): List<AlarmHistoryEntity>
 }
