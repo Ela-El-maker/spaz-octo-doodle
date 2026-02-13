@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -30,6 +31,7 @@ import java.time.format.DateTimeFormatter
 fun HomeScreen(
     onCreateAlarm: () -> Unit,
     onEditAlarm: (Long) -> Unit,
+    onOpenReliability: () -> Unit,
     homeViewModel: HomeViewModel = viewModel()
 ) {
     val uiState by homeViewModel.homeUiState.collectAsState()
@@ -55,6 +57,12 @@ fun HomeScreen(
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
+            OutlinedButton(
+                modifier = Modifier.padding(bottom = 12.dp),
+                onClick = onOpenReliability
+            ) {
+                Text("Reliability Dashboard")
+            }
 
             if (uiState.errorMessage != null) {
                 Text(

@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.spazoodle.guardian.ui.home.AlarmEditorScreen
 import com.spazoodle.guardian.ui.home.HomeScreen
+import com.spazoodle.guardian.ui.reliability.ReliabilityScreen
 
 @Composable
 fun GuardianRoot() {
@@ -19,7 +20,8 @@ fun GuardianRoot() {
         composable("home") {
             HomeScreen(
                 onCreateAlarm = { navController.navigate("editor") },
-                onEditAlarm = { alarmId -> navController.navigate("editor?alarmId=$alarmId") }
+                onEditAlarm = { alarmId -> navController.navigate("editor?alarmId=$alarmId") },
+                onOpenReliability = { navController.navigate("reliability") }
             )
         }
         composable(
@@ -34,6 +36,11 @@ fun GuardianRoot() {
             val alarmId = backStackEntry.arguments?.getLong("alarmId") ?: -1L
             AlarmEditorScreen(
                 alarmId = alarmId.takeIf { it > 0L },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable("reliability") {
+            ReliabilityScreen(
                 onBack = { navController.popBackStack() }
             )
         }
