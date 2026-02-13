@@ -11,6 +11,8 @@ Guardian is a reliability-first Android alarm system for far-future, exact date-
 - `docs/stage-3-checklist.md`
 - `docs/stage-4-checklist.md`
 - `docs/stage-5-checklist.md`
+- `docs/stage-6-checklist.md`
+- `docs/stage-7-checklist.md`
 - `docs/project-setup.md`
 - `docs/user-flow.md`
 - `docs/user-flow.json`
