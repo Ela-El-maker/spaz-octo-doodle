@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "guardian"
 include(":app")
+include(":core-domain")
