@@ -16,7 +16,7 @@ Use this before test runs, beta rollout, and support triage.
 2. verify receiver is triggered
 3. verify foreground service starts
 4. verify full-screen ringing UI appears
-5. verify stop, snooze, and join actions
+5. verify stop, snooze, and do actions
 6. verify history entries exist for the flow
 
 ## reboot verification

@@ -25,7 +25,7 @@
 6. Android fires broadcast at trigger time
 7. receiver logs event and starts foreground ringing service
 8. service shows full-screen alarm UI and notification actions
-9. stop/snooze/join action flows back through use cases and history writes
+9. stop/snooze/do action flows back through use cases and history writes
 
 ## boundaries and assumptions
 

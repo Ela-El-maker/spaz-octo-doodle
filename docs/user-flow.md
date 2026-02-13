@@ -60,7 +60,7 @@ This maps what users see to what the system does in the background.
 ### user sees
 
 - full-screen ringing UI
-- stop, snooze, join meeting actions
+- stop, snooze, do actions (if primary action exists)
 
 ### background
 

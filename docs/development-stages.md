@@ -122,26 +122,26 @@ This is the execution roadmap from stage `0` to rollout. Each stage has scope, i
 - actions:
   - stop
   - snooze
-  - join meeting
+  - do (optional primary action)
 - audio/vibration lifecycle cleanup and wake-lock scoping
 
 ### exit criteria
 
 - lockscreen flow works
-- stop/snooze/join are idempotent and logged
+- stop/snooze/do are idempotent and logged
 
 ## stage 7: user-facing core screens
 
 ### implement
 
 - alarm list with status badges and toggle
-- create/edit screen with meeting fields and policy options
+- create/edit screen with primary action fields and policy options
 - ringing screen for active alarm
 - input validation and state error handling
 
 ### exit criteria
 
-- full user journey works for March 30 meeting scenario
+- full user journey works for future-plan scenario
 - no direct platform calls in UI layer
 
 ## stage 8: reliability dashboard
@@ -180,7 +180,7 @@ This is the execution roadmap from stage `0` to rollout. Each stage has scope, i
 
 ### implement
 
-- meeting autopilot polish
+- primary-action launch polish
 - configurable nag mode
 - escalation policies
 - templates and defaults bundles
