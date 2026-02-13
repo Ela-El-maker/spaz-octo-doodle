@@ -23,6 +23,10 @@ class AlarmRepositoryImpl(
         return alarmDao.getEnabled().map { it.toDomain() }
     }
 
+    override suspend fun getUpcomingAlarms(fromUtcMillis: Long, limit: Int): List<Alarm> {
+        return alarmDao.getUpcoming(fromUtcMillis = fromUtcMillis, limit = limit).map { it.toDomain() }
+    }
+
     override suspend fun getById(alarmId: Long): Alarm? {
         return alarmDao.getById(alarmId)?.toDomain()
     }
