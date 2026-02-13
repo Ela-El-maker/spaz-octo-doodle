@@ -13,4 +13,10 @@ interface AlarmDao {
 
     @Query("SELECT * FROM alarms WHERE enabled = 1")
     suspend fun getEnabled(): List<AlarmEntity>
+
+    @Query("SELECT * FROM alarms WHERE id = :alarmId LIMIT 1")
+    suspend fun getById(alarmId: Long): AlarmEntity?
+
+    @Query("UPDATE alarms SET enabled = :enabled, updatedAtUtcMillis = :updatedAtUtcMillis WHERE id = :alarmId")
+    suspend fun setEnabled(alarmId: Long, enabled: Boolean, updatedAtUtcMillis: Long)
 }
