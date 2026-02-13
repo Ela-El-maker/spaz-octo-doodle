@@ -1,9 +1,15 @@
 package com.spazoodle.guardian.data.local.entity
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "alarms")
+@Entity(
+    tableName = "alarms",
+    indices = [
+        Index(value = ["enabled", "triggerAtUtcMillis"])
+    ]
+)
 data class AlarmEntity(
     @PrimaryKey val id: Long,
     val title: String,
