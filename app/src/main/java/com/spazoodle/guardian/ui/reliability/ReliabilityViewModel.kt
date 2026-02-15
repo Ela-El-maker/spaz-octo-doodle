@@ -47,7 +47,20 @@ class ReliabilityViewModel(
             runCatching {
                 ReliabilityScanner(appContext).scan()
             }.onSuccess { status ->
-                _uiState.value = ReliabilityUiState(status = status, isLoading = false)
+                val latestMissed = runCatching {
+                    GuardianRuntime.alarmHistoryRepository(appContext)
+                        .getRecent(100)
+                        .firstOrNull { it.outcome == AlarmEventOutcome.MISSED }
+                }.getOrNull()
+                val latestMissedSummary = latestMissed?.let {
+                    "Last missed alarm: alarmId=${it.alarmId} detail=${it.detail.orEmpty()}"
+                }
+
+                _uiState.value = ReliabilityUiState(
+                    status = status,
+                    isLoading = false,
+                    latestMissedSummary = latestMissedSummary
+                )
             }.onFailure { error ->
                 _uiState.value = ReliabilityUiState(
                     status = null,

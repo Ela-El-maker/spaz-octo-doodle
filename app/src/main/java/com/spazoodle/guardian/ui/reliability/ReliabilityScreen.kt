@@ -55,6 +55,13 @@ fun ReliabilityScreen(
             if (uiState.message != null) {
                 Text(uiState.message ?: "", color = MaterialTheme.colorScheme.primary)
             }
+            if (uiState.latestMissedSummary != null) {
+                Text(
+                    uiState.latestMissedSummary ?: "",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
             if (status?.strictModeBlocked == true) {
                 Text(
                     "Guardian strict mode blocked: exact alarms are required for reliable delivery.",
@@ -87,6 +94,10 @@ fun ReliabilityScreen(
                 "• If Guardian is Force Stopped in system settings, Android blocks alarms until you open Guardian again.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.error
+            )
+            Text(
+                "• OEM background restrictions can delay/suppress alarms. Use OEM playbook steps below and run Test in 15s after changes.",
+                style = MaterialTheme.typography.bodySmall
             )
 
             StatusRow(
