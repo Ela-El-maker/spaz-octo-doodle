@@ -19,16 +19,27 @@ class GuardianRescheduleWorker(
     override suspend fun doWork(): Result {
         val reason = inputData.getString(KEY_REASON) ?: "unknown"
         return runCatching {
-            val plans = GuardianRuntime
-                .rescheduleAllActiveAlarmsUseCase(applicationContext)
+            val reconcileResult = GuardianRuntime
+                .reconcileEnabledAlarmsUseCase(applicationContext)
                 .invoke()
-            GuardianRuntime.alarmScheduler(applicationContext).rescheduleAll(plans)
+            reconcileResult.missedOneTimeAlarmIds.forEach { alarmId ->
+                GuardianRuntime.recordFireEventUseCase(applicationContext).invoke(
+                    alarmId = alarmId,
+                    triggerKind = TriggerKind.MAIN,
+                    outcome = AlarmEventOutcome.MISSED,
+                    deliveryState = DeliveryState.MISSED,
+                    detail = "missed_startup_reconcile"
+                )
+                GuardianRuntime.finalizeOneTimeAlarmUseCase(applicationContext).invoke(alarmId)
+                GuardianRuntime.alarmScheduler(applicationContext).cancelAlarm(alarmId)
+            }
+            GuardianRuntime.alarmScheduler(applicationContext).rescheduleAll(reconcileResult.reschedulablePlans)
             GuardianRuntime.recordFireEventUseCase(applicationContext).invoke(
                 alarmId = SYSTEM_EVENT_ALARM_ID,
                 triggerKind = TriggerKind.MAIN,
                 outcome = AlarmEventOutcome.RESCHEDULED,
                 deliveryState = DeliveryState.FIRED,
-                detail = "rescheduled_after_$reason:count=${plans.size}"
+                detail = "rescheduled_after_$reason:count=${reconcileResult.reschedulablePlans.size}"
             )
             Result.success()
         }.getOrElse {
