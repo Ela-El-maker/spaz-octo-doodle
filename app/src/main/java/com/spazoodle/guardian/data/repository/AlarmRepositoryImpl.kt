@@ -12,6 +12,8 @@ import com.spazoodle.guardian.domain.model.PrimaryAction
 import com.spazoodle.guardian.domain.model.PrimaryActionType
 import com.spazoodle.guardian.domain.model.SnoozeSpec
 import com.spazoodle.guardian.domain.repository.AlarmRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class AlarmRepositoryImpl(
     private val alarmDao: AlarmDao
@@ -19,6 +21,14 @@ class AlarmRepositoryImpl(
 
     override suspend fun upsert(alarm: Alarm) {
         alarmDao.upsert(alarm.toEntity())
+    }
+
+    override suspend fun delete(alarmId: Long) {
+        alarmDao.delete(alarmId)
+    }
+
+    override fun observeAllAlarms(): Flow<List<Alarm>> {
+        return alarmDao.observeAll().map { alarms -> alarms.map { it.toDomain() } }
     }
 
     override suspend fun getAllAlarms(): List<Alarm> {

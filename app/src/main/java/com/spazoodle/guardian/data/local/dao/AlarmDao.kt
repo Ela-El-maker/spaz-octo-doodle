@@ -5,14 +5,21 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.spazoodle.guardian.data.local.entity.AlarmEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AlarmDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(alarmEntity: AlarmEntity)
 
+    @Query("DELETE FROM alarms WHERE id = :alarmId")
+    suspend fun delete(alarmId: Long)
+
     @Query("SELECT * FROM alarms ORDER BY triggerAtUtcMillis ASC")
     suspend fun getAll(): List<AlarmEntity>
+
+    @Query("SELECT * FROM alarms ORDER BY triggerAtUtcMillis ASC")
+    fun observeAll(): Flow<List<AlarmEntity>>
 
     @Query("SELECT * FROM alarms WHERE enabled = 1")
     suspend fun getEnabled(): List<AlarmEntity>
