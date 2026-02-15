@@ -4,27 +4,17 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.spazoodle.guardian.runtime.GuardianRuntime
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.spazoodle.guardian.worker.GuardianRescheduleWorker
 
 class TimeChangeReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val pendingResult = goAsync()
-        val appContext = context.applicationContext
-
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                Log.i(TAG, "Time change event received (${intent.action}). Rescheduling alarms.")
-                val plans = GuardianRuntime
-                    .rescheduleAllActiveAlarmsUseCase(appContext)
-                    .invoke()
-                GuardianRuntime.alarmScheduler(appContext).rescheduleAll(plans)
-            } finally {
-                pendingResult.finish()
-            }
-        }
+        val action = intent.action.orEmpty()
+        val relevant = action == Intent.ACTION_TIME_CHANGED ||
+            action == Intent.ACTION_TIMEZONE_CHANGED ||
+            action == Intent.ACTION_DATE_CHANGED
+        if (!relevant) return
+        Log.i(TAG, "Time change event received ($action). Enqueueing reschedule worker.")
+        GuardianRescheduleWorker.enqueue(context.applicationContext, reason = "time_change")
     }
 
     companion object {

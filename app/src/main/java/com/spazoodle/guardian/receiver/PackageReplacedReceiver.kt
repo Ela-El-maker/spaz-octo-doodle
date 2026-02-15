@@ -4,27 +4,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.spazoodle.guardian.runtime.GuardianRuntime
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.spazoodle.guardian.worker.GuardianRescheduleWorker
 
 class PackageReplacedReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val pendingResult = goAsync()
-        val appContext = context.applicationContext
-
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                Log.i(TAG, "Package replaced event received. Rescheduling enabled alarms.")
-                val plans = GuardianRuntime
-                    .rescheduleAllActiveAlarmsUseCase(appContext)
-                    .invoke()
-                GuardianRuntime.alarmScheduler(appContext).rescheduleAll(plans)
-            } finally {
-                pendingResult.finish()
-            }
-        }
+        if (intent.action != Intent.ACTION_MY_PACKAGE_REPLACED) return
+        Log.i(TAG, "Package replaced event received. Enqueueing reschedule worker.")
+        GuardianRescheduleWorker.enqueue(context.applicationContext, reason = "package_replaced")
     }
 
     companion object {
