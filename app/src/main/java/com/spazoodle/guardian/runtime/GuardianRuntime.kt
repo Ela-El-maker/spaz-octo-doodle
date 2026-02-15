@@ -17,9 +17,16 @@ import com.spazoodle.guardian.domain.usecase.RescheduleAllActiveAlarmsUseCase
 import com.spazoodle.guardian.domain.usecase.UpdateAlarmUseCase
 import com.spazoodle.guardian.platform.scheduler.AlarmScheduler
 import com.spazoodle.guardian.platform.scheduler.AndroidAlarmScheduler
+import com.spazoodle.guardian.platform.reliability.GuardianPolicyConfig
+import com.spazoodle.guardian.platform.reliability.TriggerDeduper
 import com.spazoodle.guardian.platform.time.SystemUtcClock
 
 object GuardianRuntime {
+
+    data class RetentionPruneResult(
+        val historyRowsPruned: Int,
+        val triggerRowsPruned: Int
+    )
 
     @Volatile
     private var database: GuardianDatabase? = null
@@ -34,6 +41,13 @@ object GuardianRuntime {
 
     fun alarmHistoryRepository(context: Context): AlarmHistoryRepository {
         return AlarmHistoryRepositoryImpl(getDatabase(context).alarmHistoryDao())
+    }
+
+    fun triggerDeduper(context: Context): TriggerDeduper {
+        return TriggerDeduper(
+            triggerExecutionDao = getDatabase(context).triggerExecutionDao(),
+            dedupeWindowMs = GuardianPolicyConfig.dedupeWindowMs
+        )
     }
 
     fun recordFireEventUseCase(context: Context): RecordFireEventUseCase {
@@ -80,6 +94,20 @@ object GuardianRuntime {
         return RescheduleAllActiveAlarmsUseCase(
             alarmRepository = alarmRepository(context),
             computeSchedulePlanUseCase = ComputeSchedulePlanUseCase(SystemUtcClock)
+        )
+    }
+
+    suspend fun pruneRetention(
+        context: Context,
+        nowUtcMillis: Long,
+        retentionMs: Long
+    ): RetentionPruneResult {
+        val cutoff = nowUtcMillis - retentionMs
+        val history = getDatabase(context).alarmHistoryDao().pruneOlderThan(cutoff)
+        val triggers = getDatabase(context).triggerExecutionDao().pruneOlderThan(cutoff)
+        return RetentionPruneResult(
+            historyRowsPruned = history,
+            triggerRowsPruned = triggers
         )
     }
 
