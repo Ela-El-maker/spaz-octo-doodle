@@ -10,9 +10,12 @@ import com.spazoodle.guardian.domain.repository.AlarmRepository
 import com.spazoodle.guardian.domain.usecase.AcknowledgeAlarmUseCase
 import com.spazoodle.guardian.domain.usecase.ComputeSchedulePlanUseCase
 import com.spazoodle.guardian.domain.usecase.CreateAlarmUseCase
+import com.spazoodle.guardian.domain.usecase.DeleteAlarmUseCase
 import com.spazoodle.guardian.domain.usecase.DisableAlarmUseCase
 import com.spazoodle.guardian.domain.usecase.EnableAlarmUseCase
+import com.spazoodle.guardian.domain.usecase.FinalizeOneTimeAlarmUseCase
 import com.spazoodle.guardian.domain.usecase.RecordFireEventUseCase
+import com.spazoodle.guardian.domain.usecase.ReconcileEnabledAlarmsUseCase
 import com.spazoodle.guardian.domain.usecase.RescheduleAllActiveAlarmsUseCase
 import com.spazoodle.guardian.domain.usecase.UpdateAlarmUseCase
 import com.spazoodle.guardian.platform.scheduler.AlarmScheduler
@@ -64,6 +67,12 @@ object GuardianRuntime {
         )
     }
 
+    fun deleteAlarmUseCase(context: Context): DeleteAlarmUseCase {
+        return DeleteAlarmUseCase(
+            alarmRepository = alarmRepository(context)
+        )
+    }
+
     fun updateAlarmUseCase(context: Context): UpdateAlarmUseCase {
         return UpdateAlarmUseCase(
             alarmRepository = alarmRepository(context),
@@ -77,6 +86,10 @@ object GuardianRuntime {
 
     fun disableAlarmUseCase(context: Context): DisableAlarmUseCase {
         return DisableAlarmUseCase(alarmRepository(context))
+    }
+
+    fun finalizeOneTimeAlarmUseCase(context: Context): FinalizeOneTimeAlarmUseCase {
+        return FinalizeOneTimeAlarmUseCase(alarmRepository(context))
     }
 
     fun computeSchedulePlanUseCase(): ComputeSchedulePlanUseCase {
@@ -94,6 +107,14 @@ object GuardianRuntime {
         return RescheduleAllActiveAlarmsUseCase(
             alarmRepository = alarmRepository(context),
             computeSchedulePlanUseCase = ComputeSchedulePlanUseCase(SystemUtcClock)
+        )
+    }
+
+    fun reconcileEnabledAlarmsUseCase(context: Context): ReconcileEnabledAlarmsUseCase {
+        return ReconcileEnabledAlarmsUseCase(
+            alarmRepository = alarmRepository(context),
+            computeSchedulePlanUseCase = ComputeSchedulePlanUseCase(SystemUtcClock),
+            clock = SystemUtcClock
         )
     }
 
