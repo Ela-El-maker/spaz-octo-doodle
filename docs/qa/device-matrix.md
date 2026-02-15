@@ -1,10 +1,9 @@
-# qa device matrix
+# QA Device Matrix
 
-## purpose
-
+## Purpose
 Define minimum device coverage for reliability-critical validation.
 
-## required matrix
+## Required Matrix
 
 | segment | example device | android | priority | notes |
 |---|---|---:|---:|---|
@@ -14,8 +13,12 @@ Define minimum device coverage for reliability-critical validation.
 | lower-end device | 3-4GB RAM class | 11/12 | P1 | memory pressure + process kill risk |
 | latest emulator | Android Emulator | latest | P1 | fast regression loop |
 
-## mandatory pass criteria
+## Mandatory Pass Criteria
 
-- stage 4-9 reliability scenarios pass on all `P0` devices.
-- no P0 blocker bug remains open.
-- all failed scenarios have owner + mitigation + retest date.
+- all non-impossible matrix scenarios are `PASS` on every `P0` segment.
+- no `FAIL` remains for `P0`.
+- `EXPECTED_LIMITATION` only allowed for:
+  - force-stop with pending alarm.
+  - clear-data with pending alarm.
+  - powered-off trigger window (must verify post-boot recovery path).
+- all failures include root-cause tag, owner, mitigation, and retest date.

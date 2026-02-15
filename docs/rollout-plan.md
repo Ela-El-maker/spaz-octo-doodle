@@ -32,6 +32,8 @@
 - `50%` for 48-72 hours
 - `100%` after stability threshold holds
 
+Execution details: `docs/ops/staged-rollout-playbook.md`
+
 ## stability thresholds
 
 - crash-free sessions meet target for release channel
@@ -44,8 +46,12 @@
 - severe background execution failure across device segment
 - high ANR spike linked to ringing or receivers
 
+Incident handling: `docs/ops/incident-response-runbook.md`
+
 ## post-launch cadence
 
 - daily review during first week
 - weekly reliability and incident review afterward
 - backlog reprioritized by reliability impact first
+
+Cadence details: `docs/ops/telemetry-review-cadence.md`
