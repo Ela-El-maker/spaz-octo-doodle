@@ -8,7 +8,6 @@ import android.os.Build
 import com.spazoodle.guardian.domain.model.SchedulePlan
 import com.spazoodle.guardian.domain.model.Trigger
 import com.spazoodle.guardian.domain.model.TriggerKind
-import com.spazoodle.guardian.domain.scheduler.TriggerRequestCodeFactory
 import com.spazoodle.guardian.MainActivity
 import com.spazoodle.guardian.receiver.AlarmTriggerReceiver
 
@@ -35,7 +34,10 @@ class AndroidAlarmScheduler(
         val requestCodes = mutableSetOf<Int>()
         val canScheduleExact = canScheduleExactAlarms()
         plan.triggers.forEach { trigger ->
-            val requestCode = TriggerRequestCodeFactory.create(trigger)
+            val requestCode = registry.resolveOrAllocateCode(
+                alarmId = plan.alarmId,
+                triggerIdentity = trigger.identityKey()
+            )
             requestCodes += requestCode
             val triggerIntent = buildPendingIntent(trigger, requestCode)
             scheduleTrigger(
@@ -131,5 +133,9 @@ class AndroidAlarmScheduler(
 
     private fun TriggerKind.isWakeCritical(): Boolean {
         return this == TriggerKind.MAIN || this == TriggerKind.SNOOZE || this == TriggerKind.NAG
+    }
+
+    private fun Trigger.identityKey(): String {
+        return "$alarmId:${kind.name}:$index:${key.orEmpty()}:$scheduledAtUtcMillis"
     }
 }
