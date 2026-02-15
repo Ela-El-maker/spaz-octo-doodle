@@ -36,10 +36,23 @@ class HistoryViewModel(
             runCatching {
                 GuardianRuntime.alarmHistoryRepository(appContext).getRecent(200)
             }.onSuccess { events ->
-                _uiState.value = HistoryUiState(events = events, isLoading = false)
+                val alarmRepo = GuardianRuntime.alarmRepository(appContext)
+                val descriptions = events
+                    .map { it.alarmId }
+                    .distinct()
+                    .associateWith { alarmId ->
+                        runCatching { alarmRepo.getById(alarmId)?.description.orEmpty() }
+                            .getOrDefault("")
+                    }
+                _uiState.value = HistoryUiState(
+                    events = events,
+                    alarmDescriptions = descriptions,
+                    isLoading = false
+                )
             }.onFailure { error ->
                 _uiState.value = HistoryUiState(
                     events = emptyList(),
+                    alarmDescriptions = emptyMap(),
                     isLoading = false,
                     message = error.message ?: "Failed to load history"
                 )
@@ -80,7 +93,9 @@ class HistoryViewModel(
 
         uiState.value.events.forEach { event ->
             val at = formatter.format(Instant.ofEpochMilli(event.eventAtUtcMillis).atZone(zone))
-            lines += "alarmId=${event.alarmId} at=$at trigger=${event.triggerKind} outcome=${event.outcome} detail=${event.detail.orEmpty()}"
+            lines += "alarmId=${event.alarmId} at=$at trigger=${event.triggerKind} outcome=${event.outcome} " +
+                "state=${event.deliveryState} delayMs=${event.delayMs ?: -1} deduped=${event.wasDeduped} " +
+                "detail=${event.detail.orEmpty()}"
         }
 
         return lines.joinToString("\n")
