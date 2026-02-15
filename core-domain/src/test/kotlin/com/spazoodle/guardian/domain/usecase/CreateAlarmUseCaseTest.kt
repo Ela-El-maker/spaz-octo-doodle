@@ -6,6 +6,8 @@ import com.spazoodle.guardian.domain.model.AlarmPolicy
 import com.spazoodle.guardian.domain.model.AlarmType
 import com.spazoodle.guardian.domain.model.SnoozeSpec
 import com.spazoodle.guardian.domain.repository.AlarmRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -68,6 +70,12 @@ class CreateAlarmUseCaseTest {
         override suspend fun upsert(alarm: Alarm) {
             saved += alarm
         }
+
+        override suspend fun delete(alarmId: Long) {
+            saved.removeAll { it.id == alarmId }
+        }
+
+        override fun observeAllAlarms(): Flow<List<Alarm>> = flowOf(saved.toList())
 
         override suspend fun getAllAlarms(): List<Alarm> {
             return saved.sortedBy { it.triggerAtUtcMillis }

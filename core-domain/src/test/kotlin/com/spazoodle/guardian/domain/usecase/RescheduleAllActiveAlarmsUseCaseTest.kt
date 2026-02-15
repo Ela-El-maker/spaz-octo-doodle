@@ -7,6 +7,8 @@ import com.spazoodle.guardian.domain.model.AlarmType
 import com.spazoodle.guardian.domain.model.DefaultPreAlertOffsets
 import com.spazoodle.guardian.domain.model.SnoozeSpec
 import com.spazoodle.guardian.domain.repository.AlarmRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -59,6 +61,8 @@ class RescheduleAllActiveAlarmsUseCaseTest {
         private val alarms: List<Alarm>
     ) : AlarmRepository {
         override suspend fun upsert(alarm: Alarm) = Unit
+        override suspend fun delete(alarmId: Long) = Unit
+        override fun observeAllAlarms(): Flow<List<Alarm>> = flowOf(alarms)
 
         override suspend fun getAllAlarms(): List<Alarm> {
             return alarms.sortedBy { it.triggerAtUtcMillis }
