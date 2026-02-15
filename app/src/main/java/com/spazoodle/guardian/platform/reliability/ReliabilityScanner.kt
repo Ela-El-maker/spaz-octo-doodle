@@ -12,6 +12,7 @@ class ReliabilityScanner(
     private val context: Context
 ) {
     fun scan(): ReliabilityStatus {
+        val startupRecovery = StartupRecoveryStore(context).snapshot()
         val notificationsEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled()
         val exactAlarmAllowed = GuardianRuntime.alarmScheduler(context).canScheduleExactAlarms()
 
@@ -32,6 +33,20 @@ class ReliabilityScanner(
             true
         }
 
+        val riskReasons = mutableListOf<RiskReason>().apply {
+            if (!notificationsEnabled) add(RiskReason.NOTIFICATION_DISABLED)
+            if (!exactAlarmAllowed) add(RiskReason.EXACT_ALARM_BLOCKED)
+            if (!batteryOptimizationIgnored) add(RiskReason.BATTERY_OPTIMIZED)
+            if (!fullScreenReady) add(RiskReason.FULL_SCREEN_NOT_READY)
+            if (!dndAlarmsLikelyAllowed) add(RiskReason.DND_MAY_SUPPRESS)
+        }
+
+        val manufacturer = Build.MANUFACTURER.orEmpty()
+        val oemPlaybook = OemReliabilityPlaybooks.resolve(manufacturer)
+        if (oemPlaybook != null) {
+            riskReasons.add(RiskReason.OEM_BACKGROUND_RESTRICTIONS)
+        }
+
         val healthScore = listOf(
             notificationsEnabled,
             exactAlarmAllowed,
@@ -40,13 +55,29 @@ class ReliabilityScanner(
             dndAlarmsLikelyAllowed
         ).count { it } * 20
 
+        val riskLevel = when {
+            !exactAlarmAllowed && GuardianFeatureFlags.strictExactGate -> RiskLevel.BLOCKED
+            riskReasons.size >= 3 -> RiskLevel.HIGH
+            riskReasons.isNotEmpty() -> RiskLevel.MEDIUM
+            else -> RiskLevel.LOW
+        }
+
         return ReliabilityStatus(
             notificationsEnabled = notificationsEnabled,
             exactAlarmAllowed = exactAlarmAllowed,
             batteryOptimizationIgnored = batteryOptimizationIgnored,
             fullScreenReady = fullScreenReady,
             dndAlarmsLikelyAllowed = dndAlarmsLikelyAllowed,
-            healthScore = healthScore
+            healthScore = healthScore,
+            strictModeBlocked = !exactAlarmAllowed && GuardianFeatureFlags.strictExactGate,
+            riskLevel = riskLevel,
+            riskReasons = riskReasons,
+            restoredAfterStopLikely = startupRecovery.recoveredAfterStopLikely,
+            restoredMissingTriggerCount = startupRecovery.missingTriggerCount,
+            restoredTotalPlanCount = startupRecovery.totalPlanCount,
+            restoredAtUtcMillis = startupRecovery.recoveredAtUtcMillis,
+            manufacturer = manufacturer,
+            oemSteps = oemPlaybook?.steps().orEmpty()
         )
     }
 }
