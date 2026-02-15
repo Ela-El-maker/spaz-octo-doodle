@@ -2,6 +2,7 @@ package com.spazoodle.guardian.domain.usecase
 
 import com.spazoodle.guardian.domain.clock.Clock
 import com.spazoodle.guardian.domain.model.AlarmEvent
+import com.spazoodle.guardian.domain.model.DeliveryState
 import com.spazoodle.guardian.domain.model.AlarmEventOutcome
 import com.spazoodle.guardian.domain.model.TriggerKind
 import com.spazoodle.guardian.domain.repository.AlarmHistoryRepository
@@ -24,7 +25,13 @@ class AcknowledgeAlarmUseCase(
                 alarmId = alarmId,
                 triggerKind = TriggerKind.MAIN,
                 outcome = outcome,
-                eventAtUtcMillis = clock.nowUtcMillis()
+                eventAtUtcMillis = clock.nowUtcMillis(),
+                deliveryState = when (outcome) {
+                    AlarmEventOutcome.DISMISSED -> DeliveryState.DISMISSED
+                    AlarmEventOutcome.SNOOZED -> DeliveryState.SNOOZED
+                    AlarmEventOutcome.ACTION_LAUNCHED -> DeliveryState.ACTION_LAUNCHED
+                    else -> DeliveryState.FIRED
+                }
             )
         )
     }

@@ -10,6 +10,8 @@ class RescheduleAllActiveAlarmsUseCase(
     suspend operator fun invoke(): List<SchedulePlan> {
         return alarmRepository
             .getEnabledAlarms()
-            .map { computeSchedulePlanUseCase(it) }
+            .mapNotNull { alarm ->
+                runCatching { computeSchedulePlanUseCase(alarm) }.getOrNull()
+            }
     }
 }

@@ -5,5 +5,10 @@ data class AlarmEvent(
     val triggerKind: TriggerKind,
     val outcome: AlarmEventOutcome,
     val eventAtUtcMillis: Long,
-    val detail: String? = null
+    val detail: String? = null,
+    val scheduledAtUtcMillis: Long? = null,
+    val firedAtUtcMillis: Long? = null,
+    val delayMs: Long? = null,
+    val wasDeduped: Boolean = false,
+    val deliveryState: DeliveryState = DeliveryState.FIRED
 )
