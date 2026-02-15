@@ -7,16 +7,6 @@ Guardian is a reliability-first Android alarm system for far-future, exact date-
 - `docs/overview.md`
 - `docs/architecture.md`
 - `docs/development-stages.md`
-- `docs/stage-2-checklist.md`
-- `docs/stage-3-checklist.md`
-- `docs/stage-4-checklist.md`
-- `docs/stage-5-checklist.md`
-- `docs/stage-6-checklist.md`
-- `docs/stage-7-checklist.md`
-- `docs/stage-8-checklist.md`
-- `docs/stage-9-checklist.md`
-- `docs/stage-10-checklist.md`
-- `docs/stage-11-checklist.md`
 - `docs/project-setup.md`
 - `docs/user-flow.md`
 - `docs/user-flow.json`
@@ -27,6 +17,13 @@ Guardian is a reliability-first Android alarm system for far-future, exact date-
 - `docs/qa/overnight-and-long-horizon.md`
 - `docs/qa/release-smoke.md`
 - `docs/qa/defect-triage.md`
+- `docs/compliance/permissions-rationale.md`
+- `docs/compliance/privacy-policy-draft.md`
+- `docs/compliance/store-release-readiness.md`
+- `docs/ops/monitoring-checklist.md`
+- `docs/ops/staged-rollout-playbook.md`
+- `docs/ops/incident-response-runbook.md`
+- `docs/ops/telemetry-review-cadence.md`
 - `docs/decisions/adr-0001-architecture-and-reliability-first.md`
 - `docs/runbooks/reliability-setup-and-verification.md`
 
@@ -39,3 +36,6 @@ Run `./gradlew :app:assembleDebug`.
 Install and launch from Android Studio, or use:
 
 - `./gradlew :app:installDebug`
+
+./gradlew :app:assembleDebug :app:lintDebug --console=plain
+./gradlew :app:installDebug --console=plain && adb shell pm list packages | grep -i -E "guardian|spazoodle

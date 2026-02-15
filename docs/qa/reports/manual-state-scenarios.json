@@ -1,0 +1,8 @@
+{
+  "generatedAt": "2026-02-14T19:53:22Z",
+  "scenarios": [
+    {"name": "timezone_change_policy", "status": "MANUAL_REQUIRED", "notes": "Validate fixed-local-time policy and reschedule marker."},
+    {"name": "manual_time_change_policy", "status": "MANUAL_REQUIRED", "notes": "Validate time-set handling and late/missed policy behavior."},
+    {"name": "device_powered_off_trigger_window", "status": "EXPECTED_LIMITATION", "notes": "Device-off trigger is impossible; verify post-boot recovery notification/history."}
+  ]
+}

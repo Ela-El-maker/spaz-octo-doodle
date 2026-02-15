@@ -1,0 +1,965 @@
+--------- beginning of crash
+02-14 22:49:49.668 E/AndroidRuntime( 2238): FATAL EXCEPTION: main
+02-14 22:49:49.668 E/AndroidRuntime( 2238): Process: org.malwarebytes.antimalware, PID: 2238
+02-14 22:50:12.273 E/AndroidRuntime( 3918): FATAL EXCEPTION: main
+02-14 22:50:12.273 E/AndroidRuntime( 3918): Process: org.malwarebytes.antimalware, PID: 3918
+--------- beginning of system
+02-14 22:52:39.029 W/Looper  ( 1116): Slow delivery took 249ms main h=android.service.notification.NotificationListenerService$MyHandler c=null m=1
+02-14 22:52:39.041 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:39.042 W/Looper  ( 1116): Drained
+02-14 22:52:39.327 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:39.329 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:40.408 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:40.410 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:40.440 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:40.442 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:40.799 E/ActivityThread(10314): Failed to find provider info for com.transsion.aicore.main.provider.MmProvider
+02-14 22:52:40.800 I/chatty  (10314): uid=10164(com.zaz.translate) DefaultDispatch identical 1 line
+02-14 22:52:40.801 E/ActivityThread(10314): Failed to find provider info for com.transsion.aicore.main.provider.MmProvider
+02-14 22:52:41.550 W/ActivityManager( 1116): Slow operation: 267ms so far, now at startProcess: returned from zygote!
+02-14 22:52:41.556 W/ActivityManager( 1116): Slow operation: 273ms so far, now at startProcess: done updating battery stats
+02-14 22:52:41.557 W/ActivityManager( 1116): Slow operation: 274ms so far, now at startProcess: building log message
+02-14 22:52:41.557 I/ActivityManager( 1116): Start proc 10497:net.bat.store/u0a152 for broadcast {net.bat.store/net.bat.store.receiver.PlayedGameAppWidgetProvider$BootCompletedReceiver}
+02-14 22:52:41.557 W/ActivityManager( 1116): Slow operation: 274ms so far, now at startProcess: starting to update pids map
+02-14 22:52:41.563 W/ActivityManager( 1116): Slow operation: 280ms so far, now at startProcess: done updating pids map
+02-14 22:52:41.572 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:41.573 W/Looper  ( 1116): Slow dispatch took 195ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=3
+02-14 22:52:41.839 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:42.055 W/Looper  ( 1116): Slow dispatch took 147ms main h=com.android.server.power.Notifier$NotifierHandler c=null m=1
+02-14 22:52:42.325 W/ActivityManager( 1116): Slow operation: 266ms so far, now at attachApplicationLocked: after sendPendingBroadcastsLocked
+02-14 22:52:42.328 W/Looper  ( 1116): Slow dispatch took 244ms android.ui h=com.android.server.am.ActivityManagerService$UiHandler c=null m=53
+02-14 22:52:42.634 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:42.770 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:42.794 I/ActivityManager( 1116): Process com.spotify.music (pid 2444) has died: cch+55 CEM 
+02-14 22:52:43.274 I/ActivityManager( 1116): Process android.process.acore (pid 7957) has died: cch+65 CEM 
+02-14 22:52:43.302 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:43.302 W/Looper  ( 1116): Slow dispatch took 121ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=3
+02-14 22:52:43.304 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:44.009 I/ActivityManager( 1116): Process com.transsion.repaircard (pid 9892) has died: cch+55 CEM 
+02-14 22:52:44.083 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:44.131 I/ActivityManager( 1116): Start proc 10566:com.google.android.tts/u0a127 for service {com.google.android.tts/com.google.android.apps.speech.tts.googletts.service.GoogleTtsService}
+02-14 22:52:44.220 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:44.221 W/Looper  ( 1116): Slow dispatch took 108ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=7
+02-14 22:52:44.282 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.presencemanager.service.START pkg=com.google.android.gms } U=0: not found
+02-14 22:52:44.283 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@f0b8e44
+02-14 22:52:44.331 W/Looper  ( 1116): Slow dispatch took 107ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:44.351 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY pkg=com.google.android.gms } U=0: not found
+02-14 22:52:44.355 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@b3c61dc
+02-14 22:52:44.657 W/Looper  ( 1116): Slow dispatch took 262ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:44.658 W/Looper  ( 1116): Slow delivery took 358ms main h=com.android.server.notification.NotificationManagerService$WorkerHandler c=com.android.server.notification.NotificationManagerService$CancelNotificationRunnable@b502299 m=0
+02-14 22:52:44.666 I/ActivityManager( 1116): Start proc 10607:com.google.android.gms.unstable/u0a113 for service {com.google.android.gms/com.google.android.gms.chimera.UnstableInternalBoundBrokerService}
+02-14 22:52:44.741 W/Looper  ( 1116): Drained
+02-14 22:52:44.909 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:44.967 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:44.969 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:45.465 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:45.467 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:45.601 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:45.602 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:45.805 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:46.026 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:46.328 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:46.532 W/Looper  ( 1116): Slow dispatch took 201ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:46.532 W/Looper  ( 1116): Slow delivery took 203ms main h=android.app.ActivityThread$H c=android.app.LoadedApk$ServiceDispatcher$RunConnection@a516f5a m=0
+02-14 22:52:46.562 W/NotificationHistory( 1116): Attempted to add notif for locked/gone/disabled user 0
+02-14 22:52:46.674 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:46.674 W/Looper  ( 1116): Drained
+02-14 22:52:46.675 W/Looper  ( 1116): Slow dispatch took 110ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=3
+02-14 22:52:46.811 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:46.814 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:46.885 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:46.888 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:47.020 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:47.023 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:47.228 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:47.301 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:47.304 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:47.374 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:47.376 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:47.499 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:47.502 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:47.632 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:47.635 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:47.890 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:47.892 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:48.072 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:48.074 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:48.076 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:52:48.077 W/Looper  ( 1116): Slow dispatch took 140ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=3
+02-14 22:52:48.153 I/ActivityManager( 1116): Process com.transsion.wallet.infinix:lite (pid 9987) has died: cch+55 CEM 
+02-14 22:52:48.298 W/ActivityManager( 1116): Slow operation: 51ms so far, now at startProcess: returned from zygote!
+02-14 22:52:48.298 W/ActivityManager( 1116): Slow operation: 51ms so far, now at startProcess: done updating battery stats
+02-14 22:52:48.300 W/ActivityManager( 1116): Slow operation: 53ms so far, now at startProcess: building log message
+02-14 22:52:48.300 I/ActivityManager( 1116): Start proc 10782:com.google.android.apps.maps/u0a136 for service {com.google.android.apps.maps/androidx.work.impl.background.systemjob.SystemJobService}
+02-14 22:52:48.300 W/ActivityManager( 1116): Slow operation: 53ms so far, now at startProcess: starting to update pids map
+02-14 22:52:48.302 W/ActivityManager( 1116): Slow operation: 55ms so far, now at startProcess: done updating pids map
+02-14 22:52:48.463 W/ActivityManager( 1116): Slow operation: 64ms so far, now at attachApplicationLocked: after mServices.attachApplicationLocked
+02-14 22:52:48.846 W/Looper  ( 1116): Slow dispatch took 208ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:48.854 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:48.913 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:49.589 W/Looper  ( 1116): Slow dispatch took 151ms main h=android.database.sqlite.SQLiteConnectionPool$IdleConnectionHandler c=null m=7
+02-14 22:52:49.591 W/Looper  ( 1116): Slow dispatch took 206ms android.fg h=com.android.server.location.gnss.GnssLocationProvider$ProviderHandler c=com.android.server.location.RemoteListenerHelper$HandlerRunnable@5be2b67 m=0
+02-14 22:52:49.592 W/Looper  ( 1116): Slow delivery took 217ms android.fg h=com.android.server.location.gnss.GnssLocationProvider$ProviderHandler c=com.android.server.location.RemoteListenerHelper$HandlerRunnable@bdc0d14 m=0
+02-14 22:52:49.596 W/Looper  ( 1116): Drained
+02-14 22:52:49.727 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:49.730 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:49.733 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:52:49.860 I/ActivityManager( 1116): Process com.transsnet.store (pid 10055) has died: cch+25 CEM 
+02-14 22:52:49.989 I/ActivityManager( 1116): Start proc 10860:com.truecaller/u0a304 for broadcast {com.truecaller/com.truecaller.service.BootReceiver}
+02-14 22:52:50.585 W/ActivityManager( 1116): Unable to start service Intent { cmp=com.google.android.projection.gearhead/com.google.android.apps.auto.carservice.service.impl.GearheadCarStartupService } U=0: not found
+02-14 22:52:50.694 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@9493507
+02-14 22:52:51.191 W/Looper  ( 1116): Slow dispatch took 103ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:51.237 I/ActivityManager( 1116): Process com.google.android.apps.youtube.music (pid 10174) has died: cch+25 CEM 
+02-14 22:52:51.351 W/Looper  ( 1116): Slow dispatch took 123ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:51.741 W/Looper  ( 1116): Slow dispatch took 107ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:51.894 W/Looper  ( 1116): Slow dispatch took 121ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:52.118 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:52.273 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:52.274 W/Looper  ( 1116): Slow dispatch took 155ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=3
+02-14 22:52:52.276 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:52.362 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:52:53.358 I/ActivityManager( 1116): Process com.google.android.apps.docs (pid 9532) has died: cch+35 CEM 
+02-14 22:52:53.444 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.semanticlocationhistory.service.START pkg=com.google.android.gms } U=0: not found
+02-14 22:52:53.449 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@8660902
+02-14 22:52:54.038 W/WindowManager( 1116): Changing focus fromWindow{65880b u0 org.telegram.messenger/org.telegram.messenger.DefaultIcon} to Window{8d181c9 u0 org.telegram.messenger/org.telegram.messenger.DefaultIcon} displayId=0 Callers=com.android.server.wm.RootWindowContainer.updateFocusedWindowLocked:531 com.android.server.wm.WindowManagerService.updateFocusedWindowLocked:5928 com.android.server.wm.RootWindowContainer.performSurfacePlacementNoTrace:924 com.android.server.wm.RootWindowContainer.performSurfacePlacement:908 
+02-14 22:52:54.083 I/TranWmsFloatExt( 1116): getTbFloatWMExt sFloatWindowManagerExt: com.transsion.server.wm.TranWmsTbFloatWindowManagerExtImpl@2c2b9d9
+02-14 22:52:54.085 I/FloatWindow( 1116): hookInputMethodShown inputShown: false
+02-14 22:52:54.555 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:54.557 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:54.645 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.wearable.BIND pkg=com.google.android.gms } U=0: not found
+02-14 22:52:54.660 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@a3f7612
+02-14 22:52:54.831 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:54.833 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:55.140 W/ActivityManager( 1116): Slow operation: 53ms so far, now at startProcess: done starting proc!
+02-14 22:52:55.161 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:52:55.177 I/ActivityManager( 1116): Start proc 11029:com.google.android.apps.wellbeing/u0a112 for broadcast {com.google.android.apps.wellbeing/androidx.work.impl.background.systemalarm.RescheduleReceiver}
+02-14 22:52:55.202 I/ActivityManager( 1116): Start proc 11035:com.transsnet.store/u0a149 for service {com.transsnet.store/com.transsion.newphonerecommend.service.NewPhoneJobService}
+02-14 22:52:55.237 W/ActivityManager( 1116): Slow operation: 51ms so far, now at startProcess: returned from zygote!
+02-14 22:52:55.238 W/ActivityManager( 1116): Slow operation: 52ms so far, now at startProcess: done updating battery stats
+02-14 22:52:55.238 W/ActivityManager( 1116): Slow operation: 52ms so far, now at startProcess: building log message
+02-14 22:52:55.238 I/ActivityManager( 1116): Start proc 11043:com.google.android.apps.youtube.music/u0a119 for service {com.google.android.apps.youtube.music/androidx.work.impl.background.systemjob.SystemJobService}
+02-14 22:52:55.238 W/ActivityManager( 1116): Slow operation: 52ms so far, now at startProcess: starting to update pids map
+02-14 22:52:55.240 W/ActivityManager( 1116): Slow operation: 54ms so far, now at startProcess: done updating pids map
+02-14 22:52:56.446 I/ActivityManager( 1116): Process com.google.android.permissioncontroller (pid 7183) has died: cch+35 CEM 
+02-14 22:52:56.655 I/ActivityManager( 1116): Process net.bat.store (pid 10497) has died: cch+25 CEM 
+02-14 22:52:56.988 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.wearable.BIND pkg=com.google.android.gms } U=0: not found
+02-14 22:52:56.990 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@d82b6ad
+02-14 22:52:57.299 W/UriGrantsManagerService( 1116): No permission grants found for com.transsnet.store
+02-14 22:52:57.354 W/BroadcastQueue( 1116): Permission Denial: broadcasting Intent { act=android.net.conn.CONNECTIVITY_CHANGE flg=0x4200010 (has extras) } from null (pid=-1, uid=-1) requires com.google.android.apps.youtube.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION due to registered receiver BroadcastFilter{b650f8d 10119/u0 ReceiverList{3823824 11043 com.google.android.apps.youtube.music/10119/u0 remote:264d8b7}}
+02-14 22:52:57.627 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:57.627 W/Looper  ( 1116): Slow dispatch took 124ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=4
+02-14 22:52:57.670 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:57.894 I/ActivityManager( 1116): Process com.google.android.apps.maps (pid 10782) has died: cch+25 CEM 
+02-14 22:52:57.954 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:57.954 W/Looper  ( 1116): Slow dispatch took 211ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=3
+02-14 22:52:57.955 W/Looper  ( 1116): Slow delivery took 328ms main h=android.app.ActivityThread$H c=android.app.LoadedApk$ServiceDispatcher$RunConnection@e6f26f6 m=0
+02-14 22:52:57.958 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:57.997 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:58.021 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:52:58.024 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:52:58.056 I/ActivityManager( 1116): Start proc 11276:net.bat.store/u0a152 for service {net.bat.store/androidx.work.impl.background.systemjob.SystemJobService}
+02-14 22:52:58.200 W/Looper  ( 1116): Drained
+02-14 22:52:58.396 I/ActivityManager( 1116): Force stopping com.spazoodle.guardian appid=10431 user=0: finished inst
+02-14 22:52:58.397 I/ActivityManager( 1116): Killing 7235:com.spazoodle.guardian/u0a431 (adj 0): stop com.spazoodle.guardian due to finished inst
+02-14 22:52:58.560 W/Looper  ( 1116): Slow dispatch took 135ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:52:59.877 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:59.998 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:52:59.999 W/Looper  ( 1116): Slow dispatch took 119ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=3
+02-14 22:53:00.061 E/ActivityThread( 2148): Failed to find provider info for com.transsion.health.stepweight
+02-14 22:53:00.064 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:00.623 I/ActivityManager( 1116): Process com.google.android.apps.tachyon (pid 9710) has died: cch+45 CEM 
+02-14 22:53:00.638 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:00.827 I/ActivityManager( 1116): Start proc 11469:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0i1 for  {com.truecaller/org.chromium.content.app.SandboxedProcessService0:0}
+02-14 22:53:00.944 I/ActivityManager( 1116): Force stopping com.spazoodle.guardian appid=10431 user=0: start instr
+02-14 22:53:00.972 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:00.974 I/ActivityManager( 1116): Start proc 11501:com.spazoodle.guardian/u0a431 for added application com.spazoodle.guardian
+02-14 22:53:00.976 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:00.978 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:01.134 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:02.623 I/ActivityManager( 1116): Process com.transsnet.store (pid 11035) has died: cch+45 CEM 
+02-14 22:53:02.635 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:03.729 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:03.917 I/ActivityManager( 1116): Process com.truecaller (pid 10860) has died: cch+35 CEM 
+02-14 22:53:03.929 I/ActivityManager( 1116): Killing 11469:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a304i1 (adj 0): isolated not needed
+02-14 22:53:03.948 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:03.951 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:03.988 E/KernelCpuSpeedReader( 1116): Failed to read cpu-freq: /sys/devices/system/cpu/cpu4/cpufreq/stats/time_in_state: open failed: ENOENT (No such file or directory)
+02-14 22:53:03.989 E/KernelCpuSpeedReader( 1116): Failed to read cpu-freq: /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state: open failed: ENOENT (No such file or directory)
+02-14 22:53:04.255 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:04.336 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:04.338 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:04.395 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:04.397 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:04.513 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:04.515 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:04.618 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:04.619 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:04.652 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:04.705 I/ActivityManager( 1116): Finished processing BOOT_COMPLETED for u0
+02-14 22:53:04.801 I/ActivityManager( 1116): Start proc 11622:com.mediatek.simprocessor/1000 for broadcast {com.mediatek.simprocessor/com.mediatek.simprocessor.BootCmpReceiver}
+02-14 22:53:04.845 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.identitycredentials.service.START pkg=com.google.android.gms } U=0: not found
+02-14 22:53:04.847 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@dbb4e4
+02-14 22:53:04.924 W/ContextImpl(11622): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1765 android.content.ContextWrapper.startService:735 android.content.ContextWrapper.startService:735 com.mediatek.simprocessor.BootCmpReceiver.startSimService:130 com.mediatek.simprocessor.BootCmpReceiver.presetServiceNumber:167 
+02-14 22:53:04.966 W/ContextImpl(11622): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1765 android.content.ContextWrapper.startService:735 android.content.ContextWrapper.startService:735 com.mediatek.simprocessor.BootCmpReceiver.startSimService:130 com.mediatek.simprocessor.BootCmpReceiver.presetServiceNumber:167 
+02-14 22:53:04.970 I/ActivityManager( 1116): Start proc 11645:android.process.acore/u0a57 for content provider {com.android.providers.contacts/com.android.providers.contacts.ContactsProvider2}
+02-14 22:53:04.985 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.identitycredentials.service.START pkg=com.google.android.gms } U=0: not found
+02-14 22:53:04.986 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@a58d103
+02-14 22:53:05.018 I/ActivityManager( 1116): Process com.mediatek.simprocessor (pid 11622) has died: fg  SVC 
+02-14 22:53:05.086 I/ActivityManager( 1116): Start proc 11672:com.android.cellbroadcastreceiver/u0a151 for broadcast {com.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver}
+02-14 22:53:05.178 W/NotificationHistory( 1116): Attempted to add notif for locked/gone/disabled user 0
+02-14 22:53:05.513 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:05.516 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:05.829 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:05.835 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+02-14 22:53:05.939 I/ActivityManager( 1116): Start proc 11710:com.mediatek.simprocessor/1000 for broadcast {com.mediatek.simprocessor/com.mediatek.simprocessor.BootCmpReceiver}
+02-14 22:53:06.004 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.identitycredentials.service.START pkg=com.google.android.gms } U=0: not found
+02-14 22:53:06.096 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@8f0f1b1
+02-14 22:53:06.104 W/ContextImpl(11710): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1765 android.content.ContextWrapper.startService:735 android.content.ContextWrapper.startService:735 com.mediatek.simprocessor.BootCmpReceiver.startSimService:130 com.mediatek.simprocessor.BootCmpReceiver.presetServiceNumber:167 
+02-14 22:53:06.116 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=mediatek.intent.action.PHB_STATE_CHANGED flg=0x10 (has extras) } to com.mediatek.simprocessor/.BootCmpReceiver
+02-14 22:53:06.133 W/ContextImpl(11710): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1765 android.content.ContextWrapper.startService:735 android.content.ContextWrapper.startService:735 com.mediatek.simprocessor.BootCmpReceiver.startSimService:130 com.mediatek.simprocessor.BootCmpReceiver.processPhoneBookChanged:139 
+02-14 22:53:06.157 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=mediatek.intent.action.PHB_STATE_CHANGED flg=0x10 (has extras) } to com.mediatek.simprocessor/.BootCmpReceiver
+02-14 22:53:06.162 W/ContextImpl(11710): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1765 android.content.ContextWrapper.startService:735 android.content.ContextWrapper.startService:735 com.mediatek.simprocessor.BootCmpReceiver.startSimService:130 com.mediatek.simprocessor.BootCmpReceiver.processPhoneBookChanged:139 
+02-14 22:53:06.194 I/ActivityManager( 1116): Start proc 11736:com.spotify.music/u0a202 for broadcast {com.spotify.music/com.spotify.widgets.npvwidget.WidgetUpdateCoordinator}
+02-14 22:53:06.336 W/NotificationHistory( 1116): Attempted to add notif for locked/gone/disabled user 0
+02-14 22:53:06.863 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:07.681 I/ActivityManager( 1116): Process com.mediatek.simprocessor (pid 11710) has died: fg  SVC 
+02-14 22:53:07.782 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:07.783 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:08.153 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:08.462 I/ActivityManager( 1116): Start proc 11819:com.mediatek.simprocessor/1000 for broadcast {com.mediatek.simprocessor/com.mediatek.simprocessor.BootCmpReceiver}
+02-14 22:53:08.563 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.identitycredentials.service.START pkg=com.google.android.gms } U=0: not found
+02-14 22:53:08.571 W/ContextImpl(11819): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1765 android.content.ContextWrapper.startService:735 android.content.ContextWrapper.startService:735 com.mediatek.simprocessor.BootCmpReceiver.startSimService:130 com.mediatek.simprocessor.BootCmpReceiver.presetServiceNumber:167 
+02-14 22:53:08.586 W/BroadcastQueue( 1116): Failure [background] sending broadcast result of Intent { act=ACTION_S11Y flg=0x10 }
+02-14 22:53:08.586 W/BroadcastQueue( 1116): android.os.RemoteException: app.thread must not be null
+02-14 22:53:08.586 W/BroadcastQueue( 1116): 	at com.android.server.am.BroadcastQueue.performReceiveLocked(BroadcastQueue.java:623)
+02-14 22:53:08.586 W/BroadcastQueue( 1116): 	at com.android.server.am.BroadcastQueue.processNextBroadcastLocked(BroadcastQueue.java:1155)
+02-14 22:53:08.586 W/BroadcastQueue( 1116): 	at com.android.server.am.ActivityManagerService.finishReceiver(ActivityManagerService.java:18840)
+02-14 22:53:08.586 W/BroadcastQueue( 1116): 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:2638)
+02-14 22:53:08.586 W/BroadcastQueue( 1116): 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:3274)
+02-14 22:53:08.586 W/BroadcastQueue( 1116): 	at android.os.Binder.execTransactInternal(Binder.java:1174)
+02-14 22:53:08.586 W/BroadcastQueue( 1116): 	at android.os.Binder.execTransact(Binder.java:1126)
+02-14 22:53:08.595 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+02-14 22:53:08.600 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@4578aab
+02-14 22:53:08.667 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:08.670 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:08.671 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:08.679 I/ActivityManager( 1116): Process com.mediatek.simprocessor (pid 11819) has died: fg  SVC 
+02-14 22:53:08.721 I/ActivityManager( 1116): Start proc 11852:com.mediatek.simprocessor/1000 for broadcast {com.mediatek.simprocessor/com.mediatek.simprocessor.BootCmpReceiver}
+02-14 22:53:08.828 E/ActivityThread(11736): Failed to find provider info for androidx.car.app.connection
+02-14 22:53:08.839 W/ContextImpl(11852): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1765 android.content.ContextWrapper.startService:735 android.content.ContextWrapper.startService:735 com.mediatek.simprocessor.BootCmpReceiver.startSimService:130 com.mediatek.simprocessor.BootCmpReceiver.presetServiceNumber:167 
+02-14 22:53:08.889 W/NotificationHistory( 1116): Attempted to add notif for locked/gone/disabled user 0
+02-14 22:53:08.929 I/ActivityManager( 1116): Process com.mediatek.simprocessor (pid 11852) has died: fg  SVC 
+02-14 22:53:08.958 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.identitycredentials.service.START pkg=com.google.android.gms } U=0: not found
+02-14 22:53:08.964 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+02-14 22:53:08.983 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@a899fac
+02-14 22:53:09.068 W/NotificationHistory( 1116): Attempted to add notif for locked/gone/disabled user 0
+02-14 22:53:09.408 I/ActivityManager( 1116): Force stopping com.spazoodle.guardian appid=10431 user=0: from pid 11880
+02-14 22:53:09.411 I/ActivityManager( 1116): Killing 11501:com.spazoodle.guardian/u0a431 (adj 0): stop com.spazoodle.guardian due to from pid 11880
+02-14 22:53:09.417 W/ActivityManager( 1116): Crash of app com.spazoodle.guardian running instrumentation ComponentInfo{com.spazoodle.guardian.test/androidx.test.runner.AndroidJUnitRunner}
+02-14 22:53:09.421 I/ActivityManager( 1116): Force stopping com.spazoodle.guardian appid=10431 user=0: finished inst
+02-14 22:53:09.549 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:09.551 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:09.553 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:09.553 W/Looper  ( 1116): Slow dispatch took 157ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:53:09.555 I/NotificationService( 1116): pkgList.length=1
+02-14 22:53:09.628 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:09.631 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:09.633 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:09.749 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:09.751 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:09.752 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:10.017 I/ActivityManager( 1116): Start proc 11891:com.transsion.deskclock/1000 for broadcast {com.transsion.deskclock/com.transsion.alarmclock.DigitalAppWidgetProvider}
+02-14 22:53:10.612 I/ActivityManager( 1116): Start proc 11921:com.mediatek.simprocessor/1000 for broadcast {com.mediatek.simprocessor/com.mediatek.simprocessor.BootCmpReceiver}
+02-14 22:53:10.773 W/ContextImpl(11921): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1765 android.content.ContextWrapper.startService:735 android.content.ContextWrapper.startService:735 com.mediatek.simprocessor.BootCmpReceiver.startSimService:130 com.mediatek.simprocessor.BootCmpReceiver.presetServiceNumber:167 
+02-14 22:53:10.779 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+02-14 22:53:10.788 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+02-14 22:53:10.834 I/ActivityManager( 1116): Start proc 11945:com.google.android.apps.searchlite/u0a107 for broadcast {com.google.android.apps.searchlite/com.google.android.apps.searchlite.widget.SearchLiteWidgetProvider}
+02-14 22:53:10.960 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.identitycredentials.service.START pkg=com.google.android.gms } U=0: not found
+02-14 22:53:10.960 I/ActivityManager( 1116): Process com.mediatek.simprocessor (pid 11921) has died: fg  SVC 
+02-14 22:53:10.973 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@9002e3c
+02-14 22:53:11.040 W/NotificationHistory( 1116): Attempted to add notif for locked/gone/disabled user 0
+02-14 22:53:11.735 I/ActivityManager( 1116): Force stopping com.spazoodle.guardian appid=10431 user=0: start instr
+02-14 22:53:11.763 I/ActivityManager( 1116): Start proc 11983:com.spazoodle.guardian/u0a431 for added application com.spazoodle.guardian
+02-14 22:53:12.451 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:12.457 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:12.480 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:12.530 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:12.532 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:12.793 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:12.794 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:13.118 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+02-14 22:53:13.123 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+02-14 22:53:13.124 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+02-14 22:53:13.142 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:13.147 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:13.149 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:13.417 I/ActivityManager( 1116): Start proc 12032:com.rlk.weathers/u0a168 for broadcast {com.rlk.weathers/com.rlk.weathers.widget.WeatherWidgetProvider}
+02-14 22:53:13.450 I/ActivityManager( 1116): Start proc 12038:com.transsnet.store/u0a149 for service {com.transsnet.store/com.transsion.newphonerecommend.service.NewPhoneJobService}
+02-14 22:53:13.638 E/LoadedApk(12032): Unable to instantiate appComponentFactory
+02-14 22:53:13.638 E/LoadedApk(12032): java.lang.ClassNotFoundException: Didn't find class "androidx.core.app.CoreComponentFactory" on path: DexPathList[[zip file "/system_ext/app/Weather/Weather.apk"],nativeLibraryDirectories=[/system_ext/app/Weather/lib/arm, /system/lib, /system_ext/lib, /system/lib, /system_ext/lib]]
+02-14 22:53:13.638 E/LoadedApk(12032): 	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:207)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at java.lang.ClassLoader.loadClass(ClassLoader.java:379)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at java.lang.ClassLoader.loadClass(ClassLoader.java:312)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.LoadedApk.createAppFactory(LoadedApk.java:264)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.LoadedApk.createOrUpdateClassLoaderLocked(LoadedApk.java:909)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.LoadedApk.getClassLoader(LoadedApk.java:962)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.LoadedApk.getResources(LoadedApk.java:1194)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.ContextImpl.createAppContext(ContextImpl.java:2801)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.ContextImpl.createAppContext(ContextImpl.java:2793)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6924)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.ActivityThread.access$1500(ActivityThread.java:263)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2032)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.os.Looper.loop(Looper.java:268)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at android.app.ActivityThread.main(ActivityThread.java:8016)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at java.lang.reflect.Method.invoke(Native Method)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:627)
+02-14 22:53:13.638 E/LoadedApk(12032): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:997)
+02-14 22:53:14.200 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:14.203 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:14.292 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:14.321 W/Griffin/ComponentManager( 1116): limitStartProcessForReceiver caller is null
+02-14 22:53:14.353 I/ActivityManager( 1116): Start proc 12118:com.android.providers.calendar/u0a64 for broadcast {com.android.providers.calendar/com.android.providers.calendar.CalendarProviderBroadcastReceiver}
+02-14 22:53:14.559 W/UriGrantsManagerService( 1116): No permission grants found for com.transsnet.store
+02-14 22:53:14.611 E/PackageDexUsage( 1116): Unsupported context?
+02-14 22:53:14.845 W/ActivityManager( 1116): Slow operation: 54ms so far, now at startProcess: returned from zygote!
+02-14 22:53:14.847 W/ActivityManager( 1116): Slow operation: 56ms so far, now at startProcess: done updating battery stats
+02-14 22:53:14.847 W/ActivityManager( 1116): Slow operation: 56ms so far, now at startProcess: building log message
+02-14 22:53:14.847 I/ActivityManager( 1116): Start proc 12194:com.android.chrome/u0a117 for broadcast {com.android.chrome/com.google.android.apps.chrome.rlz.RevenueStatsConfigurationUpdateReceiver}
+02-14 22:53:14.847 W/ActivityManager( 1116): Slow operation: 56ms so far, now at startProcess: starting to update pids map
+02-14 22:53:14.850 W/ActivityManager( 1116): Slow operation: 59ms so far, now at startProcess: done updating pids map
+02-14 22:53:14.965 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:14.983 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:14.984 W/Looper  ( 1116): Slow dispatch took 253ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=3
+02-14 22:53:14.984 W/Looper  ( 1116): Slow delivery took 249ms main h=com.android.server.AlarmManagerService$AlarmHandler c=android.app.PendingIntent$FinishedDispatcher@c8e49ae m=0
+02-14 22:53:15.141 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:15.141 W/Looper  ( 1116): Slow dispatch took 157ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=7
+02-14 22:53:15.251 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:15.253 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:15.268 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:15.269 W/Looper  ( 1116): Drained
+02-14 22:53:15.320 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:15.321 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:15.323 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+--------- beginning of main
+02-14 22:53:15.384 I/beanpodkeymaster(  415): cmd:c Received 84 byte response
+02-14 22:53:15.384 I/beanpodkeymaster(  415): Exit BeanpodKeymaster FinishOperation
+02-14 22:53:15.386 W/.android.chrom(12194): JIT profile information will not be recorded: profile file does not exist.
+02-14 22:53:15.408 W/ChimeraUtils( 2360): Module com.google.android.gms.notifications missing resource null(0)
+02-14 22:53:15.413 W/transsnet.stor(12038): Verification of int m7.aww.c(java.lang.Object, byte[], int, int, int, m7.aul) took 243.426ms (15594.03 bytecodes/s) (57104B approximate peak alloc)
+02-14 22:53:15.419 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:15.422 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:15.424 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:15.453 I/LoadedApk(12194): No resource references to update in package com.transsion.theme.icon
+02-14 22:53:15.456 I/LoadedApk(12194): No resource references to update in package com.google.android.trichromelibrary
+02-14 22:53:15.475 I/GmsCoreXrpcWrapper( 2360): (REDACTED) Returning a channel provider with trafficStatsTag=%d trafficStatsUid=%d
+02-14 22:53:15.534 I/cr_SplitCompatApp(12194): version=144.0.7559.132 (755913230) minSdkVersion=29 processName=com.android.chrome isIsolatedProcess=false splits=chrome,config.en,dev_ui,on_demand,stack_unwinder,test_dummy
+02-14 22:53:15.597 I/resolv  (  468): resolv_cache_lookup: lookup
+02-14 22:53:15.597 I/resolv  (  468): resolv_cache_lookup: NOT IN CACHE
+02-14 22:53:15.597 I/resolv  (  468): resolv_populate_res_for_net: netid=100
+02-14 22:53:15.597 I/resolv  (  468): res_stats_usable_server: NS stats: S 40 + E 0 + T 0 + I 0 = 40, rtt = 100, min_samples = 8
+02-14 22:53:15.597 I/resolv  (  468): res_stats_usable_server: success rate 100
+02-14 22:53:15.598 I/resolv  (  468): get_timeout: using timeout of 5000 msec
+02-14 22:53:15.598 I/resolv  (  468): retrying_poll: 58 retrying_poll
+02-14 22:53:15.609 W/transsnet.stor(12038): Verification of void m7.aww.m(java.lang.Object, m7.avf) took 118.327ms (13099.19 bytecodes/s) (17600B approximate peak alloc)
+02-14 22:53:15.650 I/keystore(  617): cb->onFinished
+02-14 22:53:15.653 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:15.669 W/NotificationHistory( 1116): Attempted to add notif for locked/gone/disabled user 0
+02-14 22:53:15.698 I/keystore(  617): cb->onFinished
+02-14 22:53:15.701 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:15.707 I/keystore(  617): cb->onFinished
+02-14 22:53:15.713 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:15.720 I/keystore(  617): cb->onFinished
+02-14 22:53:15.723 I/beanpodkeymaster(  415): Enter BeanpodKeymaster BeginOperation
+02-14 22:53:15.724 I/beanpodkeymaster(  415): cmd:4 Received 24 byte response
+02-14 22:53:15.724 I/beanpodkeymaster(  415): Exit BeanpodKeymaster BeginOperation
+02-14 22:53:15.727 I/beanpodkeymaster(  415): Enter BeanpodKeymaster UpdateOperation
+02-14 22:53:15.728 I/beanpodkeymaster(  415): cmd:8 Received 24 byte response
+02-14 22:53:15.728 I/beanpodkeymaster(  415): Exit BeanpodKeymaster UpdateOperation
+02-14 22:53:15.730 I/beanpodkeymaster(  415): Enter BeanpodKeymaster FinishOperation
+02-14 22:53:15.759 I/beanpodkeymaster(  415): cmd:c Received 56 byte response
+02-14 22:53:15.759 I/beanpodkeymaster(  415): Exit BeanpodKeymaster FinishOperation
+02-14 22:53:15.846 E/LS-ServerManager( 5359): isConnected : mServerRun a.c.a.h0.c.b@2ee5a7
+02-14 22:53:15.895 I/cr_LibraryLoader(12194): Loading monochrome from within /data/app/~~QRnJknsVcIROwaNVazT4GQ==/com.android.chrome-xqRjaORMsjlD8hIOq_jhrg==/base.apk
+02-14 22:53:15.998 I/AlarmManager( 2360): setExactAndAllowWhileIdle [name: GCM_CONN_ALARM type: 2 triggerAtMillis: 269659]
+02-14 22:53:16.040 W/ChimeraUtils( 2360): Module com.google.android.gms.location_base missing resource location_module_display_name(0)
+02-14 22:53:16.047 I/DrivingDndInitializer( 2360): Starting Driving Mode logger service for heartbeat
+02-14 22:53:16.056 W/ChimeraUtils( 2360): Module com.google.android.gms.location_base missing resource location_module_display_name(0)
+02-14 22:53:16.060 W/ChimeraUtils( 2360): Module com.google.android.gms.location_base missing resource location_module_display_name(0)
+02-14 22:53:16.063 W/ActivityManager( 1116): Unable to start service Intent { act=com.google.android.gms.wearable.BIND pkg=com.google.android.gms } U=0: not found
+02-14 22:53:16.065 W/ActivityManager( 1116): Unbind failed: could not find connection for android.os.BinderProxy@1d5a00d
+02-14 22:53:16.066 W/GmsClient( 2360): unable to connect to service: com.google.android.gms.wearable.BIND on com.google.android.gms
+02-14 22:53:16.066 W/GoogleApiManager( 2360): Not showing notification since connectionResult is not user-facing: ConnectionResult{statusCode=API_UNAVAILABLE, resolution=null, message=null, clientMethodKey=null}
+02-14 22:53:16.098 W/ChimeraUtils( 2360): Module com.google.android.gms.location__nonwearable missing resource location_module_display_name(0)
+02-14 22:53:16.103 I/DrivingDndInitializer( 2360): handled driving mode setting configs
+02-14 22:53:16.108 W/ThreadPoolForeg(10607): type=1400 audit(0.0:397): avc: denied { write } for name="traced_producer" dev="tmpfs" ino=16465 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:traced_producer_socket:s0 tclass=sock_file permissive=0 app=com.google.android.gms
+02-14 22:53:16.108 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.net.wifi.STATE_CHANGE flg=0x4000010 (has extras) } to com.transsion.phoenix/com.cloudview.daemon.way.broadcast.DaemonBroadCastReceiver
+02-14 22:53:16.111 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.net.wifi.STATE_CHANGE flg=0x4000010 (has extras) } to com.transsion.phoenix/com.cloudview.daemon.way.broadcast.DaemonBroadCastReceiver
+02-14 22:53:16.113 I/chatty  ( 1116): uid=1000(system) ActivityManager identical 2 lines
+02-14 22:53:16.113 W/BroadcastQueue( 1116): Background execution not allowed: receiving Intent { act=android.net.wifi.STATE_CHANGE flg=0x4000010 (has extras) } to com.transsion.phoenix/com.cloudview.daemon.way.broadcast.DaemonBroadCastReceiver
+02-14 22:53:16.122 I/CAR.DRIVINGMODE( 2360): Successfully unregister transition listener
+02-14 22:53:16.124 I/EnterpriseLoader( 2423): [ConditionsChecker] ZT config not present. [CONTEXT service_id=225 ]
+02-14 22:53:16.133 I/FontLog ( 2360): (REDACTED) Received query %s, URI %s
+02-14 22:53:16.134 I/FontLog ( 2360): (REDACTED) Query [%s] resolved to %s
+02-14 22:53:16.137 I/FontLog ( 2360): (REDACTED) Font PFD returned from cache for %s
+02-14 22:53:16.138 I/FontLog ( 2360): (REDACTED) Fetch %s end status %s
+02-14 22:53:16.149 I/ActivityManager( 1116): Start proc 12279:com.google.android.gm/u0a139 for broadcast {com.google.android.gm/com.google.firebase.iid.FirebaseInstanceIdReceiver}
+02-14 22:53:16.149 I/FZ2.UID ( 1116): UidManager.insert new uid insert uid: 10139
+02-14 22:53:16.152 I/lowmemorykiller(  360): Kill 'net.bat.store' (11276), uid 10152, oom_adj 955 to free 131408kB; reason: low watermark is breached and thrashing (31%)
+02-14 22:53:16.179 E/ogle.android.g(12279): Not starting debugger since process cannot load the jdwp agent.
+02-14 22:53:16.204 I/Zygote  (  469): Process 11276 exited due to signal 9 (Killed)
+02-14 22:53:16.207 I/ActivityManager( 1116): Process net.bat.store (pid 11276) has died: cch+55 CEM 
+02-14 22:53:16.208 I/libprocessgroup( 1116): Successfully killed process cgroup uid 10152 pid 11276 in 0ms
+02-14 22:53:16.212 I/TranPhoneSwitcher( 1565): msg104
+02-14 22:53:16.213 I/FZ2.UID ( 1116): UidManager.delete uid: 10152  11276
+02-14 22:53:16.216 I/apps.searchlit(11945): Waiting for a blocking GC ProfileSaver
+02-14 22:53:16.220 I/libPowerHal(  489): [perfNotifyAppState] pack:net.bat.store, pid:11276, STATE_DEAD
+02-14 22:53:16.229 I/TranPhoneSwitcher( 1565): msg104
+02-14 22:53:16.233 I/TranPhoneSwitcher( 1565): msg104
+02-14 22:53:16.256 E/libc    (12194): Access denied finding property "ro.vendor.api_level"
+02-14 22:53:16.279 I/ogle.android.g(12279): The ClassLoaderContext is a special shared library.
+02-14 22:53:16.287 I/FontLog ( 2360): (REDACTED) Pulling font file for id = %d, cache size = %d
+02-14 22:53:16.343 E/transsnet.stor(12038): No package ID 74 found for ID 0x740b0013.
+02-14 22:53:16.406 I/cr_LibraryLoader(12194): Successfully loaded native library
+02-14 22:53:16.484 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:16.486 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:16.488 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:16.506 I/cr_CachingUmaRecorder(12194): Flushed 13 samples from 12 histograms, 0 samples were dropped.
+02-14 22:53:16.507 I/FA      (12038): App measurement initialized, version: 152008
+02-14 22:53:16.537 I/resolv  (  468): retrying_poll: 58 retrying_poll returning 1
+02-14 22:53:16.537 I/resolv  (  468): res_nsend: used send_dg 113 terrno: 0
+02-14 22:53:16.537 I/resolv  (  468): res_stats_set_sample: rcode = 0, sec = 939
+02-14 22:53:16.537 I/resolv  (  468): res_cache_add_stats_sample_locked: adding sample to stats, next = 40, count = 40
+02-14 22:53:16.537 I/resolv  (  468): answer_getTTL: TTL = 122
+02-14 22:53:16.537 I/resolv  (  468): _cache_add_p: entry 39 added (count=38)
+02-14 22:53:16.537 I/resolv  (  468): cache_dump_mru_locked: MRU LIST (38):  39 23 38 37 36 35 34 8 31 33 16 30 29 28 27 26 25 24 20 22 21 19 18 17 15 14 13 12 11 10 6 9 7 5 4 3 1 2
+02-14 22:53:16.558 I/apps.searchlit(11945): WaitForGcToComplete blocked ProfileSaver on ClassLinker for 341.510ms
+02-14 22:53:16.591 I/FA      (12038): To enable debug logging run: adb shell setprop log.tag.FA VERBOSE
+02-14 22:53:16.596 I/FA      (12038): To enable faster debug mode event logging run:
+02-14 22:53:16.596 I/FA      (12038):   adb shell setprop debug.firebase.analytics.app com.transsnet.store
+02-14 22:53:16.600 I/apps.searchlit(11945): WaitForGcToComplete blocked RunEmptyCheckpoint on ProfileSaver for 30.193ms
+02-14 22:53:16.638 I/FontLog ( 2360): (REDACTED) Received query %s, URI %s
+02-14 22:53:16.639 I/FontLog ( 2360): (REDACTED) Query [%s] resolved to %s
+02-14 22:53:16.642 I/FontLog ( 2360): (REDACTED) Font PFD returned from cache for %s
+02-14 22:53:16.643 I/FontLog ( 2360): (REDACTED) Fetch %s end status %s
+02-14 22:53:16.654 I/FontLog ( 2360): (REDACTED) Pulling font file for id = %d, cache size = %d
+02-14 22:53:16.820 I/FontLog ( 2360): (REDACTED) Received query %s, URI %s
+02-14 22:53:16.820 I/FontLog ( 2360): (REDACTED) Query [%s] resolved to %s
+02-14 22:53:16.823 I/FontLog ( 2360): (REDACTED) Font PFD returned from cache for %s
+02-14 22:53:16.823 I/FontLog ( 2360): (REDACTED) Fetch %s end status %s
+02-14 22:53:16.840 I/FontLog ( 2360): (REDACTED) Pulling font file for id = %d, cache size = %d
+02-14 22:53:16.848 W/ogle.android.g(12279): JIT profile information will not be recorded: profile file does not exist.
+02-14 22:53:16.849 I/chatty  (12279): uid=10139(com.google.android.gm) identical 1 line
+02-14 22:53:16.920 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:16.922 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:16.924 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:17.229 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:17.231 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:17.233 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:17.627 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:17.630 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:17.632 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:17.689 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:17.691 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:17.716 I/ActivityManager( 1116): Start proc 12317:com.google.android.apps.messaging/u0a125 for service {com.google.android.apps.messaging/androidx.work.impl.background.systemjob.SystemJobService}
+02-14 22:53:17.787 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:17.921 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:17.923 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:17.925 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:18.359 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:18.361 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:18.363 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:19.159 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:19.161 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:19.163 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:19.212 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:19.214 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:19.216 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:19.376 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:19.377 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:19.379 W/ActivityManager( 1116): Unable to launch app com.instagram.lite/10377 for service Intent { cmp=com.instagram.lite/com.facebook.lite.intent.PeriodicTaskJobService }: AutoStart Limit
+02-14 22:53:19.519 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:19.607 W/Griffin/ComponentManager( 1116): limitStartProcessForReceiver caller is null
+02-14 22:53:19.615 I/FontLog ( 2360): (REDACTED) Received query %s, URI %s
+02-14 22:53:19.619 I/FontLog ( 2360): (REDACTED) Query [%s] resolved to %s
+02-14 22:53:19.622 I/FontLog ( 2360): (REDACTED) Fetch %s end status %s
+02-14 22:53:19.633 I/SyncAdapter( 2423): Executing sync via SyncAdapter. [CONTEXT service_id=80 ]
+02-14 22:53:19.636 I/SyncManager( 2423): (REDACTED) Executing sync(type=%s%s)
+02-14 22:53:19.638 I/FontLog ( 2360): (REDACTED) Pulling font file for id = %d, cache size = %d
+02-14 22:53:19.661 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:19.663 I/FontLog ( 2360): (REDACTED) Pulling font file for id = %d, cache size = %d
+02-14 22:53:19.672 W/ActivityManager( 1116): Slow operation: 64ms so far, now at startProcess: done updating battery stats
+02-14 22:53:19.673 W/ActivityManager( 1116): Slow operation: 65ms so far, now at startProcess: building log message
+02-14 22:53:19.673 I/ActivityManager( 1116): Start proc 12447:com.instagram.lite/u0a377 for broadcast {com.instagram.lite/com.facebook.lite.intent.WakefulIntentForwarder}
+02-14 22:53:19.673 W/ActivityManager( 1116): Slow operation: 65ms so far, now at startProcess: starting to update pids map
+02-14 22:53:19.673 I/FZ2.UID ( 1116): UidManager.insert new uid insert uid: 10377
+02-14 22:53:19.674 W/ActivityManager( 1116): Slow operation: 66ms so far, now at startProcess: done updating pids map
+02-14 22:53:19.691 E/.instagram.lit(12447): Not starting debugger since process cannot load the jdwp agent.
+02-14 22:53:19.692 W/DynamiteModule(12279): Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+02-14 22:53:19.694 W/ProviderHelper( 2360): Unknown dynamite feature providerinstaller.dynamite
+02-14 22:53:19.695 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:19.695 W/Looper  ( 1116): Slow dispatch took 155ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+02-14 22:53:19.705 I/FontLog ( 2360): (REDACTED) Pulling font file for id = %d, cache size = %d
+02-14 22:53:19.717 W/ProviderInstaller(12279): Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+02-14 22:53:19.727 I/CarrierServices(12317): Initializing Carrier Services Logging. [CONTEXT thread_id=897 ]
+02-14 22:53:19.753 I/Bugle   (12317): DatabaseHelperBasic: sqlite version is 3.28.0
+02-14 22:53:19.814 I/Bugle   (12317): DatabaseHelperBasic.doInitializationTraced() returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/bugle_backup_db
+02-14 22:53:19.816 W/ActivityManager( 1116): Slow operation: 105ms so far, now at attachApplicationLocked: immediately after bindApplication
+02-14 22:53:19.817 W/ActivityManager( 1116): Slow operation: 106ms so far, now at attachApplicationLocked: after updateLruProcessLocked
+02-14 22:53:19.817 I/Bugle   (12317): DatabaseHelperBasic.doInitializationTraced returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/bugle_backup_db
+02-14 22:53:19.818 W/ActivityManager( 1116): Slow operation: 107ms so far, now at attachApplicationLocked: after mServices.attachApplicationLocked
+02-14 22:53:19.821 W/ActivityManager( 1116): Slow operation: 110ms so far, now at attachApplicationLocked: after sendPendingBroadcastsLocked
+02-14 22:53:19.849 I/ogle.android.g(12279): The ClassLoaderContext is a special shared library.
+02-14 22:53:19.852 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:19.853 W/Looper  ( 1116): Slow dispatch took 157ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=7
+02-14 22:53:19.854 I/system_server( 1116): Background young concurrent copying GC freed 426284(19MB) AllocSpace objects, 24(1564KB) LOS objects, 32% free, 42MB/62MB, paused 493us total 314.993ms
+02-14 22:53:19.859 W/Parcel  ( 1116): release_object BINDER_TYPE_HANDLE strongCount==2
+02-14 22:53:19.863 W/Looper  ( 1116): Slow delivery took 236ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=4
+02-14 22:53:19.870 I/.instagram.lit(12447): The ClassLoaderContext is a special shared library.
+02-14 22:53:19.871 I/FontLog ( 2360): (REDACTED) Pulling font file for id = %d, cache size = %d
+02-14 22:53:19.904 E/bcxd    (12279): Sync subscriptions not available
+02-14 22:53:19.914 I/SyncManager( 2423): (REDACTED) Executing sync(type=%s) finished in %s
+02-14 22:53:19.943 W/Looper  ( 1116): Drained
+02-14 22:53:19.973 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:19.992 I/LogSaver(12317): LogSaver new instance with filename: carrier_services
+02-14 22:53:20.014 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:20.089 I/ogle.android.g(12279): WaitForGcToComplete blocked ClassLinker on ClassLinker for 427.484ms
+02-14 22:53:20.091 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:20.101 I/chatty  ( 1116): uid=1000 system_server identical 2 lines
+02-14 22:53:20.105 I/ogle.android.g(12279): WaitForGcToComplete blocked ClassLinker on ClassLinker for 91.882ms
+02-14 22:53:20.160 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:20.165 W/.instagram.lit(12447): JIT profile information will not be recorded: profile file does not exist.
+02-14 22:53:20.172 I/chatty  (12447): uid=10377(com.instagram.lite) identical 12 lines
+02-14 22:53:20.172 W/.instagram.lit(12447): JIT profile information will not be recorded: profile file does not exist.
+02-14 22:53:20.191 W/com.whatsapp( 9512): type=1400 audit(0.0:399): avc: granted { execute } for comm=576861747341707020576F726B6572 path="/data/data/com.whatsapp/files/decompressed/libs.spo/libdav1d.so" dev="dm-10" ino=342980 scontext=u:r:untrusted_app:s0:c236,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c236,c256,c512,c768 tclass=file app=com.whatsapp
+02-14 22:53:20.223 I/LoadedApk(12447): No resource references to update in package com.transsion.theme.icon
+02-14 22:53:20.254 I/ActivityManager( 1116): Force stopping com.spazoodle.guardian appid=10431 user=0: clear data
+02-14 22:53:20.256 I/FZ2.UID ( 1116): UidManager.delete uid: 10431  11983
+02-14 22:53:20.256 I/ActivityManager( 1116): Killing 11983:com.spazoodle.guardian/u0a431 (adj 0): stop com.spazoodle.guardian due to clear data
+02-14 22:53:20.261 I/libPowerHal(  489): [perfNotifyAppState] pack:com.spazoodle.guardian, pid:11983, STATE_DEAD
+02-14 22:53:20.264 W/ActivityManager( 1116): Crash of app com.spazoodle.guardian running instrumentation ComponentInfo{com.spazoodle.guardian.test/androidx.test.runner.AndroidJUnitRunner}
+02-14 22:53:20.268 W/com.whatsapp( 9512): type=1400 audit(0.0:400): avc: granted { execute } for comm=576861747341707020576F726B6572 path="/data/data/com.whatsapp/files/decompressed/libs.spo/libaom.so" dev="dm-10" ino=41510 scontext=u:r:untrusted_app:s0:c236,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c236,c256,c512,c768 tclass=file app=com.whatsapp
+02-14 22:53:20.272 I/ActivityManager( 1116): Force stopping com.spazoodle.guardian appid=10431 user=0: finished inst
+02-14 22:53:20.303 I/ForwardSyncCache(12317): reclaimMemory: Clearing caches
+02-14 22:53:20.319 I/Finsky  ( 3085): [2] Memory trim requested to level 15
+02-14 22:53:20.334 I/Zygote  (  469): Process 11983 exited due to signal 9 (Killed)
+02-14 22:53:20.339 I/libprocessgroup( 1116): Successfully killed process cgroup uid 10431 pid 11983 in 81ms
+02-14 22:53:20.341 W/com.whatsapp( 9512): type=1400 audit(0.0:401): avc: granted { execute } for comm=576861747341707020576F726B6572 path="/data/data/com.whatsapp/files/decompressed/libs.spo/libwzav1.so" dev="dm-10" ino=50392 scontext=u:r:untrusted_app:s0:c236,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c236,c256,c512,c768 tclass=file app=com.whatsapp
+02-14 22:53:20.347 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:20.350 W/EarlyExceptionHandler(12447): Early UncaughtException handler initialized
+02-14 22:53:20.351 I/ActivityManager( 1116): Force stopping com.spazoodle.guardian appid=10431 user=-1: clearApplicationUserData
+02-14 22:53:20.375 W/bbcy    (12279): Failed to find local clusters.
+02-14 22:53:20.379 I/ActivityManager( 1116): Start proc 12486:net.bat.store/u0a152 for service {net.bat.store/androidx.work.impl.background.systemjob.SystemJobService}
+02-14 22:53:20.380 I/FZ2.UID ( 1116): UidManager.insert new uid insert uid: 10152
+02-14 22:53:20.398 W/EarlyErrorReporting(12447): Lacrima init done in EarlyErrorReporting for: com.instagram.lite
+02-14 22:53:20.412 W/SoLoader(12447): Initializing SoLoader: 2
+02-14 22:53:20.435 W/lacrima (12447): LacrimaConfigBuilder.setUserIdActorId not called, using 0
+02-14 22:53:20.436 W/lacrima (12447): LacrimaConfigBuilder.setUserIdActingAccountId not called, using 0
+02-14 22:53:20.436 W/lacrima (12447): LacrimaConfigBuilder.setIsEmployee not called, using false
+02-14 22:53:20.442 W/SoLoader(12447): context.getApplicationContext returned null, holding reference to original context.ApplicationSoSource fallbacks to: /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/lib/arm
+02-14 22:53:20.442 E/net.bat.store(12486): Not starting debugger since process cannot load the jdwp agent.
+02-14 22:53:20.456 W/fbservices-stub:InitStatus( 7017): Not blocking Service (187556506)
+02-14 22:53:20.474 E/libc    (12279): Access denied finding property "vendor.debug.drm.logv"
+02-14 22:53:20.480 E/libc    (12279): Access denied finding property "vendor.debug.drm.logv"
+02-14 22:53:20.482 E/libc    (12279): Access denied finding property "vendor.debug.drm.logd"
+02-14 22:53:20.486 I/net.bat.store(12486): The ClassLoaderContext is a special shared library.
+02-14 22:53:20.489 E/libc    (12279): Access denied finding property "vendor.debug.drm.logv"
+02-14 22:53:20.499 W/SoLoader(12447): SoLoader initialized: 2
+02-14 22:53:20.509 W/KeyguardStatusView( 1318): single clock is showing
+02-14 22:53:20.509 I/BufferQueueProducer(  502): [StatusBar#0](this:0xa939a410,id:8,api:1,p:1318,c:502) queueBuffer: fps=0.51 dur=1956.02 max=1956.02 min=1956.02
+02-14 22:53:20.514 W/com.whatsapp( 9512): type=1400 audit(0.0:402): avc: granted { execute } for comm=576861747341707020576F726B6572 path="/data/data/com.whatsapp/files/decompressed/libs.spo/libwzav1_v2.so" dev="dm-10" ino=342323 scontext=u:r:untrusted_app:s0:c236,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c236,c256,c512,c768 tclass=file app=com.whatsapp
+02-14 22:53:20.520 I/hwcomposer(  481): [HWCDisplay] [Display_0 (type:1)] fps:0.513907,dur:1945.88,max:1945.88,min:1945.88  
+02-14 22:53:20.521 I/Bugle   (12317): DatabaseHelperBasic: sqlite version is 3.28.0
+02-14 22:53:20.526 W/FbSoLoader(12447): Will use precomputed native lib dependencies file, reading directly from the APK using AssetManager false
+02-14 22:53:20.535 W/SoLoader(12447): Prepending SoSource lib-compressed: SuperpackSoSource[root = /data/data/com.instagram.lite/lib-compressed flags = 1 zipSource = /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/base.apk compressedPath = assets/lib/libs.spk.xz identity = ]
+02-14 22:53:20.566 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:20.587 I/GoogleTTSServiceImpl(10566): Cache enabled: true
+02-14 22:53:20.589 I/GoogleTTSServiceImpl(10566): Flushing cache (low ram device)
+02-14 22:53:20.618 W/Athena-Worker(12038): type=1400 audit(0.0:403): avc: denied { read } for name="rid" dev="proc" ino=4026532709 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:proc_rid:s0 tclass=file permissive=0 app=com.transsnet.store
+02-14 22:53:20.649 W/FbSoLoader(12447): Initialized FBSoLoader
+02-14 22:53:20.652 W/SoLoader(12447): Loading verifier on the main thread
+02-14 22:53:20.672 I/AppBase ( 2045): AppBase.onTrimMemory():287 onTrimMemory(): 15
+02-14 22:53:20.703 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:20.704 W/lacrima (12447): Sending pending reports
+02-14 22:53:20.706 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:20.736 I/KeyboardDefCache( 2045): MemoryFileCache$1.onTrimMemory():124 clearMemory() for trim memory: 15
+02-14 22:53:20.739 I/KeyboardDefCache( 2045): MemoryFileCache.clearMemory():408 evictAll()
+02-14 22:53:20.741 I/Bugle   (12317): DatabaseHelperBasic.doInitializationTraced() returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/bugle_db
+02-14 22:53:20.741 I/GoogleInputMethodService( 2045): GoogleInputMethodService.onTrimMemory():2852 onTrimMemory(): 15
+02-14 22:53:20.763 I/Bugle   (12317): DatabaseHelperBasic.doInitializationTraced returned SQLiteDatabase: /data/user/0/com.google.android.apps.messaging/databases/bugle_db
+02-14 22:53:20.768 W/net.bat.store(12486): JIT profile information will not be recorded: profile file does not exist.
+02-14 22:53:20.768 I/chatty  (12486): uid=10152(net.bat.store) identical 1 line
+02-14 22:53:20.768 W/net.bat.store(12486): JIT profile information will not be recorded: profile file does not exist.
+02-14 22:53:20.774 I/keystore(  617): clear_uid 10431
+02-14 22:53:20.776 W/DexStoreUtils(12447): Ignoring dex metadata pragma: .superpack_files 1
+02-14 22:53:20.778 W/EarlyErrorReporting(12447): Lacrima init executor done in EarlyErrorReporting for: com.instagram.lite
+02-14 22:53:20.793 W/lacrima (12447): Start AnrAppDeathDetector... X.04N
+02-14 22:53:20.795 W/lacrima (12447): Cannot find registered detector
+02-14 22:53:20.822 I/LoadedApk(12486): No resource references to update in package com.transsion.theme.icon
+02-14 22:53:20.830 I/NotificationService( 1116): pkgList.length=1
+02-14 22:53:20.885 E/PhoneInterfaceManager( 1565): [PhoneIntfMgr] getCarrierPackageNamesForIntentAndPhone: No UICC
+02-14 22:53:20.923 W/TelephonyPermissions( 1116): reportAccessDeniedToReadIdentifiers:com.transsnet.store:getSerial:-1
+02-14 22:53:20.927 E/libc    (12038): Access denied finding property "ro.serialno"
+02-14 22:53:20.974 W/.instagram.lit(12447): Opening an oat file without a class loader. Are you using the deprecated DexFile APIs?
+02-14 22:53:21.007 E/WifiVendorHal( 1116): getWifiLinkLayerStats_1_3_Internal(l.983) failed {.code = ERROR_NOT_SUPPORTED, .description = }
+02-14 22:53:21.046 W/.instagram.lit(12447): DexFile /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/base.apk is in boot class path but is not in a known location
+02-14 22:53:21.061 E/libc    (12447): Access denied finding property "ro.vendor.pref_scale_resolution"
+02-14 22:53:21.079 I/net.bat.store(12486): The ClassLoaderContext is a special shared library.
+02-14 22:53:21.145 I/FirebaseApp(12486): Device unlocked: initializing all Firebase APIs for app [DEFAULT]
+02-14 22:53:21.249 I/SmartPanel_SmartPanelPresenter( 2294): onShortcutChange shortcuts size =6
+02-14 22:53:21.254 I/SmartPanel_SmartPanelPresenter( 2294): onShortcutChange shortcutInfo enable =true
+02-14 22:53:21.263 I/FirebaseCrashlytics(12486): Initializing Firebase Crashlytics 18.6.2 for net.bat.store
+02-14 22:53:21.270 I/SmartPanel_SmartPanelBeanHelper( 2294): oobe = KE, DefaultAppShortcutList = [com.whatsapp, com.facebook.katana, com.facebook.orca, com.instagram.android, com.transsion.camera/selfie, net.one97.paytm/scan_and_pay_shortcut, com.transsion.phoenix, com.zaz.translate, com.transsion.kolun.assistant, com.gbwhatsapp, com.afmobi.boomplayer, com.hatsune.eagleee]
+02-14 22:53:21.270 I/SmartPanel_SmartPanelPresenter( 2294): onShortcutChange shortcutInfo enable =true
+02-14 22:53:21.272 I/SmartPanel_SmartPanelBeanHelper( 2294): oobe = KE, DefaultAppShortcutList = [com.whatsapp, com.facebook.katana, com.facebook.orca, com.instagram.android, com.transsion.camera/selfie, net.one97.paytm/scan_and_pay_shortcut, com.transsion.phoenix, com.zaz.translate, com.transsion.kolun.assistant, com.gbwhatsapp, com.afmobi.boomplayer, com.hatsune.eagleee]
+02-14 22:53:21.272 I/SmartPanel_SmartPanelPresenter( 2294): onShortcutChange shortcutInfo enable =true
+02-14 22:53:21.273 I/SmartPanel_SmartPanelBeanHelper( 2294): oobe = KE, DefaultAppShortcutList = [com.whatsapp, com.facebook.katana, com.facebook.orca, com.instagram.android, com.transsion.camera/selfie, net.one97.paytm/scan_and_pay_shortcut, com.transsion.phoenix, com.zaz.translate, com.transsion.kolun.assistant, com.gbwhatsapp, com.afmobi.boomplayer, com.hatsune.eagleee]
+02-14 22:53:21.274 I/SmartPanel_SmartPanelPresenter( 2294): onShortcutChange shortcutInfo enable =true
+02-14 22:53:21.275 I/SmartPanel_SmartPanelBeanHelper( 2294): oobe = KE, DefaultAppShortcutList = [com.whatsapp, com.facebook.katana, com.facebook.orca, com.instagram.android, com.transsion.camera/selfie, net.one97.paytm/scan_and_pay_shortcut, com.transsion.phoenix, com.zaz.translate, com.transsion.kolun.assistant, com.gbwhatsapp, com.afmobi.boomplayer, com.hatsune.eagleee]
+02-14 22:53:21.275 I/SmartPanel_SmartPanelPresenter( 2294): onShortcutChange shortcutInfo enable =true
+02-14 22:53:21.279 I/SmartPanel_SmartPanelBeanHelper( 2294): oobe = KE, DefaultAppShortcutList = [com.whatsapp, com.facebook.katana, com.facebook.orca, com.instagram.android, com.transsion.camera/selfie, net.one97.paytm/scan_and_pay_shortcut, com.transsion.phoenix, com.zaz.translate, com.transsion.kolun.assistant, com.gbwhatsapp, com.afmobi.boomplayer, com.hatsune.eagleee]
+02-14 22:53:21.280 I/SmartPanel_SmartPanelPresenter( 2294): onShortcutChange shortcutInfo enable =true
+02-14 22:53:21.281 I/SmartPanel_SmartPanelBeanHelper( 2294): oobe = KE, DefaultAppShortcutList = [com.whatsapp, com.facebook.katana, com.facebook.orca, com.instagram.android, com.transsion.camera/selfie, net.one97.paytm/scan_and_pay_shortcut, com.transsion.phoenix, com.zaz.translate, com.transsion.kolun.assistant, com.gbwhatsapp, com.afmobi.boomplayer, com.hatsune.eagleee]
+02-14 22:53:21.320 W/net.bat.store(12486): ClassLoaderContext classpath size mismatch. expected=12, found=0 (DLC[];PCL[base.apk*3645384961:base.apk!classes2.dex*2799741220:base.apk!classes3.dex*3152497644:base.apk!classes4.dex*229888544:base.apk!classes5.dex*2881263476:base.apk!classes6.dex*1321155662:base.apk!classes7.dex*2100511475:base.apk!classes8.dex*2967581136:base.apk!classes9.dex*3883567460:base.apk!classes10.dex*3596493312:base.apk!classes11.dex*3476475469:base.apk!classes12.dex*1089581091]{PCL[/system/framework/org.apache.http.legacy.jar*1419868201]#PCL[/system/framework/com.android.location.provider.jar*2090982288]#PCL[/system/framework/com.android.media.remotedisplay.jar*3931963715]} | DLC[];PCL[])
+02-14 22:53:21.324 I/DynamiteModule(12486): Considering local module com.google.android.gms.measurement.dynamite:70 and remote module com.google.android.gms.measurement.dynamite:176
+02-14 22:53:21.324 I/DynamiteModule(12486): Selected remote version of com.google.android.gms.measurement.dynamite, version >= 176
+02-14 22:53:21.334 I/FirebaseInitProvider(12486): FirebaseApp initialization successful
+02-14 22:53:21.347 W/System  (12486): ClassLoader referenced unknown path: 
+02-14 22:53:21.376 I/TetheringManager(12447): registerTetheringEventCallback:com.instagram.lite
+02-14 22:53:21.377 W/net.bat.store(12486): ClassLoaderContext classpath size mismatch. expected=12, found=5 (DLC[];PCL[base.apk*3645384961:base.apk!classes2.dex*2799741220:base.apk!classes3.dex*3152497644:base.apk!classes4.dex*229888544:base.apk!classes5.dex*2881263476:base.apk!classes6.dex*1321155662:base.apk!classes7.dex*2100511475:base.apk!classes8.dex*2967581136:base.apk!classes9.dex*3883567460:base.apk!classes10.dex*3596493312:base.apk!classes11.dex*3476475469:base.apk!classes12.dex*1089581091]{PCL[/system/framework/org.apache.http.legacy.jar*1419868201]#PCL[/system/framework/com.android.location.provider.jar*2090982288]#PCL[/system/framework/com.android.media.remotedisplay.jar*3931963715]} | DLC[];PCL[/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk*1323505463:/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk!classes2.dex*3928394552:/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk!classes3.dex*3190700022:/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk!classes4.dex*1500452773:/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk!classes5.dex*3721225086]{PCL[/system/framework/org.apache.http.legacy.jar*1419868201]})
+02-14 22:53:21.390 W/ErrorReportingUtils(12447): Lacrima init done in ErrorReportingUtils for: com.instagram.lite
+02-14 22:53:21.393 I/TetheringManager(12486): registerTetheringEventCallback:net.bat.store
+02-14 22:53:21.394 W/net.bat.store(12486): Found duplicate classes, falling back to extracting from APK : /data/app/~~wjxsyWcfzRQUUSJuj6K-zA==/com.google.android.gms-Qb4Us0xm3KAxvnWP33WI2Q==/split_MeasurementDynamite_installtime.apk
+02-14 22:53:21.394 W/net.bat.store(12486): NOTE: This wastes RAM and hurts startup performance.
+02-14 22:53:21.394 W/net.bat.store(12486): Found duplicated class when checking oat files: 'Landroid/app/AppComponentFactory;' in /data/app/~~wjxsyWcfzRQUUSJuj6K-zA==/com.google.android.gms-Qb4Us0xm3KAxvnWP33WI2Q==/split_MeasurementDynamite_installtime.apk and /data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk
+02-14 22:53:21.414 W/lacrima (12447): The minidump file is empty!
+02-14 22:53:21.415 I/MMKV    (12486): Disable checkProcessMode()
+02-14 22:53:21.431 I/resolv  (  468): resolv_cache_lookup: lookup
+02-14 22:53:21.431 I/resolv  (  468): resolv_cache_lookup: NOT IN CACHE
+02-14 22:53:21.431 I/resolv  (  468): resolv_populate_res_for_net: netid=100
+02-14 22:53:21.431 I/resolv  (  468): res_stats_usable_server: NS stats: S 41 + E 0 + T 0 + I 0 = 41, rtt = 120, min_samples = 8
+02-14 22:53:21.431 I/resolv  (  468): res_stats_usable_server: success rate 100
+02-14 22:53:21.432 I/resolv  (  468): get_timeout: using timeout of 5000 msec
+02-14 22:53:21.433 I/resolv  (  468): retrying_poll: 58 retrying_poll
+02-14 22:53:21.433 I/MMKV    (12486): current API level = 30, libc++_shared=0
+02-14 22:53:21.433 I/MMKV    (12486): <MMKV.cpp:166::initialize> version v1.3.9, page size 4096, arch armeabi-v7a/NEON
+02-14 22:53:21.433 I/MMKV    (12486): <MMKV.cpp:225::initializeMMKV> root dir: /data/user/0/net.bat.store/files/mmkv
+02-14 22:53:21.434 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x4a], /data/user/0/net.bat.store/files/mmkv/net.bat.store_version_control
+02-14 22:53:21.434 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa772c000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/net.bat.store_version_control]
+02-14 22:53:21.434 W/lacrima (12447): Start AnrDetector... X.02M
+02-14 22:53:21.434 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x4e], /data/user/0/net.bat.store/files/mmkv/net.bat.store_version_control.crc
+02-14 22:53:21.434 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa73bd000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/net.bat.store_version_control.crc]
+02-14 22:53:21.434 W/ProcessAnrErrorMonitor(12447): startMonitoring with delay: 4000
+02-14 22:53:21.435 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [net.bat.store_version_control] has flag [0]
+02-14 22:53:21.436 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [net.bat.store_version_control] with 20 actual size, file size 4096, InterProcess 1, meta info version:4
+02-14 22:53:21.436 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [net.bat.store_version_control] with crc 3717437789 sequence 1 version 4
+02-14 22:53:21.436 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [net.bat.store_version_control] with 1 key-values
+02-14 22:53:21.437 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x4d], /data/user/0/net.bat.store/files/mmkv/aha_common
+02-14 22:53:21.437 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x8fe52000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/aha_common]
+02-14 22:53:21.437 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x54], /data/user/0/net.bat.store/files/mmkv/aha_common.crc
+02-14 22:53:21.437 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa7075000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/aha_common.crc]
+02-14 22:53:21.438 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [aha_common] has flag [0]
+02-14 22:53:21.439 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [aha_common] with 28204 actual size, file size 32768, InterProcess 1, meta info version:4
+02-14 22:53:21.439 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [aha_common] with crc 1995444687 sequence 1132 version 4
+02-14 22:53:21.439 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [aha_common] with 101 key-values
+02-14 22:53:21.440 W/ErrorReportingUtils(12447): Lacrima later init done in ErrorReportingUtils for: com.instagram.lite
+02-14 22:53:21.451 W/net.bat.store(12486): Accessing hidden method Ldalvik/system/VMRuntime;->setHiddenApiExemptions([Ljava/lang/String;)V (blacklist,core-platform-api, reflection, denied)
+02-14 22:53:21.460 W/BootstrapClass(12486): reflect bootstrap failed:
+02-14 22:53:21.460 W/BootstrapClass(12486): java.lang.reflect.InvocationTargetException
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at java.lang.reflect.Method.invoke(Native Method)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at w7.a.<clinit>(SourceFile:79)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at me.weishu.reflection.Reflection.a(SourceFile:9)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at i7.a.h(SourceFile:6)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at net.bat.store.base.CrashHandler.k(SourceFile:6)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at net.bat.store.base.TheApplication.onCreate(SourceFile:48)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1198)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:7050)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at android.app.ActivityThread.access$1500(ActivityThread.java:263)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2032)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at android.os.Looper.loop(Looper.java:268)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at android.app.ActivityThread.main(ActivityThread.java:8016)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at java.lang.reflect.Method.invoke(Native Method)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:627)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:997)
+02-14 22:53:21.460 W/BootstrapClass(12486): Caused by: java.lang.NoSuchMethodException: dalvik.system.VMRuntime.setHiddenApiExemptions [class [Ljava.lang.String;]
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at java.lang.Class.getMethod(Class.java:2072)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	at java.lang.Class.getDeclaredMethod(Class.java:2050)
+02-14 22:53:21.460 W/BootstrapClass(12486): 	... 16 more
+02-14 22:53:21.478 W/lacrima (12447): FixedLengthFiles.init() called twice.
+02-14 22:53:21.486 W/lacrima (12447): FixedLengthFiles.init() called twice.
+02-14 22:53:21.497 I/resolv  (  468): retrying_poll: 58 retrying_poll returning 1
+02-14 22:53:21.497 W/com.facebook.lite.deviceid.FbLitePhoneIdStore(12447): is phone id synced: true
+02-14 22:53:21.497 I/resolv  (  468): res_nsend: used send_dg 42 terrno: 0
+02-14 22:53:21.498 I/resolv  (  468): res_stats_set_sample: rcode = 3, sec = 65
+02-14 22:53:21.498 I/resolv  (  468): res_cache_add_stats_sample_locked: adding sample to stats, next = 41, count = 41
+02-14 22:53:21.498 I/resolv  (  468): answer_getTTL: TTL = 0
+02-14 22:53:21.498 W/com.facebook.lite.deviceid.FbLitePhoneIdStore(12447): get Phone ID: 2baf5444-3411-4645-9c36-945ddd97ee3a : 1751025935447 : com.instagram.lite
+02-14 22:53:21.498 W/com.facebook.lite.deviceid.FbLitePhoneIdStore(12447): get stable Phone ID: 2baf5444-3411-4645-9c36-945ddd97ee3a : 1751025935447 : com.instagram.lite
+02-14 22:53:21.498 I/resolv  (  468): cache_dump_mru_locked: MRU LIST (38):  39 23 38 37 36 35 34 8 31 33 16 30 29 28 27 26 25 24 20 22 21 19 18 17 15 14 13 12 11 10 6 9 7 5 4 3 1 2
+02-14 22:53:21.502 I/net.bat.store(12486): Waiting for a blocking GC ClassLinker
+02-14 22:53:21.523 W/net.bat.store(12486): Opening an oat file without a class loader. Are you using the deprecated DexFile APIs?
+02-14 22:53:21.526 W/System.err(12486): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.reflect.Method java.lang.Class.getDeclaredMethod(java.lang.String, java.lang.Class[])' on a null object reference
+02-14 22:53:21.526 W/System.err(12486): 	at me.weishu.reflection.Reflection.b(SourceFile:67)
+02-14 22:53:21.527 W/System.err(12486): 	at me.weishu.reflection.Reflection.a(SourceFile:16)
+02-14 22:53:21.527 W/System.err(12486): 	at i7.a.h(SourceFile:6)
+02-14 22:53:21.527 W/System.err(12486): 	at net.bat.store.base.CrashHandler.k(SourceFile:6)
+02-14 22:53:21.527 W/System.err(12486): 	at net.bat.store.base.TheApplication.onCreate(SourceFile:48)
+02-14 22:53:21.527 W/System.err(12486): 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1198)
+02-14 22:53:21.527 W/System.err(12486): 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:7050)
+02-14 22:53:21.527 W/System.err(12486): 	at android.app.ActivityThread.access$1500(ActivityThread.java:263)
+02-14 22:53:21.527 W/System.err(12486): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2032)
+02-14 22:53:21.527 W/System.err(12486): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+02-14 22:53:21.527 W/System.err(12486): 	at android.os.Looper.loop(Looper.java:268)
+02-14 22:53:21.527 W/System.err(12486): 	at android.app.ActivityThread.main(ActivityThread.java:8016)
+02-14 22:53:21.527 W/System.err(12486): 	at java.lang.reflect.Method.invoke(Native Method)
+02-14 22:53:21.527 W/System.err(12486): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:627)
+02-14 22:53:21.527 W/System.err(12486): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:997)
+02-14 22:53:21.569 W/PackageUtil(12447): No appinfo found for com.facebook.orca
+02-14 22:53:21.569 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x49], /data/user/0/net.bat.store/files/mmkv/ab_test_kv
+02-14 22:53:21.569 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa6da6000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/ab_test_kv]
+02-14 22:53:21.570 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x50], /data/user/0/net.bat.store/files/mmkv/ab_test_kv.crc
+02-14 22:53:21.570 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa683b000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/ab_test_kv.crc]
+02-14 22:53:21.570 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [ab_test_kv] has flag [0]
+02-14 22:53:21.571 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [ab_test_kv] with 1729 actual size, file size 4096, InterProcess 0, meta info version:4
+02-14 22:53:21.571 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [ab_test_kv] with crc 3775752543 sequence 26 version 4
+02-14 22:53:21.572 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [ab_test_kv] with 4 key-values
+02-14 22:53:21.572 W/PackageUtil(12447): No appinfo found for com.facebook.mlite
+02-14 22:53:21.575 I/DynamiteModule(12486): Considering local module com.google.android.gms.cronet_dynamite:0 and remote module com.google.android.gms.cronet_dynamite:4311
+02-14 22:53:21.575 I/DynamiteModule(12486): Selected remote version of com.google.android.gms.cronet_dynamite, version >= 4311
+02-14 22:53:21.575 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x5b], /data/user/0/net.bat.store/files/mmkv/process_live_record
+02-14 22:53:21.576 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa6747000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/process_live_record]
+02-14 22:53:21.576 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x5d], /data/user/0/net.bat.store/files/mmkv/process_live_record.crc
+02-14 22:53:21.576 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa6740000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/process_live_record.crc]
+02-14 22:53:21.579 W/PackageUtil(12447): No appinfo found for com.facebook.katana
+02-14 22:53:21.589 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [process_live_record] has flag [0]
+02-14 22:53:21.590 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [process_live_record] with 52 actual size, file size 4096, InterProcess 1, meta info version:4
+02-14 22:53:21.590 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [process_live_record] with crc 344576811 sequence 4380 version 4
+02-14 22:53:21.590 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [process_live_record] with 1 key-values
+02-14 22:53:21.594 W/net.bat.store(12486): ClassLoaderContext classpath size mismatch. expected=12, found=5 (DLC[];PCL[base.apk*3645384961:base.apk!classes2.dex*2799741220:base.apk!classes3.dex*3152497644:base.apk!classes4.dex*229888544:base.apk!classes5.dex*2881263476:base.apk!classes6.dex*1321155662:base.apk!classes7.dex*2100511475:base.apk!classes8.dex*2967581136:base.apk!classes9.dex*3883567460:base.apk!classes10.dex*3596493312:base.apk!classes11.dex*3476475469:base.apk!classes12.dex*1089581091]{PCL[/system/framework/org.apache.http.legacy.jar*1419868201]#PCL[/system/framework/com.android.location.provider.jar*2090982288]#PCL[/system/framework/com.android.media.remotedisplay.jar*3931963715]} | DLC[];PCL[/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk*1323505463:/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk!classes2.dex*3928394552:/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk!classes3.dex*3190700022:/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk!classes4.dex*1500452773:/data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk!classes5.dex*3721225086]{PCL[/system/framework/org.apache.http.legacy.jar*1419868201]})
+02-14 22:53:21.598 W/net.bat.store(12486): Found duplicate classes, falling back to extracting from APK : /data/app/~~wjxsyWcfzRQUUSJuj6K-zA==/com.google.android.gms-Qb4Us0xm3KAxvnWP33WI2Q==/split_CronetDynamite_installtime.apk
+02-14 22:53:21.598 W/net.bat.store(12486): NOTE: This wastes RAM and hurts startup performance.
+02-14 22:53:21.598 W/net.bat.store(12486): Found duplicated class when checking oat files: 'Landroid/app/AppComponentFactory;' in /data/app/~~wjxsyWcfzRQUUSJuj6K-zA==/com.google.android.gms-Qb4Us0xm3KAxvnWP33WI2Q==/split_CronetDynamite_installtime.apk and /data/app/~~aYxcqF20g96e5Mir_aiZaw==/net.bat.store-jKl7KtTHrynXt46F7de-Dw==/base.apk
+02-14 22:53:21.624 W/0M7     (12447): Ignoring dex metadata pragma: .superpack_files 1
+02-14 22:53:21.626 W/0M7     (12447): Ignoring dex metadata pragma: .locator_id 3
+02-14 22:53:21.639 I/net.bat.store(12486): Waiting for a blocking GC ClassLinker
+02-14 22:53:21.650 I/net.bat.store(12486): Waiting for a blocking GC ClassLinker
+02-14 22:53:21.654 W/0M7     (12447): Ignoring dex metadata pragma: .superpack_files 1
+02-14 22:53:21.655 W/0M7     (12447): Ignoring dex metadata pragma: .locator_id 17
+02-14 22:53:21.658 I/MMKV    (12486): <MMKV_IO.cpp:515::writeActualSize> [process_live_record] increase sequence to 4381, crc 2731318333, actualSize 4
+02-14 22:53:21.659 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x5e], /data/user/0/net.bat.store/files/mmkv/traffic_manager_cache
+02-14 22:53:21.659 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f71b000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/traffic_manager_cache]
+02-14 22:53:21.659 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x63], /data/user/0/net.bat.store/files/mmkv/traffic_manager_cache.crc
+02-14 22:53:21.659 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f6f2000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/traffic_manager_cache.crc]
+02-14 22:53:21.664 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x64], /data/user/0/net.bat.store/files/mmkv/web_crash_kv
+02-14 22:53:21.664 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f6f1000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/web_crash_kv]
+02-14 22:53:21.664 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x65], /data/user/0/net.bat.store/files/mmkv/web_crash_kv.crc
+02-14 22:53:21.664 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f6b4000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/web_crash_kv.crc]
+02-14 22:53:21.664 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [traffic_manager_cache] has flag [0]
+02-14 22:53:21.665 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [web_crash_kv] has flag [0]
+02-14 22:53:21.666 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [web_crash_kv] with 0 actual size, file size 4096, InterProcess 1, meta info version:4
+02-14 22:53:21.666 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [traffic_manager_cache] with 2555 actual size, file size 4096, InterProcess 0, meta info version:4
+02-14 22:53:21.667 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [traffic_manager_cache] with crc 520809230 sequence 37 version 4
+02-14 22:53:21.667 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [web_crash_kv] with 0 key-values
+02-14 22:53:21.668 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [traffic_manager_cache] with 12 key-values
+02-14 22:53:21.674 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x66], /data/user/0/net.bat.store/files/mmkv/remote_config_module
+02-14 22:53:21.679 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa6d3f000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/remote_config_module]
+02-14 22:53:21.679 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x68], /data/user/0/net.bat.store/files/mmkv/remote_config_module.crc
+02-14 22:53:21.679 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa4284000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/remote_config_module.crc]
+02-14 22:53:21.679 I/net.bat.store(12486): WaitForGcToComplete blocked ClassLinker on ClassLinker for 177.225ms
+02-14 22:53:21.680 I/net.bat.store(12486): WaitForGcToComplete blocked ClassLinker on ClassLinker for 29.879ms
+02-14 22:53:21.680 W/net.bat.store(12486): Verification of void com.google.android.gms.measurement.internal.AppMeasurementDynamiteService.<init>() took 178.163ms (78.58 bytecodes/s) (1000B approximate peak alloc)
+02-14 22:53:21.684 I/net.bat.store(12486): WaitForGcToComplete blocked ClassLinker on ClassLinker for 45.779ms
+02-14 22:53:21.688 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [remote_config_module] has flag [0]
+02-14 22:53:21.689 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [remote_config_module] with 5248 actual size, file size 8192, InterProcess 0, meta info version:4
+02-14 22:53:21.689 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [remote_config_module] with crc 1114675706 sequence 20 version 4
+02-14 22:53:21.689 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [remote_config_module] with 6 key-values
+02-14 22:53:21.691 I/remote_config(12486): control by intervalTime! 2026-02-14 14:53:21 lastRefreshDataTime=2026-02-14 22:06:02
+02-14 22:53:21.703 W/FbSoLoader(12447): FBSoLoader already initialiazed
+02-14 22:53:21.706 I/net.bat.store(12486): Waiting for a blocking GC ClassLinker
+02-14 22:53:21.706 W/SoLoader(12447): Registering application split s_fizz_mnshttp_msys split_s_fizz_mnshttp_msys.apk
+02-14 22:53:21.721 I/BugleBackup(12317): Registering preference change listener for "bugle".
+02-14 22:53:21.780 W/SoLoader(12447): Prepending SoSource s_fizz_mnshttp_msys-asset-libs: SuperpackSoSource[root = /data/data/com.instagram.lite/app_modules/s_fizz_mnshttp_msys_4cc1ae8070853b784a3b9fd4efafab015f79dce3cacc0530a678bc277103a22d/download/libs/armeabi-v7a/878910442/asset-libs flags = 1 zipSource = /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/split_s_fizz_mnshttp_msys.apk compressedPath = assets/s_fizz_mnshttp_msys/libs.spk.xz identity = s_fizz_mnshttp_msys]
+02-14 22:53:21.784 W/AppEventHub(12447): font-cache-ready-but-not-connected
+02-14 22:53:21.802 W/FbSoLoader(12447): FBSoLoader already initialiazed
+02-14 22:53:21.812 W/SoLoader(12447): Registering application split s_fizz_msys split_s_fizz_msys.apk
+02-14 22:53:21.815 I/keystore(  617): cb->onFinished
+02-14 22:53:21.828 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:21.833 W/SoLoader(12447): Prepending SoSource s_fizz_msys-asset-libs: SuperpackSoSource[root = /data/data/com.instagram.lite/app_modules/s_fizz_msys_93465c9f09530e8c8cb545a2cf0e3b61b6d5f1ec422753c22ea5e9474104c03a/download/libs/armeabi-v7a/878910442/asset-libs flags = 1 zipSource = /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/split_s_fizz_msys.apk compressedPath = assets/s_fizz_msys/libs.spk.xz identity = s_fizz_msys]
+02-14 22:53:21.836 I/keystore(  617): cb->onFinished
+02-14 22:53:21.846 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:21.848 W/FbSoLoader(12447): FBSoLoader already initialiazed
+02-14 22:53:21.848 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x72], /data/user/0/net.bat.store/files/mmkv/aha_user
+02-14 22:53:21.848 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f6b3000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/aha_user]
+02-14 22:53:21.848 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x73], /data/user/0/net.bat.store/files/mmkv/aha_user.crc
+02-14 22:53:21.848 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f65b000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/aha_user.crc]
+02-14 22:53:21.850 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [aha_user] has flag [0]
+02-14 22:53:21.850 W/SoLoader(12447): Registering application split s_fizz_msysinfra split_s_fizz_msysinfra.apk
+02-14 22:53:21.850 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [aha_user] with 580 actual size, file size 4096, InterProcess 1, meta info version:4
+02-14 22:53:21.850 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [aha_user] with crc 3294545263 sequence 1 version 4
+02-14 22:53:21.850 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [aha_user] with 2 key-values
+02-14 22:53:21.859 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x71], /data/user/0/net.bat.store/files/mmkv/dta_kv
+02-14 22:53:21.860 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f54f000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/dta_kv]
+02-14 22:53:21.860 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x75], /data/user/0/net.bat.store/files/mmkv/dta_kv.crc
+02-14 22:53:21.860 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f54e000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/dta_kv.crc]
+02-14 22:53:21.865 I/ogle.android.g(12279): Waiting for a blocking GC ProfileSaver
+02-14 22:53:21.869 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [dta_kv] has flag [0]
+02-14 22:53:21.877 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [dta_kv] with 1005 actual size, file size 4096, InterProcess 1, meta info version:4
+02-14 22:53:21.877 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [dta_kv] with crc 465807823 sequence 8 version 4
+02-14 22:53:21.877 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [dta_kv] with 3 key-values
+02-14 22:53:21.886 W/SoLoader(12447): Prepending SoSource s_fizz_msysinfra-asset-libs: SuperpackSoSource[root = /data/data/com.instagram.lite/app_modules/s_fizz_msysinfra_65b10e3fa09f860d7f24f3c31d70f037a647c55e5ec06c0392a12969329e03f3/download/libs/armeabi-v7a/878910442/asset-libs flags = 1 zipSource = /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/split_s_fizz_msysinfra.apk compressedPath = assets/s_fizz_msysinfra/libs.spk.xz identity = s_fizz_msysinfra]
+02-14 22:53:21.892 I/keystore(  617): cb->onFinished
+02-14 22:53:21.896 I/ogle.android.g(12279): WaitForGcToComplete blocked ClassLinker on ClassLinker for 1.330s
+02-14 22:53:21.898 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:21.899 I/ogle.android.g(12279): WaitForGcToComplete blocked ClassLinker on ClassLinker for 1.195s
+02-14 22:53:21.900 I/ogle.android.g(12279): WaitForGcToComplete blocked ProfileSaver on ClassLinker for 34.736ms
+02-14 22:53:21.904 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:21.907 E/LS-ServerManager( 5359): isConnected : mServerRun a.c.a.h0.c.b@2ee5a7
+02-14 22:53:21.919 W/.instagram.lit(12447): Opening an oat file without a class loader. Are you using the deprecated DexFile APIs?
+02-14 22:53:21.922 I/System.out(12486): [okhttp]:check permission begin!
+02-14 22:53:21.925 W/System  (12486): ClassLoader referenced unknown path: system/framework/mediatek-cta.jar
+02-14 22:53:21.926 I/System.out(12486): [okhttp] e:java.lang.ClassNotFoundException: com.mediatek.cta.CtaUtils
+02-14 22:53:21.929 I/resolv  (  468): resolv_cache_lookup: lookup
+02-14 22:53:21.929 I/resolv  (  468): resolv_cache_lookup: FOUND IN CACHE entry=0xb37003d0
+02-14 22:53:21.930 I/ResolverController(  468): No valid NAT64 prefix (100, <unspecified>/0)
+02-14 22:53:21.932 I/System.out(12486): [socket]:check permission begin!
+02-14 22:53:21.933 W/System  (12486): ClassLoader referenced unknown path: system/framework/mediatek-cta.jar
+02-14 22:53:21.933 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x74], /data/user/0/net.bat.store/files/mmkv/statistics_zip_game
+02-14 22:53:21.934 I/System.out(12486): [socket] e:java.lang.ClassNotFoundException: com.mediatek.cta.CtaUtils
+02-14 22:53:21.935 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f51c000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/statistics_zip_game]
+02-14 22:53:21.936 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x77], /data/user/0/net.bat.store/files/mmkv/statistics_zip_game.crc
+02-14 22:53:21.936 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f47c000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/statistics_zip_game.crc]
+02-14 22:53:21.939 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [statistics_zip_game] has flag [0]
+02-14 22:53:21.941 I/keystore(  617): cb->onFinished
+02-14 22:53:21.941 I/remote_config(12486): control by intervalTime! 2026-02-14 14:53:21 lastRefreshDataTime=2026-02-14 22:06:02
+02-14 22:53:21.943 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [statistics_zip_game] with 532 actual size, file size 4096, InterProcess 1, meta info version:4
+02-14 22:53:21.943 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [statistics_zip_game] with crc 985360427 sequence 1 version 4
+02-14 22:53:21.943 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [statistics_zip_game] with 1 key-values
+02-14 22:53:21.944 W/FbSoLoader(12447): FBSoLoader already initialiazed
+02-14 22:53:21.945 W/SoLoader(12447): Registering application split shared_fizz_ms_profilo split_shared_fizz_ms_profilo.apk
+02-14 22:53:21.946 I/beanpodkeymaster(  415): Enter BeanpodKeymaster BeginOperation
+02-14 22:53:21.947 I/beanpodkeymaster(  415): cmd:4 Received 24 byte response
+02-14 22:53:21.947 I/beanpodkeymaster(  415): Exit BeanpodKeymaster BeginOperation
+02-14 22:53:21.953 W/SoLoader(12447): Prepending SoSource shared_fizz_ms_profilo-asset-libs: SuperpackSoSource[root = /data/data/com.instagram.lite/app_modules/shared_fizz_ms_profilo_49694d74a281475151e7b62965eb4d8990673460e945d050a824a18358cdd261/download/libs/armeabi-v7a/878910442/asset-libs flags = 1 zipSource = /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/split_shared_fizz_ms_profilo.apk compressedPath = assets/shared_fizz_ms_profilo/libs.spk.xz identity = shared_fizz_ms_profilo]
+02-14 22:53:21.963 I/beanpodkeymaster(  415): Enter BeanpodKeymaster UpdateOperation
+02-14 22:53:21.963 W/.instagram.lit(12447): Opening an oat file without a class loader. Are you using the deprecated DexFile APIs?
+02-14 22:53:21.964 I/beanpodkeymaster(  415): cmd:8 Received 24 byte response
+02-14 22:53:21.964 I/beanpodkeymaster(  415): Exit BeanpodKeymaster UpdateOperation
+02-14 22:53:21.965 I/net.bat.store(12486): WaitForGcToComplete blocked ClassLinker on ClassLinker for 259.643ms
+02-14 22:53:21.969 I/beanpodkeymaster(  415): Enter BeanpodKeymaster FinishOperation
+02-14 22:53:21.971 W/net.bat.store(12486): Verification of m1.lc m1.lc.addPublicKeyPins(java.lang.String, java.util.Set, boolean, java.util.Date) took 265.045ms (690.45 bytecodes/s) (3976B approximate peak alloc)
+02-14 22:53:21.974 W/FbSoLoader(12447): FBSoLoader already initialiazed
+02-14 22:53:21.975 W/SoLoader(12447): Registering application split fizz split_fizz.apk
+02-14 22:53:21.980 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x69], /data/user/0/net.bat.store/files/mmkv/local_zip_game_manager
+02-14 22:53:21.980 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0xa6db9000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/local_zip_game_manager]
+02-14 22:53:21.980 I/MMKV    (12486): <MemoryFile.cpp:98::open> open fd[0x7a], /data/user/0/net.bat.store/files/mmkv/local_zip_game_manager.crc
+02-14 22:53:21.981 I/MMKV    (12486): <MemoryFile.cpp:203::mmap> mmap to address [0x9f5a1000], oldPtr [0x0], [/data/user/0/net.bat.store/files/mmkv/local_zip_game_manager.crc]
+02-14 22:53:21.981 I/MMKV    (12486): <MMKV_IO.cpp:214::loadMetaInfoAndCheck> meta file [local_zip_game_manager] has flag [0]
+02-14 22:53:21.982 I/MMKV    (12486): <MMKV_IO.cpp:84::loadFromFile> loading [local_zip_game_manager] with 3151 actual size, file size 4096, InterProcess 1, meta info version:4
+02-14 22:53:21.983 I/MMKV    (12486): <MMKV_IO.cpp:89::loadFromFile> loading [local_zip_game_manager] with crc 1728449720 sequence 1 version 4
+02-14 22:53:21.983 I/MMKV    (12486): <MMKV_IO.cpp:133::loadFromFile> loaded [local_zip_game_manager] with 7 key-values
+02-14 22:53:21.995 W/SoLoader(12447): Prepending SoSource fizz-asset-libs: SuperpackSoSource[root = /data/data/com.instagram.lite/app_modules/fizz_4a96c73a55f3b8d5f97782907058517a9734b7d79839575327d3d5adc82858e1/download/libs/armeabi-v7a/878910442/asset-libs flags = 1 zipSource = /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/split_fizz.apk compressedPath = assets/fizz/libs.spk.xz identity = fizz]
+02-14 22:53:21.996 I/PhenotypeResourceReader( 2360): unable to find any Phenotype resource metadata for net.bat.store
+02-14 22:53:22.002 I/beanpodkeymaster(  415): cmd:c Received 56 byte response
+02-14 22:53:22.002 I/beanpodkeymaster(  415): Exit BeanpodKeymaster FinishOperation
+02-14 22:53:22.013 I/keystore(  617): cb->onFinished
+02-14 22:53:22.016 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:22.027 I/keystore(  617): cb->onFinished
+02-14 22:53:22.030 I/keystore(  617): cb->onFinished
+02-14 22:53:22.032 I/beanpodkeymaster(  415): cmd:20 Received 4 byte response
+02-14 22:53:22.033 I/beanpodkeymaster(  415): Enter BeanpodKeymaster BeginOperation
+02-14 22:53:22.034 I/beanpodkeymaster(  415): cmd:4 Received 48 byte response
+02-14 22:53:22.034 I/beanpodkeymaster(  415): Exit BeanpodKeymaster BeginOperation
+02-14 22:53:22.037 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:22.038 I/beanpodkeymaster(  415): Enter BeanpodKeymaster UpdateOperation
+02-14 22:53:22.040 I/beanpodkeymaster(  415): cmd:8 Received 34 byte response
+02-14 22:53:22.041 I/beanpodkeymaster(  415): Exit BeanpodKeymaster UpdateOperation
+02-14 22:53:22.043 I/beanpodkeymaster(  415): Enter BeanpodKeymaster FinishOperation
+02-14 22:53:22.043 I/beanpodkeymaster(  415): cmd:c Received 36 byte response
+02-14 22:53:22.044 I/beanpodkeymaster(  415): Exit BeanpodKeymaster FinishOperation
+02-14 22:53:22.046 I/keystore(  617): cb->onFinished
+02-14 22:53:22.048 I/beanpodkeymaster(  415): Enter BeanpodKeymaster BeginOperation
+02-14 22:53:22.050 I/beanpodkeymaster(  415): cmd:4 Received 24 byte response
+02-14 22:53:22.050 I/beanpodkeymaster(  415): Exit BeanpodKeymaster BeginOperation
+02-14 22:53:22.051 I/beanpodkeymaster(  415): Enter BeanpodKeymaster BeginOperation
+02-14 22:53:22.052 I/beanpodkeymaster(  415): cmd:4 Received 24 byte response
+02-14 22:53:22.052 I/beanpodkeymaster(  415): Exit BeanpodKeymaster BeginOperation
+02-14 22:53:22.052 I/beanpodkeymaster(  415): Enter BeanpodKeymaster UpdateOperation
+02-14 22:53:22.053 I/beanpodkeymaster(  415): cmd:8 Received 34 byte response
+02-14 22:53:22.054 I/beanpodkeymaster(  415): Exit BeanpodKeymaster UpdateOperation
+02-14 22:53:22.056 I/beanpodkeymaster(  415): Enter BeanpodKeymaster FinishOperation
+02-14 22:53:22.057 I/beanpodkeymaster(  415): cmd:c Received 20 byte response
+02-14 22:53:22.057 I/beanpodkeymaster(  415): Exit BeanpodKeymaster FinishOperation
+02-14 22:53:22.058 I/beanpodkeymaster(  415): Enter BeanpodKeymaster UpdateOperation
+02-14 22:53:22.059 I/beanpodkeymaster(  415): cmd:8 Received 24 byte response
+02-14 22:53:22.059 I/beanpodkeymaster(  415): Exit BeanpodKeymaster UpdateOperation
+02-14 22:53:22.064 I/beanpodkeymaster(  415): Enter BeanpodKeymaster FinishOperation
+02-14 22:53:22.093 W/X.0Is   (12447): Creating default notification channel, id=other, name=Other
+02-14 22:53:22.094 I/beanpodkeymaster(  415): cmd:c Received 84 byte response
+02-14 22:53:22.094 I/beanpodkeymaster(  415): Exit BeanpodKeymaster FinishOperation
+02-14 22:53:22.099 I/beanpodkeymaster(  415): Enter BeanpodKeymaster BeginOperation
+02-14 22:53:22.100 I/beanpodkeymaster(  415): cmd:4 Received 24 byte response
+02-14 22:53:22.101 I/beanpodkeymaster(  415): Exit BeanpodKeymaster BeginOperation
+02-14 22:53:22.105 I/beanpodkeymaster(  415): Enter BeanpodKeymaster UpdateOperation
+02-14 22:53:22.105 I/ogle.android.g(12279): WaitForGcToComplete blocked ClassLinker on ProfileSaver for 1.399s
+02-14 22:53:22.106 I/beanpodkeymaster(  415): cmd:8 Received 154 byte response
+02-14 22:53:22.106 I/beanpodkeymaster(  415): Exit BeanpodKeymaster UpdateOperation
+02-14 22:53:22.106 W/SoLoader[NativeDeps](12447): Couldn't find libeverythingmerged_fizz.so in native deps file
+02-14 22:53:22.106 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libeverythingmerged_fizz.so, this can be slow
+02-14 22:53:22.107 I/ogle.android.g(12279): WaitForGcToComplete blocked CollectorTransition on ClassLinker for 143.501ms
+02-14 22:53:22.108 I/beanpodkeymaster(  415): Enter BeanpodKeymaster FinishOperation
+02-14 22:53:22.109 I/beanpodkeymaster(  415): cmd:c Received 20 byte response
+02-14 22:53:22.109 I/beanpodkeymaster(  415): Exit BeanpodKeymaster FinishOperation
+02-14 22:53:22.122 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:22.125 I/ogle.android.g(12279): Waiting for a blocking GC ClassLinker
+02-14 22:53:22.161 W/FirebaseRemoteConfig(12486): No value of type 'Boolean' exists for parameter key 'is_not_show_bottom_recent_module'.
+02-14 22:53:22.164 W/FirebaseRemoteConfig(12486): No value of type 'Boolean' exists for parameter key 'connection_net_is_toast'.
+02-14 22:53:22.168 W/Looper  ( 1116): Slow dispatch took 126ms main h=com.android.server.notification.NotificationManagerService$WorkerHandler c=com.android.server.notification.NotificationManagerService$CancelNotificationRunnable@defa33c m=0
+02-14 22:53:22.176 W/SoLoader[NativeDeps](12447): Couldn't find libeverythingmerged_s_fizz_msys.so in native deps file
+02-14 22:53:22.177 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libeverythingmerged_s_fizz_msys.so, this can be slow
+02-14 22:53:22.189 W/SoLoader[NativeDeps](12447): Couldn't find libeverythingmerged_shared_fizz_ms_profilo.so in native deps file
+02-14 22:53:22.189 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libeverythingmerged_shared_fizz_ms_profilo.so, this can be slow
+02-14 22:53:22.195 W/.instagram.lit(12447): Opening an oat file without a class loader. Are you using the deprecated DexFile APIs?
+02-14 22:53:22.216 W/SoLoader[NativeDeps](12447): Couldn't find libfb.so in native deps file
+02-14 22:53:22.216 I/TranPhoneSwitcher( 1565): msg103
+02-14 22:53:22.216 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libfb.so, this can be slow
+02-14 22:53:22.225 W/FirebaseRemoteConfig(12486): No value of type 'String' exists for parameter key 'preload_game_config'.
+02-14 22:53:22.230 W/SoLoader[NativeDeps](12447): Couldn't find libeverythingmerged_shared_fizz_ms_profilo_1.so in native deps file
+02-14 22:53:22.230 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libeverythingmerged_shared_fizz_ms_profilo_1.so, this can be slow
+02-14 22:53:22.235 W/SoLoader[NativeDeps](12447): Couldn't find libc++_streams.so in native deps file
+02-14 22:53:22.236 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libc++_streams.so, this can be slow
+02-14 22:53:22.241 W/MnshttpProvider(12447): MNS-HTTP module not loaded
+02-14 22:53:22.257 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:22.258 W/Thread-9(12447): type=1400 audit(0.0:410): avc: granted { execute } for path="/data/data/com.instagram.lite/app_modules/shared_fizz_ms_profilo_49694d74a281475151e7b62965eb4d8990673460e945d050a824a18358cdd261/download/libs/armeabi-v7a/878910442/asset-libs/libc++_streams.so" dev="dm-10" ino=491146 scontext=u:r:untrusted_app:s0:c121,c257,c512,c768 tcontext=u:object_r:app_data_file:s0:c121,c257,c512,c768 tclass=file app=com.instagram.lite
+02-14 22:53:22.264 W/Thread-9(12447): type=1400 audit(0.0:411): avc: granted { execute } for path="/data/data/com.instagram.lite/app_modules/shared_fizz_ms_profilo_49694d74a281475151e7b62965eb4d8990673460e945d050a824a18358cdd261/download/libs/armeabi-v7a/878910442/asset-libs/libeverythingmerged_shared_fizz_ms_profilo_1.so" dev="dm-10" ino=484654 scontext=u:r:untrusted_app:s0:c121,c257,c512,c768 tcontext=u:object_r:app_data_file:s0:c121,c257,c512,c768 tclass=file app=com.instagram.lite
+02-14 22:53:22.266 W/ActivityManager( 1116): Unable to launch app com.microsoft.launcher/10206 for service Intent { cmp=com.microsoft.launcher/.report.senderproc.HockeySenderService }: AutoStart Limit
+02-14 22:53:22.274 W/SoLoader[NativeDeps](12447): Couldn't find libfbsofterror.so in native deps file
+02-14 22:53:22.274 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libfbsofterror.so, this can be slow
+02-14 22:53:22.284 W/SoLoader[NativeDeps](12447): Couldn't find libfbjni.so in native deps file
+02-14 22:53:22.287 I/U3.h    (12486): Provider GmsCore_OpenSSL not available
+02-14 22:53:22.288 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libfbjni.so, this can be slow
+02-14 22:53:22.291 W/Thread-9(12447): type=1400 audit(0.0:412): avc: granted { execute } for path="/data/data/com.instagram.lite/app_modules/shared_fizz_ms_profilo_49694d74a281475151e7b62965eb4d8990673460e945d050a824a18358cdd261/download/libs/armeabi-v7a/878910442/asset-libs/libfbjni.so" dev="dm-10" ino=484939 scontext=u:r:untrusted_app:s0:c121,c257,c512,c768 tcontext=u:object_r:app_data_file:s0:c121,c257,c512,c768 tclass=file app=com.instagram.lite
+02-14 22:53:22.298 W/Thread-9(12447): type=1400 audit(0.0:413): avc: granted { execute } for path="/data/data/com.instagram.lite/app_modules/shared_fizz_ms_profilo_49694d74a281475151e7b62965eb4d8990673460e945d050a824a18358cdd261/download/libs/armeabi-v7a/878910442/asset-libs/libfbsofterror.so" dev="dm-10" ino=484586 scontext=u:r:untrusted_app:s0:c121,c257,c512,c768 tcontext=u:object_r:app_data_file:s0:c121,c257,c512,c768 tclass=file app=com.instagram.lite
+02-14 22:53:22.301 W/Thread-9(12447): type=1400 audit(0.0:414): avc: granted { execute } for path="/data/data/com.instagram.lite/app_modules/shared_fizz_ms_profilo_49694d74a281475151e7b62965eb4d8990673460e945d050a824a18358cdd261/download/libs/armeabi-v7a/878910442/asset-libs/libfb.so" dev="dm-10" ino=484985 scontext=u:r:untrusted_app:s0:c121,c257,c512,c768 tcontext=u:object_r:app_data_file:s0:c121,c257,c512,c768 tclass=file app=com.instagram.lite
+02-14 22:53:22.305 W/SoLoader[NativeDeps](12447): Couldn't find libfb.so in native deps file
+02-14 22:53:22.316 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libfb.so, this can be slow
+02-14 22:53:22.321 I/.instagram.lit(12447): Thread[26,tid=12644,Native,Thread*=0x9fee1410,peer=0x13470f80,"Thread-9"] recursive attempt to load library "/data/data/com.instagram.lite/app_modules/shared_fizz_ms_profilo_49694d74a281475151e7b62965eb4d8990673460e945d050a824a18358cdd261/download/libs/armeabi-v7a/878910442/asset-libs/libfb.so"
+02-14 22:53:22.322 D/Griffin/ComponentManager( 1116): Limit start proc:musicplayer.musicapps.music.mp3player for 3rd-normal-service caller=system/1116,Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }
+02-14 22:53:22.322 W/ActivityManager( 1116): Unable to launch app musicplayer.musicapps.music.mp3player/10259 for service Intent { cmp=musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService }: AutoStart Limit
+02-14 22:53:22.322 D/JobScheduler( 1116): Error executing JobStatus{6fecf6 #u0a259/1514810417 musicplayer.musicapps.music.mp3player/com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService u=0 s=10259 TIME=-3m12s620ms:none NET READY}
+02-14 22:53:22.346 W/SoLoader[NativeDeps](12447): Couldn't find libsodium.so in native deps file
+02-14 22:53:22.346 W/SoLoader[NativeDeps](12447): Falling back to custom ELF parsing when loading libsodium.so, this can be slow
+02-14 22:53:22.368 W/.instagram.lit(12447): DexFile /data/app/~~5LOziIm_e5xBiYaH3LhMaw==/com.instagram.lite-bgW23JgQn8uaEPZ0gfCf-A==/base.apk is in boot class path but is not in a known location
+02-14 22:53:22.369 W/.instagram.lit(12447): Opening an oat file without a class loader. Are you using the deprecated DexFile APIs?
+02-14 22:53:22.383 I/HttpFlagsLoader(12486): HTTP flags log line (Impl): Using live production flag values from Google
+02-14 22:53:22.404 W/FirebaseRemoteConfig(12486): No value of type 'String' exists for parameter key 'localPushTriggerAB'.
+02-14 22:53:22.407 I/keystore(  617): cb->onFinished
+02-14 22:53:22.409 W/FirebaseRemoteConfig(12486): No value of type 'String' exists for parameter key 'aha_apm_switch'.
+02-14 22:53:22.422 I/beanpodkeymaster(  415): cmd:18 Received 302 byte response
+02-14 22:53:22.438 W/FirebaseRemoteConfig(12486): No value of type 'Boolean' exists for parameter key 'h5_point_center_control'.
+02-14 22:53:22.445 D/UntrustedWifiNetworkFactory( 1116): got request NetworkRequest [ TRACK_DEFAULT id=190, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10152 AdministratorUids: [] RequestorUid: 10152 RequestorPackageName: net.bat.store] ] with score 60 and providerId 5
+02-14 22:53:22.445 D/WifiNetworkFactory( 1116): got request NetworkRequest [ TRACK_DEFAULT id=190, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10152 AdministratorUids: [] RequestorUid: 10152 RequestorPackageName: net.bat.store] ] with score 60 and providerId 5
+02-14 22:53:22.445 D/PhoneSwitcherNetworkRequstListener( 1565): got request NetworkRequest [ TRACK_DEFAULT id=190, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10152 AdministratorUids: [] RequestorUid: 10152 RequestorPackageName: net.bat.store] ] with score 60 and providerId 5
+02-14 22:53:22.445 I/TranPhoneSwitcher( 1565): msg103
+02-14 22:53:22.456 W/FirebaseRemoteConfig(12486): No value of type 'String' exists for parameter key 'home_banner_ad_preload_timeout'.
+02-14 22:53:22.467 W/FirebaseRemoteConfig(12486): No value of type 'String' exists for parameter key 'continue_play_interval'.
