@@ -1,47 +1,33 @@
-# guardian architecture
+# Guardian Architecture
 
-## major components
+## Layers
 
-- `ui/`
-  - Compose screens, view models, navigation, state holders
-- `domain/`
-  - use cases, scheduling policy rules, trigger planning, invariants
-- `data/`
-  - Room entities, daos, repository implementations, mappers
-- `platform/`
-  - AlarmManager scheduler, notification channels, permission/state probes
-- `receiver/`
-  - alarm, boot, time-change, and action receivers
-- `service/`
-  - foreground ringing service, audio/vibration lifecycle, wake-lock scope
+- `core-domain/`
+  - Domain models, scheduling rules, and use cases.
+  - Repository contracts independent of Android framework.
+- `app/data/`
+  - Room entities/DAO, repository implementations, mapping.
+- `app/platform/`
+  - AlarmManager scheduling, reliability scanners, OEM guidance helpers.
+- `app/receiver/`
+  - Trigger and system event entry points (`BOOT_COMPLETED`, time changes, package replace).
+- `app/service/`
+  - Foreground ringing service, audio/vibration, notifications.
+- `app/ui/`
+  - Compose screens and view models for home/editor/reliability/history.
 
-## control flow
+## End-to-End Flow
 
-1. user creates alarm in Compose form
-2. view model sends request to `CreateAlarmUseCase`
-3. domain validates and computes trigger schedule plan
-4. repository persists alarm and policy to Room
-5. platform scheduler registers exact alarms with AlarmManager
-6. Android fires broadcast at trigger time
-7. receiver logs event and starts foreground ringing service
-8. service shows full-screen alarm UI and notification actions
-9. stop/snooze/do action flows back through use cases and history writes
+1. User creates or edits an alarm in Compose UI.
+2. ViewModel builds domain alarm model and persists through repository.
+3. Scheduler registers OS-level trigger intents for the alarm plan.
+4. At fire time, receiver validates and records event, then starts ringing service.
+5. Ringing service handles audio/vibration and action routing (stop/snooze/action).
+6. History is updated for proof, diagnostics, and UI state.
 
-## boundaries and assumptions
+## Core Rules
 
-- UI never schedules directly with AlarmManager
-- domain owns scheduling policy and trigger generation rules
-- platform owns Android API behavior and permission checks
-- every fired trigger is recorded in history for diagnostics
-- exact alarm capability, notification delivery, and battery policy are treated as runtime health dependencies
-
-## trigger model
-
-All time-based behavior is represented as triggers:
-
-- `main`
-- `pre-alert`
-- `snooze`
-- `nag`
-
-This single abstraction avoids rewrites when features expand.
+- Trigger handling is idempotent and deduped.
+- One-time alarms are finalized (disabled) after completion or missed classification.
+- Startup reconciliation handles stale enabled alarms and reschedules valid ones.
+- UI state is reactive from data source changes (no manual app restart needed).

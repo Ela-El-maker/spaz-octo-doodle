@@ -1,32 +1,26 @@
-# guardian overview
+# Guardian Overview
 
-## what this system is
+## Purpose
 
-Guardian is an Android alarm system that schedules exact, far-future date-time alarms and delivers them with alarm-grade reliability.
+Guardian is a reliability-first Android alarm app for exact, future date-time plans.
+It is built to reduce missed alarms caused by common Android lifecycle behavior and OEM background restrictions.
 
-It supports:
+## What It Does
 
-- one-shot date-time alarms
-- meeting alarms with join links
-- pre-alert bundles
-- snooze and nag flows
-- proof/history for fired and acknowledged events
+- Creates one-time exact alarms for a specific date and time.
+- Supports pre-alerts before the main trigger.
+- Uses a foreground ringing flow with stop/snooze and optional primary action.
+- Tracks outcomes in history (fired, recovered-late, missed, dismissed, snoozed).
+- Shows reliability risk and setup guidance through a dashboard.
 
-## problem it solves
+## Reliability Boundaries
 
-Typical reminder systems fail under real device conditions: Doze, reboot, timezone changes, aggressive battery policies, and notification misconfiguration.
+- Swiping app from recents should still allow alarms to fire.
+- Force-stop from Android settings blocks delivery until the app is opened again.
+- Clearing app data removes schedules.
+- Device powered off at trigger time cannot ring until next boot.
 
-Guardian focuses on delivery guarantees:
+## Current Focus
 
-- schedule exactly
-- survive system changes
-- ring in a way users can act on
-- keep audit history for trust and support
-
-## local run
-
-1. Build with `./gradlew :app:assembleDebug`
-2. Install with `./gradlew :app:installDebug`
-3. Launch from device app drawer (`Guardian`)
-
-Stage 1 Android foundation is now scaffolded. The remaining stages are tracked in `docs/development-stages.md`.
+Current implementation prioritizes reliability, state correctness, and diagnostics over feature breadth.
+Advanced features (NLP, cloud sync, location alarms) are intentionally deferred.
