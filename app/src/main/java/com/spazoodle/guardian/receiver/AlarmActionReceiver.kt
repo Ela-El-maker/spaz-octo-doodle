@@ -3,6 +3,7 @@ package com.spazoodle.guardian.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.app.KeyguardManager
 import android.app.PendingIntent
@@ -195,7 +196,9 @@ class AlarmActionReceiver : BroadcastReceiver() {
             .setContentIntent(contentIntent)
             .build()
         runCatching {
-            NotificationManagerCompat.from(context).notify(("unlock_required_$alarmId").hashCode(), notification)
+            if (context.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                NotificationManagerCompat.from(context).notify(("unlock_required_$alarmId").hashCode(), notification)
+            }
         }
     }
 
