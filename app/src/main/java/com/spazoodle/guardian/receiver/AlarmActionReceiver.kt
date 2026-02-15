@@ -72,17 +72,18 @@ class AlarmActionReceiver : BroadcastReceiver() {
     }
 
     private suspend fun handleStop(context: Context, alarmId: Long) {
-        GuardianRuntime.recordFireEventUseCase(context).invoke(
-            alarmId = alarmId,
-            triggerKind = TriggerKind.MAIN,
-            outcome = AlarmEventOutcome.FIRED,
-            deliveryState = DeliveryState.FIRED,
-            detail = GuardianDiagnosticTags.STOP_GUARD_CONFIRMED
-        )
         GuardianRuntime.acknowledgeAlarmUseCase(context).invoke(
             alarmId = alarmId,
             outcome = AlarmEventOutcome.DISMISSED
         )
+        GuardianRuntime.recordFireEventUseCase(context).invoke(
+            alarmId = alarmId,
+            triggerKind = TriggerKind.MAIN,
+            outcome = AlarmEventOutcome.DISMISSED,
+            deliveryState = DeliveryState.DISMISSED,
+            detail = "completed_user_stop:${GuardianDiagnosticTags.STOP_GUARD_CONFIRMED}"
+        )
+        GuardianRuntime.finalizeOneTimeAlarmUseCase(context).invoke(alarmId)
         GuardianRuntime.alarmScheduler(context).cancelAlarm(alarmId)
         context.stopService(Intent(context, AlarmRingingService::class.java))
     }
@@ -152,6 +153,14 @@ class AlarmActionReceiver : BroadcastReceiver() {
             alarmId = alarmId,
             outcome = AlarmEventOutcome.ACTION_LAUNCHED
         )
+        GuardianRuntime.recordFireEventUseCase(context).invoke(
+            alarmId = alarmId,
+            triggerKind = TriggerKind.MAIN,
+            outcome = AlarmEventOutcome.ACTION_LAUNCHED,
+            deliveryState = DeliveryState.ACTION_LAUNCHED,
+            detail = "completed_action_launch"
+        )
+        GuardianRuntime.finalizeOneTimeAlarmUseCase(context).invoke(alarmId)
         GuardianRuntime.alarmScheduler(context).cancelAlarm(alarmId)
         context.stopService(Intent(context, AlarmRingingService::class.java))
         launchPrimaryAction(context, actionType, value)

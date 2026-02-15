@@ -98,7 +98,7 @@ class AlarmTriggerReceiver : BroadcastReceiver() {
                         scheduledAtUtcMillis = scheduledAtUtcMillis,
                         outcome = AlarmEventOutcome.MISSED,
                         deliveryState = DeliveryState.MISSED,
-                        detail = "missed_delay_ms=$delayMs"
+                        detail = "missed_receiver_late:delay_ms=$delayMs"
                     )
                     if (GuardianPolicyConfig.lateRecoveryPolicy.missedNotifyEnabled) {
                         postMissedNotification(
@@ -108,6 +108,8 @@ class AlarmTriggerReceiver : BroadcastReceiver() {
                             delayMs = delayMs
                         )
                     }
+                    GuardianRuntime.finalizeOneTimeAlarmUseCase(appContext).invoke(alarmId)
+                    GuardianRuntime.alarmScheduler(appContext).cancelAlarm(alarmId)
                     return@launch
                 }
 
