@@ -2,9 +2,13 @@ package com.spazoodle.guardian.ui.home
 
 data class AlarmDraft(
     val title: String = "",
+    val description: String = "",
     val dateText: String = "",
     val timeText: String = "",
     val templateId: String = AlarmTemplatePreset.STANDARD.id,
+    val vibrateEnabled: Boolean = true,
+    val ringtoneUri: String = "",
+    val ringtoneLabel: String = "Default alarm tone",
     val primaryActionType: String = "",
     val primaryActionValue: String = "",
     val primaryActionLabel: String = "",

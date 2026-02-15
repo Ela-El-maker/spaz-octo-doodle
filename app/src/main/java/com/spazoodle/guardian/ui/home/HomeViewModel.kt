@@ -1,6 +1,9 @@
 package com.spazoodle.guardian.ui.home
 
 import android.app.Application
+import android.media.MediaPlayer
+import android.media.RingtoneManager
+import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.spazoodle.guardian.domain.model.Alarm
@@ -13,11 +16,16 @@ import com.spazoodle.guardian.domain.model.PrimaryAction
 import com.spazoodle.guardian.domain.model.PrimaryActionType
 import com.spazoodle.guardian.domain.model.SnoozeSpec
 import com.spazoodle.guardian.runtime.GuardianRuntime
+import com.spazoodle.guardian.platform.reliability.GuardianFeatureFlags
+import com.spazoodle.guardian.platform.reliability.ReliabilityScanner
+import com.spazoodle.guardian.platform.reliability.RiskReason
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,6 +43,8 @@ class HomeViewModel(
 
     private val _editorUiState = MutableStateFlow(EditorUiState())
     val editorUiState: StateFlow<EditorUiState> = _editorUiState.asStateFlow()
+    private var previewPlayer: MediaPlayer? = null
+    private var previewStopJob: Job? = null
 
     init {
         refreshAlarms()
@@ -46,7 +56,27 @@ class HomeViewModel(
             runCatching {
                 GuardianRuntime.alarmRepository(appContext).getAllAlarms()
             }.onSuccess { alarms ->
-                _homeUiState.update { HomeUiState(alarms = alarms, isLoading = false) }
+                val status = ReliabilityScanner(appContext).scan()
+                val riskMap = alarms.associate { alarm ->
+                    val reasons = mutableListOf<RiskReason>()
+                    if (alarm.enabled && !status.exactAlarmAllowed && GuardianFeatureFlags.strictExactGate) {
+                        reasons += RiskReason.EXACT_ALARM_BLOCKED
+                    }
+                    if (!status.notificationsEnabled) reasons += RiskReason.NOTIFICATION_DISABLED
+                    if (!status.batteryOptimizationIgnored) reasons += RiskReason.BATTERY_OPTIMIZED
+                    if (!status.fullScreenReady) reasons += RiskReason.FULL_SCREEN_NOT_READY
+                    if (!status.dndAlarmsLikelyAllowed) reasons += RiskReason.DND_MAY_SUPPRESS
+                    if (status.oemSteps.isNotEmpty()) reasons += RiskReason.OEM_BACKGROUND_RESTRICTIONS
+
+                    val label = when {
+                        reasons.contains(RiskReason.EXACT_ALARM_BLOCKED) -> "BLOCKED"
+                        reasons.size >= 3 -> "HIGH"
+                        reasons.isNotEmpty() -> "MEDIUM"
+                        else -> "LOW"
+                    }
+                    alarm.id to PlanRisk(label = label, reasons = reasons)
+                }
+                _homeUiState.update { HomeUiState(alarms = alarms, planRisk = riskMap, isLoading = false) }
             }.onFailure { error ->
                 _homeUiState.update {
                     it.copy(isLoading = false, errorMessage = error.message ?: "Failed to load alarms")
@@ -86,9 +116,13 @@ class HomeViewModel(
                 _editorUiState.value = EditorUiState(
                     draft = AlarmDraft(
                         title = alarm.title,
+                        description = alarm.description.orEmpty(),
                         templateId = AlarmTemplatePreset.STANDARD.id,
                         dateText = zoned.toLocalDate().toString(),
                         timeText = zoned.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm")),
+                        vibrateEnabled = alarm.vibrateEnabled,
+                        ringtoneUri = alarm.ringtoneUri.orEmpty(),
+                        ringtoneLabel = resolveRingtoneLabel(alarm.ringtoneUri),
                         primaryActionType = alarm.primaryAction?.type?.name.orEmpty(),
                         primaryActionValue = alarm.primaryAction?.value.orEmpty(),
                         primaryActionLabel = alarm.primaryAction?.label.orEmpty(),
@@ -187,11 +221,73 @@ class HomeViewModel(
         updateDraft { it.copy(primaryActionType = typeName, primaryActionLabel = label) }
     }
 
+    fun setRingtoneSelection(uriString: String?) {
+        val cleanUri = uriString.orEmpty()
+        updateDraft {
+            it.copy(
+                ringtoneUri = cleanUri,
+                ringtoneLabel = resolveRingtoneLabel(cleanUri.ifBlank { null })
+            )
+        }
+    }
+
+    fun toggleRingtonePreview() {
+        val current = _editorUiState.value.draft
+        if (previewPlayer?.isPlaying == true) {
+            stopRingtonePreview()
+            return
+        }
+        val toneUri = runCatching {
+            current.ringtoneUri.takeIf { it.isNotBlank() }?.let(Uri::parse)
+                ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+                ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        }.getOrNull()
+
+        if (toneUri == null) {
+            _editorUiState.update { it.copy(errorMessage = "No ringtone available for preview") }
+            return
+        }
+
+        stopRingtonePreview()
+        runCatching {
+            MediaPlayer().apply {
+                setDataSource(appContext, toneUri)
+                isLooping = false
+                prepare()
+                start()
+            }
+        }.onSuccess { player ->
+            previewPlayer = player
+            previewStopJob = viewModelScope.launch {
+                delay(8_000L)
+                stopRingtonePreview()
+            }
+        }.onFailure { error ->
+            stopRingtonePreview()
+            _editorUiState.update {
+                it.copy(errorMessage = error.message ?: "Unable to preview ringtone")
+            }
+        }
+    }
+
+    fun stopRingtonePreview() {
+        previewStopJob?.cancel()
+        previewStopJob = null
+        previewPlayer?.let { player ->
+            runCatching {
+                if (player.isPlaying) player.stop()
+            }
+            runCatching { player.release() }
+        }
+        previewPlayer = null
+    }
+
     fun saveDraft(editingAlarmId: Long?, onDone: () -> Unit) {
         viewModelScope.launch {
             val draft = _editorUiState.value.draft
             runCatching {
                 val alarm = buildAlarmFromDraft(draft, editingAlarmId)
+                enforceStrictExactPolicyIfNeeded(alarm)
                 if (editingAlarmId == null) {
                     GuardianRuntime.createAlarmUseCase(appContext).invoke(alarm)
                 } else {
@@ -219,6 +315,7 @@ class HomeViewModel(
         viewModelScope.launch {
             runCatching {
                 if (enabled) {
+                    enforceStrictExactPolicyIfNeeded(alarm.copy(enabled = true))
                     GuardianRuntime.enableAlarmUseCase(appContext).invoke(alarm.id)
                     val updated = alarm.copy(enabled = true, updatedAtUtcMillis = System.currentTimeMillis())
                     val plan = GuardianRuntime.computeSchedulePlanUseCase().invoke(updated)
@@ -234,11 +331,21 @@ class HomeViewModel(
         }
     }
 
+    private fun enforceStrictExactPolicyIfNeeded(alarm: Alarm) {
+        if (!alarm.enabled) return
+        if (!GuardianFeatureFlags.strictExactGate) return
+        val exactAllowed = GuardianRuntime.alarmScheduler(appContext).canScheduleExactAlarms()
+        require(exactAllowed) {
+            "Guardian strict mode blocked: Exact alarms are required for reliable delivery. Enable Exact alarms in settings."
+        }
+    }
+
     private suspend fun buildAlarmFromDraft(draft: AlarmDraft, editingAlarmId: Long?): Alarm {
         val date = LocalDate.parse(draft.dateText)
         val time = LocalTime.parse(draft.timeText)
         val zone = ZoneId.systemDefault()
         val triggerAtMillis = date.atTime(time).atZone(zone).toInstant().toEpochMilli()
+        require(draft.description.length <= 500) { "Description must be 500 characters or less." }
 
         val existing = editingAlarmId?.let { GuardianRuntime.alarmRepository(appContext).getById(it) }
         val now = System.currentTimeMillis()
@@ -286,10 +393,13 @@ class HomeViewModel(
         return Alarm(
             id = editingAlarmId ?: now,
             title = draft.title.ifBlank { "Guardian alarm" },
+            description = draft.description.trim().ifBlank { null },
             type = AlarmType.ALARM,
             triggerAtUtcMillis = triggerAtMillis,
             timezoneIdAtCreation = zone.id,
             enabled = draft.enabled,
+            vibrateEnabled = draft.vibrateEnabled,
+            ringtoneUri = draft.ringtoneUri.trim().ifBlank { null },
             primaryAction = primaryAction,
             policy = AlarmPolicy(
                 preAlerts = preAlerts,
@@ -311,5 +421,21 @@ class HomeViewModel(
             createdAtUtcMillis = existing?.createdAtUtcMillis ?: now,
             updatedAtUtcMillis = now
         )
+    }
+
+    private fun resolveRingtoneLabel(uriString: String?): String {
+        val uri = runCatching {
+            uriString?.takeIf { it.isNotBlank() }?.let(Uri::parse)
+        }.getOrNull()
+        if (uri == null) return "Default alarm tone"
+        return runCatching {
+            val ringtone = RingtoneManager.getRingtone(appContext, uri)
+            ringtone?.getTitle(appContext).takeUnless { it.isNullOrBlank() } ?: "Custom ringtone"
+        }.getOrDefault("Custom ringtone")
+    }
+
+    override fun onCleared() {
+        stopRingtonePreview()
+        super.onCleared()
     }
 }
