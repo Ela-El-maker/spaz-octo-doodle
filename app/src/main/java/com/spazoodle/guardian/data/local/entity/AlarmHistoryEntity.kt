@@ -17,5 +17,10 @@ data class AlarmHistoryEntity(
     val triggerKind: String,
     val outcome: String,
     val eventAtUtcMillis: Long,
-    val detail: String?
+    val detail: String?,
+    val scheduledAtUtcMillis: Long?,
+    val firedAtUtcMillis: Long?,
+    val delayMs: Long?,
+    val wasDeduped: Boolean,
+    val deliveryState: String
 )

@@ -55,10 +55,13 @@ private fun Alarm.toEntity(): AlarmEntity {
     return AlarmEntity(
         id = id,
         title = title,
+        description = description,
         type = type.name,
         triggerAtUtcMillis = triggerAtUtcMillis,
         timezoneIdAtCreation = timezoneIdAtCreation,
         enabled = enabled,
+        vibrateEnabled = vibrateEnabled,
+        ringtoneUri = ringtoneUri,
         meetingUrl = primaryAction
             ?.takeIf { it.type == PrimaryActionType.OPEN_URL }
             ?.value,
@@ -110,10 +113,12 @@ private fun AlarmEntity.toDomain(): Alarm {
     }
 
     val resolvedPrimaryAction = if (!primaryActionType.isNullOrBlank() && !primaryActionValue.isNullOrBlank()) {
+        val actionType = requireNotNull(primaryActionType)
+        val actionValue = requireNotNull(primaryActionValue)
         PrimaryAction(
-            type = runCatching { PrimaryActionType.valueOf(primaryActionType) }
+            type = runCatching { PrimaryActionType.valueOf(actionType) }
                 .getOrDefault(PrimaryActionType.OPEN_URL),
-            value = primaryActionValue,
+            value = actionValue,
             label = primaryActionLabel
         )
     } else if (!meetingUrl.isNullOrBlank()) {
@@ -129,10 +134,13 @@ private fun AlarmEntity.toDomain(): Alarm {
     return Alarm(
         id = id,
         title = title,
+        description = description,
         type = runCatching { AlarmType.valueOf(type) }.getOrDefault(AlarmType.ALARM),
         triggerAtUtcMillis = triggerAtUtcMillis,
         timezoneIdAtCreation = timezoneIdAtCreation,
         enabled = enabled,
+        vibrateEnabled = vibrateEnabled,
+        ringtoneUri = ringtoneUri,
         primaryAction = resolvedPrimaryAction,
         policy = AlarmPolicy(
             preAlerts = preAlerts,

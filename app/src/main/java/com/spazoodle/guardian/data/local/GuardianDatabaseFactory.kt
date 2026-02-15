@@ -13,6 +13,8 @@ object GuardianDatabaseFactory {
             DB_NAME
         )
             .addMigrations(GuardianDatabase.MIGRATION_1_2)
+            .addMigrations(GuardianDatabase.MIGRATION_2_3)
+            .addMigrations(GuardianDatabase.MIGRATION_3_4)
             .build()
     }
 }

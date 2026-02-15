@@ -13,10 +13,13 @@ import androidx.room.PrimaryKey
 data class AlarmEntity(
     @PrimaryKey val id: Long,
     val title: String,
+    val description: String?,
     val type: String,
     val triggerAtUtcMillis: Long,
     val timezoneIdAtCreation: String,
     val enabled: Boolean,
+    val vibrateEnabled: Boolean,
+    val ringtoneUri: String?,
     val meetingUrl: String?,
     val primaryActionType: String?,
     val primaryActionValue: String?,

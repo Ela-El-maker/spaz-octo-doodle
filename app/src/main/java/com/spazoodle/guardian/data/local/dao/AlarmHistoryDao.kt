@@ -16,4 +16,7 @@ interface AlarmHistoryDao {
 
     @Query("SELECT * FROM alarm_history ORDER BY eventAtUtcMillis DESC LIMIT :limit")
     suspend fun getRecent(limit: Int): List<AlarmHistoryEntity>
+
+    @Query("DELETE FROM alarm_history WHERE eventAtUtcMillis < :olderThanUtcMillis")
+    suspend fun pruneOlderThan(olderThanUtcMillis: Long): Int
 }

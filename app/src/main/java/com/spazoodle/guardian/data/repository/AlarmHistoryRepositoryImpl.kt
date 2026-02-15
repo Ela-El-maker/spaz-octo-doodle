@@ -3,6 +3,7 @@ package com.spazoodle.guardian.data.repository
 import com.spazoodle.guardian.data.local.dao.AlarmHistoryDao
 import com.spazoodle.guardian.data.local.entity.AlarmHistoryEntity
 import com.spazoodle.guardian.domain.model.AlarmEvent
+import com.spazoodle.guardian.domain.model.DeliveryState
 import com.spazoodle.guardian.domain.model.AlarmEventOutcome
 import com.spazoodle.guardian.domain.model.TriggerKind
 import com.spazoodle.guardian.domain.repository.AlarmHistoryRepository
@@ -17,7 +18,12 @@ class AlarmHistoryRepositoryImpl(
                 triggerKind = event.triggerKind.name,
                 outcome = event.outcome.name,
                 eventAtUtcMillis = event.eventAtUtcMillis,
-                detail = event.detail
+                detail = event.detail,
+                scheduledAtUtcMillis = event.scheduledAtUtcMillis,
+                firedAtUtcMillis = event.firedAtUtcMillis,
+                delayMs = event.delayMs,
+                wasDeduped = event.wasDeduped,
+                deliveryState = event.deliveryState.name
             )
         )
     }
@@ -37,6 +43,11 @@ private fun AlarmHistoryEntity.toDomain(): AlarmEvent {
         triggerKind = runCatching { TriggerKind.valueOf(triggerKind) }.getOrDefault(TriggerKind.MAIN),
         outcome = runCatching { AlarmEventOutcome.valueOf(outcome) }.getOrDefault(AlarmEventOutcome.FIRED),
         eventAtUtcMillis = eventAtUtcMillis,
-        detail = detail
+        detail = detail,
+        scheduledAtUtcMillis = scheduledAtUtcMillis,
+        firedAtUtcMillis = firedAtUtcMillis,
+        delayMs = delayMs,
+        wasDeduped = wasDeduped,
+        deliveryState = runCatching { DeliveryState.valueOf(deliveryState) }.getOrDefault(DeliveryState.FIRED)
     )
 }
