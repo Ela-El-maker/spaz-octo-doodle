@@ -30,3 +30,8 @@ jobs:
 
       - name: Unit Tests
         run: ./gradlew :app:testDebugUnitTest
+
+      - name: Connected Device Reliability Gate
+        run: |
+          chmod +x scripts/qa/run_e2e_matrix.sh
+          scripts/qa/run_e2e_matrix.sh --connected-gate
