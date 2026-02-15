@@ -13,14 +13,18 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.spazoodle.guardian.domain.model.AlarmEventOutcome
+import com.spazoodle.guardian.domain.model.DeliveryState
 import com.spazoodle.guardian.platform.reliability.GuardianPolicyConfig
 import com.spazoodle.guardian.platform.reliability.GuardianFeatureFlags
 import com.spazoodle.guardian.platform.reliability.SchemaPolicyGuard
 import com.spazoodle.guardian.platform.reliability.StartupRecoveryStore
+import com.spazoodle.guardian.platform.scheduler.ScheduledTriggerRegistry
 import com.spazoodle.guardian.receiver.AlarmTriggerReceiver
 import com.spazoodle.guardian.runtime.GuardianRuntime
 import com.spazoodle.guardian.domain.model.SchedulePlan
-import com.spazoodle.guardian.domain.scheduler.TriggerRequestCodeFactory
+import com.spazoodle.guardian.domain.model.TriggerKind
+import com.spazoodle.guardian.domain.usecase.ReconcileEnabledAlarmsResult
 import com.spazoodle.guardian.worker.GuardianRetentionWorker
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.CoroutineScope
@@ -83,40 +87,69 @@ class GuardianApp : Application() {
             }
 
             val plans = runCatching {
-                GuardianRuntime.rescheduleAllActiveAlarmsUseCase(this@GuardianApp).invoke()
-            }.getOrElse { emptyList() }
+                GuardianRuntime.reconcileEnabledAlarmsUseCase(this@GuardianApp).invoke()
+            }.getOrElse {
+                // fallback behavior if reconcile path fails
+                val fallbackPlans = runCatching {
+                    GuardianRuntime.rescheduleAllActiveAlarmsUseCase(this@GuardianApp).invoke()
+                }.getOrElse { emptyList() }
+                ReconcileEnabledAlarmsResult(
+                    reschedulablePlans = fallbackPlans,
+                    missedOneTimeAlarmIds = emptyList()
+                )
+            }
+
+            plans.missedOneTimeAlarmIds.forEach { alarmId ->
+                runCatching {
+                    GuardianRuntime.recordFireEventUseCase(this@GuardianApp).invoke(
+                        alarmId = alarmId,
+                        triggerKind = TriggerKind.MAIN,
+                        outcome = AlarmEventOutcome.MISSED,
+                        deliveryState = DeliveryState.MISSED,
+                        detail = "missed_startup_reconcile"
+                    )
+                    GuardianRuntime.finalizeOneTimeAlarmUseCase(this@GuardianApp).invoke(alarmId)
+                    GuardianRuntime.alarmScheduler(this@GuardianApp).cancelAlarm(alarmId)
+                }
+            }
 
             val recoveryStore = StartupRecoveryStore(this@GuardianApp)
-            val missingTriggerCount = countMissingScheduledTriggers(plans)
-            if (plans.isNotEmpty() && missingTriggerCount > 0) {
+            val missingTriggerCount = countMissingScheduledTriggers(plans.reschedulablePlans)
+            if (plans.reschedulablePlans.isNotEmpty() && missingTriggerCount > 0) {
                 recoveryStore.markRecovered(
                     missingTriggerCount = missingTriggerCount,
-                    totalPlanCount = plans.size,
+                    totalPlanCount = plans.reschedulablePlans.size,
                     atUtcMillis = now
                 )
             } else {
                 recoveryStore.clear()
             }
 
-            if (plans.isNotEmpty()) {
-                GuardianRuntime.alarmScheduler(this@GuardianApp).rescheduleAll(plans)
+            if (plans.reschedulablePlans.isNotEmpty()) {
+                GuardianRuntime.alarmScheduler(this@GuardianApp).rescheduleAll(plans.reschedulablePlans)
             }
         }
     }
 
     private fun countMissingScheduledTriggers(plans: List<SchedulePlan>): Int {
         var missing = 0
+        val registry = ScheduledTriggerRegistry(this)
         plans.forEach { plan ->
             plan.triggers.forEach { trigger ->
-                val requestCode = TriggerRequestCodeFactory.create(trigger)
-                val pendingIntent = PendingIntent.getBroadcast(
-                    this,
-                    requestCode,
-                    Intent(this, AlarmTriggerReceiver::class.java),
-                    PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
-                )
-                if (pendingIntent == null) {
+                val triggerIdentity =
+                    "${trigger.alarmId}:${trigger.kind.name}:${trigger.index}:${trigger.key.orEmpty()}:${trigger.scheduledAtUtcMillis}"
+                val mappedCode = registry.findCode(plan.alarmId, triggerIdentity)
+                val resolvedCode = mappedCode ?: registry.readCodes(plan.alarmId).firstOrNull()
+                if (resolvedCode == null) {
                     missing += 1
+                } else {
+                    val pendingIntent = PendingIntent.getBroadcast(
+                        this,
+                        resolvedCode,
+                        Intent(this, AlarmTriggerReceiver::class.java),
+                        PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
+                    )
+                    if (pendingIntent == null) missing += 1
                 }
             }
         }
