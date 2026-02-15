@@ -59,10 +59,13 @@ class ComputeSchedulePlanUseCaseTest {
         return Alarm(
             id = 1L,
             title = "Virtual Meeting",
+            description = null,
             type = AlarmType.MEETING,
             triggerAtUtcMillis = triggerAt,
             timezoneIdAtCreation = "Africa/Nairobi",
             enabled = true,
+            vibrateEnabled = true,
+            ringtoneUri = null,
             primaryAction = null,
             policy = AlarmPolicy(preAlerts = preAlerts),
             snoozeSpec = SnoozeSpec(durationsMinutes = listOf(5, 10, 15), defaultMinutes = 10),

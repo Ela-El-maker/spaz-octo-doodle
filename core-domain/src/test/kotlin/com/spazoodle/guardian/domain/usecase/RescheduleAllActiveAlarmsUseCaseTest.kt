@@ -36,10 +36,13 @@ class RescheduleAllActiveAlarmsUseCaseTest {
         return Alarm(
             id = id,
             title = "Alarm $id",
+            description = null,
             type = AlarmType.ALARM,
             triggerAtUtcMillis = triggerAt,
             timezoneIdAtCreation = "Africa/Nairobi",
             enabled = enabled,
+            vibrateEnabled = true,
+            ringtoneUri = null,
             primaryAction = null,
             policy = AlarmPolicy(preAlerts = listOf(DefaultPreAlertOffsets.TEN_MINUTES)),
             snoozeSpec = SnoozeSpec(durationsMinutes = listOf(5, 10, 15), defaultMinutes = 10),

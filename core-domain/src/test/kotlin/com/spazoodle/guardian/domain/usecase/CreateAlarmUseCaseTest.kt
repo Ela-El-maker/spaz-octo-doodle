@@ -41,10 +41,13 @@ class CreateAlarmUseCaseTest {
         return Alarm(
             id = 1L,
             title = "Future alarm",
+            description = null,
             type = AlarmType.ALARM,
             triggerAtUtcMillis = triggerAt,
             timezoneIdAtCreation = "Africa/Nairobi",
             enabled = true,
+            vibrateEnabled = true,
+            ringtoneUri = null,
             primaryAction = null,
             policy = AlarmPolicy(),
             snoozeSpec = SnoozeSpec(durationsMinutes = listOf(5, 10, 15), defaultMinutes = 10),
