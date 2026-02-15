@@ -7,15 +7,18 @@ import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.spazoodle.guardian.domain.model.Alarm
+import com.spazoodle.guardian.domain.model.AlarmEventOutcome
 import com.spazoodle.guardian.domain.model.AlarmPolicy
 import com.spazoodle.guardian.domain.model.AlarmType
 import com.spazoodle.guardian.domain.model.DefaultPreAlertOffsets
 import com.spazoodle.guardian.domain.model.EscalationSpec
+import com.spazoodle.guardian.domain.model.DeliveryState
 import com.spazoodle.guardian.domain.model.NagSpec
 import com.spazoodle.guardian.domain.model.PrimaryAction
 import com.spazoodle.guardian.domain.model.PrimaryActionType
 import com.spazoodle.guardian.domain.model.SnoozeSpec
 import com.spazoodle.guardian.runtime.GuardianRuntime
+import com.spazoodle.guardian.platform.time.AlarmIdGenerator
 import com.spazoodle.guardian.platform.reliability.GuardianFeatureFlags
 import com.spazoodle.guardian.platform.reliability.ReliabilityScanner
 import com.spazoodle.guardian.platform.reliability.RiskReason
@@ -29,6 +32,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -37,6 +41,7 @@ class HomeViewModel(
 ) : AndroidViewModel(application) {
 
     private val appContext = application.applicationContext
+    private val alarmIdGenerator = AlarmIdGenerator(appContext)
 
     private val _homeUiState = MutableStateFlow(HomeUiState())
     val homeUiState: StateFlow<HomeUiState> = _homeUiState.asStateFlow()
@@ -45,44 +50,84 @@ class HomeViewModel(
     val editorUiState: StateFlow<EditorUiState> = _editorUiState.asStateFlow()
     private var previewPlayer: MediaPlayer? = null
     private var previewStopJob: Job? = null
+    private var latestAlarms: List<Alarm> = emptyList()
 
     init {
-        refreshAlarms()
+        observeAlarms()
     }
 
     fun refreshAlarms() {
         viewModelScope.launch {
-            _homeUiState.update { it.copy(isLoading = true, errorMessage = null) }
-            runCatching {
-                GuardianRuntime.alarmRepository(appContext).getAllAlarms()
-            }.onSuccess { alarms ->
-                val status = ReliabilityScanner(appContext).scan()
-                val riskMap = alarms.associate { alarm ->
-                    val reasons = mutableListOf<RiskReason>()
-                    if (alarm.enabled && !status.exactAlarmAllowed && GuardianFeatureFlags.strictExactGate) {
-                        reasons += RiskReason.EXACT_ALARM_BLOCKED
+            runCatching { buildHomeUiState(latestAlarms) }
+                .onSuccess { _homeUiState.value = it }
+                .onFailure { error ->
+                    _homeUiState.update {
+                        it.copy(errorMessage = error.message ?: "Failed to refresh alarms")
                     }
-                    if (!status.notificationsEnabled) reasons += RiskReason.NOTIFICATION_DISABLED
-                    if (!status.batteryOptimizationIgnored) reasons += RiskReason.BATTERY_OPTIMIZED
-                    if (!status.fullScreenReady) reasons += RiskReason.FULL_SCREEN_NOT_READY
-                    if (!status.dndAlarmsLikelyAllowed) reasons += RiskReason.DND_MAY_SUPPRESS
-                    if (status.oemSteps.isNotEmpty()) reasons += RiskReason.OEM_BACKGROUND_RESTRICTIONS
-
-                    val label = when {
-                        reasons.contains(RiskReason.EXACT_ALARM_BLOCKED) -> "BLOCKED"
-                        reasons.size >= 3 -> "HIGH"
-                        reasons.isNotEmpty() -> "MEDIUM"
-                        else -> "LOW"
-                    }
-                    alarm.id to PlanRisk(label = label, reasons = reasons)
                 }
-                _homeUiState.update { HomeUiState(alarms = alarms, planRisk = riskMap, isLoading = false) }
-            }.onFailure { error ->
-                _homeUiState.update {
-                    it.copy(isLoading = false, errorMessage = error.message ?: "Failed to load alarms")
-                }
-            }
         }
+    }
+
+    private fun observeAlarms() {
+        viewModelScope.launch {
+            _homeUiState.update { it.copy(isLoading = true, errorMessage = null) }
+            GuardianRuntime.alarmRepository(appContext)
+                .observeAllAlarms()
+                .collect { alarms ->
+                    latestAlarms = alarms
+                    runCatching { buildHomeUiState(alarms) }
+                        .onSuccess { _homeUiState.value = it }
+                        .onFailure { error ->
+                            _homeUiState.update {
+                                it.copy(
+                                    alarms = alarms,
+                                    isLoading = false,
+                                    errorMessage = error.message ?: "Failed to update alarms"
+                                )
+                            }
+                        }
+                }
+        }
+    }
+
+    private suspend fun buildHomeUiState(alarms: List<Alarm>): HomeUiState {
+        val history = runCatching {
+            GuardianRuntime.alarmHistoryRepository(appContext).getRecent(400)
+        }.getOrDefault(emptyList())
+        val latestByAlarm = history
+            .groupBy { it.alarmId }
+            .mapValues { (_, events) -> events.maxByOrNull { it.eventAtUtcMillis } }
+
+        val status = ReliabilityScanner(appContext).scan()
+        val riskMap = alarms.associate { alarm ->
+            val reasons = mutableListOf<RiskReason>()
+            if (alarm.enabled && !status.exactAlarmAllowed && GuardianFeatureFlags.strictExactGate) {
+                reasons += RiskReason.EXACT_ALARM_BLOCKED
+            }
+            if (!status.notificationsEnabled) reasons += RiskReason.NOTIFICATION_DISABLED
+            if (!status.batteryOptimizationIgnored) reasons += RiskReason.BATTERY_OPTIMIZED
+            if (!status.fullScreenReady) reasons += RiskReason.FULL_SCREEN_NOT_READY
+            if (!status.dndAlarmsLikelyAllowed) reasons += RiskReason.DND_MAY_SUPPRESS
+            if (status.oemSteps.isNotEmpty()) reasons += RiskReason.OEM_BACKGROUND_RESTRICTIONS
+
+            val label = when {
+                reasons.contains(RiskReason.EXACT_ALARM_BLOCKED) -> "BLOCKED"
+                reasons.size >= 3 -> "HIGH"
+                reasons.isNotEmpty() -> "MEDIUM"
+                else -> "LOW"
+            }
+            alarm.id to PlanRisk(label = label, reasons = reasons)
+        }
+        val alarmStateMap = alarms.associate { alarm ->
+            val latest = latestByAlarm[alarm.id]
+            alarm.id to deriveAlarmState(alarm, latest)
+        }
+        return HomeUiState(
+            alarms = alarms,
+            planRisk = riskMap,
+            alarmState = alarmStateMap,
+            isLoading = false
+        )
     }
 
     fun loadCreateDraft() {
@@ -301,7 +346,6 @@ class HomeViewModel(
                     GuardianRuntime.alarmScheduler(appContext).cancelAlarm(alarm.id)
                 }
             }.onSuccess {
-                refreshAlarms()
                 onDone()
             }.onFailure { error ->
                 _editorUiState.update {
@@ -327,7 +371,84 @@ class HomeViewModel(
             }.onFailure { error ->
                 _homeUiState.update { it.copy(errorMessage = error.message ?: "Failed to toggle alarm") }
             }
-            refreshAlarms()
+        }
+    }
+
+    fun deleteAlarm(alarmId: Long, onDone: (() -> Unit)? = null) {
+        viewModelScope.launch {
+            runCatching {
+                GuardianRuntime.alarmScheduler(appContext).cancelAlarm(alarmId)
+                GuardianRuntime.deleteAlarmUseCase(appContext).invoke(alarmId)
+            }.onSuccess {
+                onDone?.invoke()
+            }.onFailure { error ->
+                _homeUiState.update { it.copy(errorMessage = error.message ?: "Failed to delete alarm") }
+                _editorUiState.update { it.copy(errorMessage = error.message ?: "Failed to delete alarm") }
+            }
+        }
+    }
+
+    fun deleteAlarmByIdWithUndo(
+        alarmId: Long,
+        onDeleted: (Alarm) -> Unit
+    ) {
+        viewModelScope.launch {
+            runCatching {
+                val alarm = GuardianRuntime.alarmRepository(appContext).getById(alarmId)
+                    ?: error("Alarm not found")
+                GuardianRuntime.alarmScheduler(appContext).cancelAlarm(alarm.id)
+                GuardianRuntime.deleteAlarmUseCase(appContext).invoke(alarm.id)
+                alarm
+            }.onSuccess { deleted ->
+                onDeleted(deleted)
+            }.onFailure { error ->
+                _homeUiState.update { it.copy(errorMessage = error.message ?: "Failed to delete alarm") }
+                _editorUiState.update { it.copy(errorMessage = error.message ?: "Failed to delete alarm") }
+            }
+        }
+    }
+
+    fun deleteAlarm(
+        alarm: Alarm,
+        onDeleted: ((Alarm) -> Unit)? = null
+    ) {
+        viewModelScope.launch {
+            runCatching {
+                GuardianRuntime.alarmScheduler(appContext).cancelAlarm(alarm.id)
+                GuardianRuntime.deleteAlarmUseCase(appContext).invoke(alarm.id)
+            }.onSuccess {
+                onDeleted?.invoke(alarm)
+            }.onFailure { error ->
+                _homeUiState.update { it.copy(errorMessage = error.message ?: "Failed to delete alarm") }
+            }
+        }
+    }
+
+    fun restoreDeletedAlarm(
+        alarm: Alarm,
+        onDone: (() -> Unit)? = null
+    ) {
+        viewModelScope.launch {
+            runCatching {
+                val now = System.currentTimeMillis()
+                val restored = if (alarm.enabled && alarm.triggerAtUtcMillis <= now) {
+                    alarm.copy(enabled = false, updatedAtUtcMillis = now)
+                } else {
+                    alarm.copy(updatedAtUtcMillis = now)
+                }
+
+                GuardianRuntime.alarmRepository(appContext).upsert(restored)
+                if (restored.enabled) {
+                    val plan = GuardianRuntime.computeSchedulePlanUseCase().invoke(restored)
+                    GuardianRuntime.alarmScheduler(appContext).schedule(plan)
+                } else {
+                    GuardianRuntime.alarmScheduler(appContext).cancelAlarm(restored.id)
+                }
+            }.onSuccess {
+                onDone?.invoke()
+            }.onFailure { error ->
+                _homeUiState.update { it.copy(errorMessage = error.message ?: "Failed to restore alarm") }
+            }
         }
     }
 
@@ -391,7 +512,7 @@ class HomeViewModel(
         }
 
         return Alarm(
-            id = editingAlarmId ?: now,
+            id = editingAlarmId ?: alarmIdGenerator.nextId(),
             title = draft.title.ifBlank { "Guardian alarm" },
             description = draft.description.trim().ifBlank { null },
             type = AlarmType.ALARM,
@@ -437,5 +558,25 @@ class HomeViewModel(
     override fun onCleared() {
         stopRingtonePreview()
         super.onCleared()
+    }
+
+    private fun deriveAlarmState(
+        alarm: Alarm,
+        latestEvent: com.spazoodle.guardian.domain.model.AlarmEvent?
+    ): AlarmState {
+        if (alarm.enabled) return AlarmState.ACTIVE
+        if (latestEvent == null) return AlarmState.COMPLETED
+
+        return when {
+            latestEvent.outcome == AlarmEventOutcome.MISSED ||
+                latestEvent.deliveryState == DeliveryState.MISSED -> AlarmState.MISSED
+
+            latestEvent.outcome == AlarmEventOutcome.DISMISSED ||
+                latestEvent.outcome == AlarmEventOutcome.ACTION_LAUNCHED ||
+                latestEvent.deliveryState == DeliveryState.DISMISSED ||
+                latestEvent.deliveryState == DeliveryState.ACTION_LAUNCHED -> AlarmState.COMPLETED
+
+            else -> AlarmState.COMPLETED
+        }
     }
 }

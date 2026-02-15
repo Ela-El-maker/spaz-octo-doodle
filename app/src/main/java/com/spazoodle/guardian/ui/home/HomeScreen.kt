@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.AssistChip
@@ -19,15 +20,27 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
@@ -40,6 +53,7 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+import kotlinx.coroutines.launch
 
 @Composable
 fun HomeScreen(
@@ -51,8 +65,32 @@ fun HomeScreen(
 ) {
     val uiState by homeViewModel.homeUiState.collectAsState()
     val topRowScroll = rememberScrollState()
+    val listState = rememberLazyListState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+    var knownAlarmIds by remember { mutableStateOf(emptySet<Long>()) }
+    var initializedIds by remember { mutableStateOf(false) }
+
+    LaunchedEffect(uiState.alarms) {
+        val currentIds = uiState.alarms.map { it.id }.toSet()
+        if (!initializedIds) {
+            knownAlarmIds = currentIds
+            initializedIds = true
+            return@LaunchedEffect
+        }
+
+        val newId = uiState.alarms.firstOrNull { it.id !in knownAlarmIds }?.id
+        if (newId != null) {
+            val index = uiState.alarms.indexOfFirst { it.id == newId }
+            if (index >= 0) {
+                listState.animateScrollToItem(index)
+            }
+        }
+        knownAlarmIds = currentIds
+    }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 onCreateAlarm()
@@ -122,18 +160,38 @@ fun HomeScreen(
                     }
                 } else {
                     LazyColumn(
+                        state = listState,
                         modifier = Modifier.fillMaxSize(),
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         items(uiState.alarms, key = { it.id }) { alarm ->
-                            AlarmRow(
-                                alarm = alarm,
-                                risk = uiState.planRisk[alarm.id],
-                                onToggle = { enabled -> homeViewModel.toggleEnabled(alarm, enabled) },
-                                onClick = {
-                                    onEditAlarm(alarm.id)
-                                }
-                            )
+                            AnimatedAlarmListItem(
+                                key = alarm.id
+                            ) {
+                                AlarmRow(
+                                    alarm = alarm,
+                                    state = uiState.alarmState[alarm.id] ?: if (alarm.enabled) AlarmState.ACTIVE else AlarmState.COMPLETED,
+                                    risk = uiState.planRisk[alarm.id],
+                                    onToggle = { enabled -> homeViewModel.toggleEnabled(alarm, enabled) },
+                                    onDelete = {
+                                        homeViewModel.deleteAlarm(alarm) { deleted ->
+                                            scope.launch {
+                                                val result = snackbarHostState.showSnackbar(
+                                                    message = "Alarm deleted",
+                                                    actionLabel = "Undo",
+                                                    withDismissAction = true
+                                                )
+                                                if (result == SnackbarResult.ActionPerformed) {
+                                                    homeViewModel.restoreDeletedAlarm(deleted)
+                                                }
+                                            }
+                                        }
+                                    },
+                                    onClick = {
+                                        onEditAlarm(alarm.id)
+                                    }
+                                )
+                            }
                         }
                     }
                 }
@@ -143,10 +201,28 @@ fun HomeScreen(
 }
 
 @Composable
+private fun AnimatedAlarmListItem(
+    key: Long,
+    content: @Composable () -> Unit
+) {
+    var visible by remember(key) { mutableStateOf(false) }
+    LaunchedEffect(key) { visible = true }
+    AnimatedVisibility(
+        visible = visible,
+        enter = fadeIn() + expandVertically()
+    ) {
+        content()
+    }
+}
+
+@Composable
 private fun AlarmRow(
+    modifier: Modifier = Modifier,
     alarm: Alarm,
+    state: AlarmState,
     risk: PlanRisk?,
     onToggle: (Boolean) -> Unit,
+    onDelete: () -> Unit,
     onClick: () -> Unit
 ) {
     val dateTime = Instant.ofEpochMilli(alarm.triggerAtUtcMillis)
@@ -158,7 +234,7 @@ private fun AlarmRow(
     )
 
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable { onClick() }
             .animateContentSize(),
@@ -183,7 +259,13 @@ private fun AlarmRow(
                 AssistChip(
                     onClick = onClick,
                     label = {
-                        Text(if (alarm.enabled) "Active" else "Paused")
+                        Text(
+                            when (state) {
+                                AlarmState.ACTIVE -> "Active"
+                                AlarmState.MISSED -> "Missed"
+                                AlarmState.COMPLETED -> "Completed"
+                            }
+                        )
                     }
                 )
                 val primaryAction = alarm.primaryAction
@@ -214,6 +296,16 @@ private fun AlarmRow(
                     stateDescription = if (alarm.enabled) "On" else "Off"
                 }
             )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 10.dp, end = 10.dp, bottom = 8.dp),
+            horizontalArrangement = Arrangement.End
+        ) {
+            TextButton(onClick = onDelete) {
+                Text("Delete")
+            }
         }
     }
 }

@@ -5,6 +5,8 @@ import android.content.Intent
 import android.media.RingtoneManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,8 +19,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
@@ -32,6 +32,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -45,7 +48,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,11 +58,15 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import java.time.Duration
 import java.time.Instant
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,6 +88,17 @@ fun AlarmEditorScreen(
     val scrollState = rememberScrollState()
     val templateRowScroll = rememberScrollState()
     val actionRowScroll = rememberScrollState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+    var showDeleteConfirm by remember { mutableStateOf(false) }
+    val nowTicker by produceState(initialValue = System.currentTimeMillis()) {
+        while (true) {
+            val now = System.currentTimeMillis()
+            value = now
+            val untilNextMinute = 60_000L - (now % 60_000L)
+            delay(untilNextMinute)
+        }
+    }
 
     val ringtonePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -93,17 +113,14 @@ fun AlarmEditorScreen(
     }
 
     DisposableEffect(Unit) {
-        onDispose {
-            homeViewModel.stopRingtonePreview()
-        }
+        onDispose { homeViewModel.stopRingtonePreview() }
     }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = {
-                    Text(if (alarmId == null) "Create Alarm" else "Edit Alarm")
-                }
+                title = { Text(if (alarmId == null) "Create Alarm" else "Edit Alarm") }
             )
         }
     ) { padding ->
@@ -157,6 +174,11 @@ fun AlarmEditorScreen(
                     text = formatPreviewDateTime(draft.dateText, draft.timeText),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Text(
+                    text = formatRemainingFromNow(draft.dateText, draft.timeText, nowTicker),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary
                 )
             }
 
@@ -360,6 +382,11 @@ fun AlarmEditorScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                if (alarmId != null) {
+                    TextButton(onClick = { showDeleteConfirm = true }) {
+                        Text("Delete")
+                    }
+                }
                 OutlinedButton(onClick = onBack) {
                     Text("Cancel")
                 }
@@ -378,6 +405,41 @@ fun AlarmEditorScreen(
             )
             Spacer(modifier = Modifier.height(4.dp))
         }
+    }
+
+    if (showDeleteConfirm && alarmId != null) {
+        AlertDialog(
+            onDismissRequest = { showDeleteConfirm = false },
+            title = { Text("Delete alarm?") },
+            text = { Text("This will remove this alarm. You can undo right away.") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showDeleteConfirm = false
+                        homeViewModel.deleteAlarmByIdWithUndo(alarmId) { deleted ->
+                            scope.launch {
+                                val result = snackbarHostState.showSnackbar(
+                                    message = "Alarm deleted",
+                                    actionLabel = "Undo",
+                                    withDismissAction = true
+                                )
+                                if (result == SnackbarResult.ActionPerformed) {
+                                    homeViewModel.restoreDeletedAlarm(deleted)
+                                }
+                                onBack()
+                            }
+                        }
+                    }
+                ) {
+                    Text("Delete")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDeleteConfirm = false }) {
+                    Text("Cancel")
+                }
+            }
+        )
     }
 }
 
@@ -521,5 +583,31 @@ private fun formatPreviewDateTime(dateRaw: String, timeRaw: String): String {
         val localTime = LocalTime.parse(timeRaw)
         val zoned = localDate.atTime(localTime).atZone(ZoneId.systemDefault())
         zoned.format(DateTimeFormatter.ofPattern("EEE, d MMM yyyy • h:mm a"))
+    }.getOrDefault("Select date and time")
+}
+
+private fun formatRemainingFromNow(dateRaw: String, timeRaw: String, nowMillis: Long): String {
+    return runCatching {
+        val date = LocalDate.parse(dateRaw)
+        val time = LocalTime.parse(timeRaw)
+        val target = LocalDateTime.of(date, time).atZone(ZoneId.systemDefault())
+        val now = Instant.ofEpochMilli(nowMillis).atZone(ZoneId.systemDefault())
+
+        if (!target.isAfter(now)) {
+            "Time already passed"
+        } else {
+            val duration = Duration.between(now, target)
+            val days = duration.toDays()
+            val hours = duration.minusDays(days).toHours()
+            val minutes = duration.minusDays(days).minusHours(hours).toMinutes()
+
+            val parts = mutableListOf<String>()
+            if (days > 0) parts += "$days day${if (days == 1L) "" else "s"}"
+            if (hours > 0) parts += "$hours hour${if (hours == 1L) "" else "s"}"
+            if (minutes > 0 && parts.size < 2) parts += "$minutes min"
+            if (parts.isEmpty()) parts += "< 1 min"
+
+            "In ${parts.take(2).joinToString(" ")}"
+        }
     }.getOrDefault("Select date and time")
 }
